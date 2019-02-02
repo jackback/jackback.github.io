@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Android Binder | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Binder 通信机制概述Binder通信是一种类似于IPC 的机制，基于C/S通信结构，它是给servicemanager-server、server-client之间通信的工具，下面简单介绍具体实现原理：  从表面上来看，是client通过获得一个server的代理接口，对server进行直接调用；实际上，代理接口中定义的方法与server中定义的方法是一一对应的。 client调用某个代理接">
+<meta name="keywords" content="Binder,IPC,RPC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Binder">
+<meta property="og:url" content="http://yoursite.com/2017/04/27/Android_Binder/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Binder 通信机制概述Binder通信是一种类似于IPC 的机制，基于C/S通信结构，它是给servicemanager-server、server-client之间通信的工具，下面简单介绍具体实现原理：  从表面上来看，是client通过获得一个server的代理接口，对server进行直接调用；实际上，代理接口中定义的方法与server中定义的方法是一一对应的。 client调用某个代理接">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2018/12/15/5c14f2eb7a225.png">
+<meta property="og:image" content="https://i.loli.net/2018/12/15/5c14f2ebd3c9a.png">
+<meta property="og:image" content="https://i.loli.net/2018/12/15/5c14f2ebd27ed.png">
+<meta property="og:image" content="https://i.loli.net/2018/12/15/5c14f2ebd08e4.png">
+<meta property="og:image" content="https://i.loli.net/2018/12/15/5c14f2ec2e84f.png">
+<meta property="og:updated_time" content="2018-12-15T12:33:30.684Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Binder">
+<meta name="twitter:description" content="Binder 通信机制概述Binder通信是一种类似于IPC 的机制，基于C/S通信结构，它是给servicemanager-server、server-client之间通信的工具，下面简单介绍具体实现原理：  从表面上来看，是client通过获得一个server的代理接口，对server进行直接调用；实际上，代理接口中定义的方法与server中定义的方法是一一对应的。 client调用某个代理接">
+<meta name="twitter:image" content="https://i.loli.net/2018/12/15/5c14f2eb7a225.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android_Binder" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/27/Android_Binder/" class="article-date">
+  <time datetime="2017-04-27T02:37:33.000Z" itemprop="datePublished">2017-04-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android Binder
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Binder-通信机制概述"><a href="#Binder-通信机制概述" class="headerlink" title="Binder 通信机制概述"></a>Binder 通信机制概述</h1><p>Binder通信是一种类似于IPC 的机制，基于C/S通信结构，它是给servicemanager-server、server-client之间通信的工具，下面简单介绍具体实现原理：</p>
+<ol>
+<li>从表面上来看，是client通过获得一个server的代理接口，对server进行直接调用；<br>实际上，代理接口中定义的方法与server中定义的方法是一一对应的。</li>
+<li>client调用某个代理接口中的方法时，代理接口的方法会将client传递的参数打包成为Parcel对象；<br>代理接口将该Parcel发送给内核中的binder driver。<br>server会读取binder driver中的请求数据，如果是发送给自己的，解包Parcel对象，处理并将结果返回；</li>
+<li>整个的调用过程是一个同步过程，在server处理的时候，client会block住。</li>
+</ol>
+<p><a href="https://i.loli.net/2018/12/15/5c14f2eb7a225.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2eb7a225.png" alt="Binder_ProcessCall.png"></a></p>
+<a id="more"></a>
+<h1 id="Binder-通信机制实现原理"><a href="#Binder-通信机制实现原理" class="headerlink" title="Binder 通信机制实现原理"></a>Binder 通信机制实现原理</h1><p>Binder 通信机制实现IPC的方式和我们所了解的消息队列、信号量、管道等不同，他是通过Binder设备（一个实现数据交换的虚拟设备）来实现数据交换，<br>一次信息传递过程只发生一次拷贝，数据交换非常高效。Binder通信机制中有三个角色，service manager(简称SM)、service、client，它们在Android<br>系统都是有各自的进程在系统中运行，每个进程都与Binder设备建立了信息通信通道(通过open /dev/binder),通过binder设备实现SM、service、client<br>之间的信息交换。</p>
+<p>底层实现机制：<br>SM          —- handle 0<br>service1    —- handle s1<br>service2    —- handle s2<br>…<br>serviceN    —- handle sN</p>
+<p>client1    —- handle c1<br>client2    —- handle c2<br>…<br>clientN    —- handle cN</p>
+<p>SM      作为service manager，它负责管理service(说白了就是：响应service发送给它的消息)，service添加/service句柄的获取/serviceList<br>service 负责处理client的RPC请求（也就是响应client发送过来的消息）<br>client  就是主动发送请求一方。</p>
+<p>binder机制中交换数据(发送消息)，例如service发送消息给SM，它是将信息通过binder驱动直接挂接到SM 关联的handle下，然后SM直接去读自己handle=0<br>下的消息并进行解析就可以了。从而完成一次数据交换。</p>
+<p>Android系统中有如下几种场景：</p>
+<ol>
+<li><p>进程添加service 到SM中。<br> a. 通过SM handle(默认固定为0)，发送消息给SM；<br> b. SM进程的loop循环获取到发送给自己handle的消息并获取到service注册信息；<br> c. SM将service信息注册到底层binder设备，binder设备给该service分派一个handle sX(关联service name)，功能就算完成。</p>
+</li>
+<li><p>client 使用service服务。（这其中包含两次binder）<br> A. client 获取指定service句柄</p>
+<pre><code>a. client所在进程发送消息给SM(handle固定为0)，即写入parcel信息到binder设备，挂接到SM的handle名下。
+b. SM 进程loop循环读取到发给自己信息，解析后，返回对应service name的service handle信息给client。
+</code></pre><p> B. client 使用service句柄使用service提供的接口</p>
+<pre><code>a. client所在进程发送接口调用信息给（service handle），即写入parcel信息到binder设备，挂接到service的handle下；
+b. service 的IPCProcess joinThreadPool中循环获取到发送给自己的消息，处理并以parcel格式返回给binder设备中对应handle的client；
+c. 然后client调用过程完成。
+</code></pre></li>
+</ol>
+<h1 id="Binder-通信机制在Android中的实现"><a href="#Binder-通信机制在Android中的实现" class="headerlink" title="Binder 通信机制在Android中的实现"></a>Binder 通信机制在Android中的实现</h1><p>场景1实现：<br>servicemanager (frameworks\native\cmds\servicemanager\service_manager.c)</p>
+<ol>
+<li>打开/dev/binder设备，将fd映射到128k的内存</li>
+<li>将servermanger设置为binder设备的context manager(可以理解为ServiceManager可以将自己注册为Binder的管理员)</li>
+<li>循环读取发送给handle 0 的消息</li>
+</ol>
+<p>Bn端循环响应server/client过来的请求<br><a href="https://i.loli.net/2018/12/15/5c14f2ebd3c9a.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2ebd3c9a.png" alt="service_manager.png"></a></p>
+<p>C++中的Bp端（跑在使用SM的client或者server 的进程中的）<br><a href="https://i.loli.net/2018/12/15/5c14f2ebd27ed.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2ebd27ed.png" alt="IServiceManager.png"></a></p>
+<p>Java中的Bp端（跑在使用SM的client或者server 的进程中的）<br><a href="https://i.loli.net/2018/12/15/5c14f2ebd08e4.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2ebd08e4.png" alt="IServiceManager_Java.png"></a></p>
+<p>场景2实现：（以MediaPlayerService为例）<br><a href="https://i.loli.net/2018/12/15/5c14f2ec2e84f.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2ec2e84f.png" alt="MediaPlayerService.png"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/27/Android_Binder/" data-id="cjrnarm2l0004kkusd49b1vt4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Binder/">Binder</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IPC/">IPC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RPC/">RPC</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/12/Android_Context/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android Context详解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/19/Linux_select_poll/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux select pselect poll epoll用法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RK/">RK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/sqlite/">sqlite</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API-level/">API level</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APK反编译/">APK反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APK签名/">APK签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP/">APP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Support/">Android Support</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-mk/">Android.mk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArrayList/">ArrayList</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binder/">Binder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Code/">Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Context/">Context</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HashMap/">HashMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPC/">IPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JNI/">JNI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LinkedList/">LinkedList</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MITM/">MITM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Makefile/">Makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NDK/">NDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OTA/">OTA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RK/">RK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReentrantLock/">ReentrantLock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEAndroid/">SEAndroid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELinux/">SELinux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEPolicy/">SEPolicy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source/">Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vector/">Vector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/abstract/">abstract</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/activity/">activity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/am/">am</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/const/">const</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/const-cast/">const_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/constructor/">constructor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/destructor/">destructor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/device-mk/">device.mk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-cast/">dynamic_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/event/">event</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/find/">find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/friend/">friend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fstab/">fstab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hal/">hal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/image/">image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init-rc/">init.rc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inotify/">inotify</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input/">input</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input系统/">input系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instance/">instance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioctl/">ioctl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/layout/">layout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/native调用/">native调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/newInstance/">newInstance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/open/">open</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission/">permission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm/">pm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/poll/">poll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/porting/">porting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protected/">protected</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/provider/">provider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/public/">public</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recovery/">recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reflect/">reflect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reinterpret-cast/">reinterpret_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/select/">select</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">sensor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static-cast/">static_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/synchronized/">synchronized</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/trace/">trace</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/update/">update</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/update-img/">update.img</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vector/">vector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分区/">分区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/加密/">加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/升级/">升级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/弱指针/">弱指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/强指针/">强指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抽象/">抽象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能指针/">智能指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本/">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/签名/">签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型转换/">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/继承/">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译/">编译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API-level/" style="font-size: 10px;">API level</a> <a href="/tags/APK反编译/" style="font-size: 12.5px;">APK反编译</a> <a href="/tags/APK签名/" style="font-size: 12.5px;">APK签名</a> <a href="/tags/APP/" style="font-size: 10px;">APP</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Support/" style="font-size: 10px;">Android Support</a> <a href="/tags/Android-mk/" style="font-size: 10px;">Android.mk</a> <a href="/tags/ArrayList/" style="font-size: 10px;">ArrayList</a> <a href="/tags/Binder/" style="font-size: 10px;">Binder</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Context/" style="font-size: 10px;">Context</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HashMap/" style="font-size: 10px;">HashMap</a> <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/LinkedList/" style="font-size: 10px;">LinkedList</a> <a href="/tags/MITM/" style="font-size: 10px;">MITM</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NDK/" style="font-size: 12.5px;">NDK</a> <a href="/tags/OTA/" style="font-size: 12.5px;">OTA</a> <a href="/tags/RK/" style="font-size: 12.5px;">RK</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/ReentrantLock/" style="font-size: 10px;">ReentrantLock</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/SEAndroid/" style="font-size: 10px;">SEAndroid</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/SEPolicy/" style="font-size: 10px;">SEPolicy</a> <a href="/tags/Source/" style="font-size: 10px;">Source</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Vector/" style="font-size: 10px;">Vector</a> <a href="/tags/abstract/" style="font-size: 10px;">abstract</a> <a href="/tags/activity/" style="font-size: 10px;">activity</a> <a href="/tags/am/" style="font-size: 10px;">am</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/broadcast/" style="font-size: 10px;">broadcast</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/class/" style="font-size: 12.5px;">class</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/const-cast/" style="font-size: 12.5px;">const_cast</a> <a href="/tags/constructor/" style="font-size: 12.5px;">constructor</a> <a href="/tags/db/" style="font-size: 10px;">db</a> <a href="/tags/destructor/" style="font-size: 12.5px;">destructor</a> <a href="/tags/device-mk/" style="font-size: 10px;">device.mk</a> <a href="/tags/dynamic-cast/" style="font-size: 12.5px;">dynamic_cast</a> <a href="/tags/event/" style="font-size: 17.5px;">event</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/fstab/" style="font-size: 10px;">fstab</a> <a href="/tags/hal/" style="font-size: 10px;">hal</a> <a href="/tags/image/" style="font-size: 10px;">image</a> <a href="/tags/init-rc/" style="font-size: 10px;">init.rc</a> <a href="/tags/inotify/" style="font-size: 10px;">inotify</a> <a href="/tags/input/" style="font-size: 20px;">input</a> <a href="/tags/input系统/" style="font-size: 20px;">input系统</a> <a href="/tags/instance/" style="font-size: 10px;">instance</a> <a href="/tags/ioctl/" style="font-size: 10px;">ioctl</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/list/" style="font-size: 12.5px;">list</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/map/" style="font-size: 12.5px;">map</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/native调用/" style="font-size: 10px;">native调用</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/newInstance/" style="font-size: 10px;">newInstance</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/pm/" style="font-size: 10px;">pm</a> <a href="/tags/poll/" style="font-size: 10px;">poll</a> <a href="/tags/porting/" style="font-size: 10px;">porting</a> <a href="/tags/private/" style="font-size: 12.5px;">private</a> <a href="/tags/protected/" style="font-size: 12.5px;">protected</a> <a href="/tags/provider/" style="font-size: 10px;">provider</a> <a href="/tags/public/" style="font-size: 12.5px;">public</a> <a href="/tags/recovery/" style="font-size: 12.5px;">recovery</a> <a href="/tags/reflect/" style="font-size: 15px;">reflect</a> <a href="/tags/reinterpret-cast/" style="font-size: 12.5px;">reinterpret_cast</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/select/" style="font-size: 10px;">select</a> <a href="/tags/sensor/" style="font-size: 10px;">sensor</a> <a href="/tags/service/" style="font-size: 10px;">service</a> <a href="/tags/set/" style="font-size: 12.5px;">set</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/static/" style="font-size: 12.5px;">static</a> <a href="/tags/static-cast/" style="font-size: 12.5px;">static_cast</a> <a href="/tags/synchronized/" style="font-size: 10px;">synchronized</a> <a href="/tags/trace/" style="font-size: 12.5px;">trace</a> <a href="/tags/update/" style="font-size: 10px;">update</a> <a href="/tags/update-img/" style="font-size: 10px;">update.img</a> <a href="/tags/vector/" style="font-size: 12.5px;">vector</a> <a href="/tags/内部类/" style="font-size: 10px;">内部类</a> <a href="/tags/分区/" style="font-size: 12.5px;">分区</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/升级/" style="font-size: 10px;">升级</a> <a href="/tags/弱指针/" style="font-size: 10px;">弱指针</a> <a href="/tags/强指针/" style="font-size: 10px;">强指针</a> <a href="/tags/抽象/" style="font-size: 10px;">抽象</a> <a href="/tags/智能指针/" style="font-size: 10px;">智能指针</a> <a href="/tags/版本/" style="font-size: 10px;">版本</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/类型转换/" style="font-size: 12.5px;">类型转换</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编译/" style="font-size: 12.5px;">编译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/12/Android_Context/">Android Context详解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/27/Android_Binder/">Android Binder</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/19/Linux_select_poll/">Linux select pselect poll epoll用法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/19/Linux_inotify/">Linux inotify机制</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/13/Other_undefined/">杂项</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

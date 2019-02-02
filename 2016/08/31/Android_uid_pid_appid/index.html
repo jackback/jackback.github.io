@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Android Pid/Tid/UserId/PackageName/ProcessName/shareUserId/签名 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这篇博文只能算是笔记了，比较杂。 Pid         : Linux 进程IDTid         : Linux 线程ID，或者任务IDUID         : Android中的UID不同于Linux中的UID，Linux中UID是针对多用户操作系统中用于区分用户的；而Android中的UID是分配给各个进程使用，用来做权限管理的。userID      : Android自从Andr">
+<meta name="keywords" content="APK反编译,APK签名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Pid&#x2F;Tid&#x2F;UserId&#x2F;PackageName&#x2F;ProcessName&#x2F;shareUserId&#x2F;签名">
+<meta property="og:url" content="http://yoursite.com/2016/08/31/Android_uid_pid_appid/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这篇博文只能算是笔记了，比较杂。 Pid         : Linux 进程IDTid         : Linux 线程ID，或者任务IDUID         : Android中的UID不同于Linux中的UID，Linux中UID是针对多用户操作系统中用于区分用户的；而Android中的UID是分配给各个进程使用，用来做权限管理的。userID      : Android自从Andr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-20T02:02:54.130Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Pid&#x2F;Tid&#x2F;UserId&#x2F;PackageName&#x2F;ProcessName&#x2F;shareUserId&#x2F;签名">
+<meta name="twitter:description" content="这篇博文只能算是笔记了，比较杂。 Pid         : Linux 进程IDTid         : Linux 线程ID，或者任务IDUID         : Android中的UID不同于Linux中的UID，Linux中UID是针对多用户操作系统中用于区分用户的；而Android中的UID是分配给各个进程使用，用来做权限管理的。userID      : Android自从Andr">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android_uid_pid_appid" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/31/Android_uid_pid_appid/" class="article-date">
+  <time datetime="2016-08-31T06:43:33.000Z" itemprop="datePublished">2016-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android Pid/Tid/UserId/PackageName/ProcessName/shareUserId/签名
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇博文只能算是笔记了，比较杂。</p>
+<p>Pid         : Linux 进程ID<br>Tid         : Linux 线程ID，或者任务ID<br>UID         : Android中的UID不同于Linux中的UID，Linux中UID是针对多用户操作系统中用于区分用户的；而Android中的UID是分配给各个进程使用，用来做权限管理的。<br>userID      : Android自从Android 4.2.2 之后就有支持多用户的拓展，只不过现在只有user 只有一个 = 0，故userID = 0。<br>AppID       : 单用户时和UID值是一样的。<br>shareUserId : 拥有同一个UID的多个APK可以配置成运行在同一个进程中. 所以默认就是可以互相访问任意数据. 也可以配置成运行成不同的进程, 同时可以访问其他APK的数据目录下的数据库和文件. 就像访问本程序的数据一样.<br>              e.g. android:sharedUserId=”android.uid.system” “android.uid.phone” “android.uid.bluetooth”<br>                                        “android.uid.shell” “android.uid.calendar” “android.uid.shared” “android.media” “android.uid.systemui” </p>
+<pre><code>e.g. android:sharedUserId=&quot;com.rainwii.share&quot;
+</code></pre><p>签名 : 1. Android 标准签名为platform  media shared testkey/releasekey； 2. 第三方签名<br>       可以在源码的/build/target/product/security里面看到对应的密钥，其中shared.pk8代表私钥，shared.x509.pem公钥，一定是成对出现的。</p>
+<p>LOCAL_CERTIFICATE : 配置应用使用什么签名 platform  media shared 或者第三方签名 presigned， 默认配置的话使用testkey/releasekey .</p>
+<p>注：<br>shareUserID一样的，签名也必须相同</p>
+<a id="more"></a>
+<ol>
+<li><p>所有运行的App进程信息list： mActivityManager.getRunningAppProcesses()可以使用for 循环来解析</p>
+</li>
+<li><p>ps信息———<br>UID            PID   PPID  VSIZE   RSS   WCHAN    PC          package name<br>u0_a324        15713 231   1549320 79328 ffffffff 00000000 S  com.china_liantong.sgtest</p>
+</li>
+</ol>
+<p>Uid Pid Tid 及PackageName：<br>Uid = Binder.getCallingUid()；  //返回当前进程Uid或者远程调用进程的Uid   //eg:10324<br>Uid = context.getApplicationContext().getApplicationInfo().uid;   //eg:10324<br>Uid = android.os.Process.myUid();   //eg:10324<br>Pid = android.os.Process.myPid();   //eg:15713<br>Tid = android.os.Process.myTid();  线程ID，一般情况都是单线程应该  == Pid  ？？？  //15713</p>
+<p>PackageName = context.getPackageName();   //com.china_liantong.sgtest<br>PackageName = AppGlobals.getPackageManager().getNameForUid(Uid);    //com.china_liantong.sgtest<br>             (使用限制：不在sdk中，不能在外部apk开始中使用)<br>PackageName = context.getPackageManager().getNameForUid(Uid); //com.china_liantong.sgtest</p>
+<ol start="3">
+<li>UserId = 如果支持多用户：Uid/100000         否则：0（一般都是0）       高六位<br>AppId = Uid % 100000   即AppId 是Uid 的低五位      //因为user=0, UID&lt;100000, 所以APPID=Uid<br> （范围Process.FIRST_APPLICATION_UID=10000—-Process.LAST_APPLICATION_UID=19999）</li>
+</ol>
+<p>Uid：  //10324<br>    如果支持多用户的话（一般userId 都是0，所以Uid = AppId）<br>        UserId * 100000 + (AppId % 100000);<br>    否则<br>        appId</p>
+<p>Gid：  //固定值9997<br>    如果系统支持多用户的话：<br>        userId*100000 + 9997<br>    否则<br>        9997</p>
+<p>uid &lt;  10000 系统进程 root system install keystore logd shell dhcp radio                //个人见解<br>uid &gt;= 10000 有多用户的概念设计保留，但是目前userid都是=0   uid = userid<em>100000 + appid    //个人见解<br>                10000~99999   给user 0 分配的UID = 100000 </em> 0 + AppID = AppID，所以单用户时uid=AppID<br>                100000~999999 给user 1 分配的UID<br>                …</p>
+<p>UID值设定（系统核心进程的UID是固定的<1000-9999>，其他应用的UID是在安装时随机生成的userID * 100000 + AppID      &lt;appID=10000-99999&gt;）</1000-9999></p>
+<p>appID=10000-99999 细分：<br>    application appid:          [10000, 19999]<br>    shared application appid:   [50000, 59999]<br>    isolated appid:             [99000, 99999]</p>
+<blockquote>
+<p>ROOT_UID           = 0;<br>//Java层系统 ——“zygote”<br>SYSTEM_UID          = 1000;     //shareId<br>//Java层系统应用，指定UID<br>PHONE_UID           = 1001;<br>BLUETOOTH_UID       = 1002;     //Bluetooth service process.<br>SHELL_UID           = 2000;<br>LOG_UID             = 1007;<br>WIFI_UID            = 1010;     //WIFI supplicant process<br>MEDIA_UID           = 1013;     //mediaserver process.<br>DRM_UID             = 1019;     //DRM process.<br>SDCARD_RW_GID       = 1015;<br>VPN_UID             = 1016;     //the group that controls VPN services.<br>NFC_UID             = 1027;     //NFC service process.<br>MEDIA_RW_GID        = 1023;     //internal media storage.<br>PACKAGE_INFO_GID    = 1032;     //installed package details<br>SHELL_UID           = 2000;     //user shell.</p>
+</blockquote>
+<p>//应用程序UID范围<br>FIRST_APPLICATION_UID   = 10000;<br>LAST_APPLICATION_UID    = 19999;<br>//fully isolated sandboxed processes UID范围<br>FIRST_ISOLATED_UID      = 99000;<br>LAST_ISOLATED_UID       = 99999;  </p>
+<ol start="4">
+<li>packages.list  <blockquote>
+<p>pkgName                                    userId   debugFlag dataPath<br>固定UID的应用<br>android                                     1000     0 /data/system platform 3002,3001,1028,1015,3003                               //UID= system = 1000<br>com.android.settings                        1000     0 /data/data/com.android.settings platform 3002,3001,1028,1015,3003            //android:sharedUserId=”android.uid.system”     platform签名<br>com.android.providers.settings              1000     0 /data/data/com.android.providers.settings platform 3002,3001,1028,1015,3003  //android:sharedUserId=”android.uid.system”  platform签名<br>com.android.inputdevices                    1000     0 /data/data/com.android.inputdevices platform 3002,3001,1028,1015,3003        //android:sharedUserId=”android.uid.system”  platform签名<br>com.android.server.telecom                  1000     0 /data/data/com.android.server.telecom platform 3002,3001,1028,1015,3003      //android:sharedUserId=”android.uid.system”   platform签名<br>com.android.keychain                        1000     0 /data/data/com.android.keychain platform 3002,3001,1028,1015,3003            //android:sharedUserId=”android.uid.system”    platform签名<br>com.android.location.fused                  1000     0 /data/data/com.android.location.fused platform 3002,3001,1028,1015,3003      //android:sharedUserId=”android.uid.system”    platform签名<br>com.fiship.cibn                             1000     0 /data/data/com.fiship.cibn platform 3002,3001,1028,1015,3003                 //android:sharedUserId=”android.uid.system”     platform签名</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>com.android.phone                          1001     0 /data/data/com.android.phone platform 1028,1015,3002,3001,3003               //android:sharedUserId=”android.uid.phone”   platform签名<br>com.android.providers.telephony             1001     0 /data/data/com.android.providers.telephony platform 1028,1015,3002,3001,3003 //android:sharedUserId=”android.uid.phone” platform签名</p>
+</blockquote>
+<blockquote>
+<p>com.android.bluetooth                      1002     0 /data/data/com.android.bluetooth platform 3003,3002,3001,1028,1015,3005,1016,3008 //android:sharedUserId=”android.uid.bluetooth”  platform签名</p>
+</blockquote>
+<blockquote>
+<p>com.android.shell                          2000     0 /data/data/com.android.shell platform 3002,1028,1015,1023,3008               //android:sharedUserId=”android.uid.shell” platform签名    </p>
+</blockquote>
+<p>//未指定UID应用</p>
+<blockquote>
+<p>com.android.providers.calendar             10000    0 /data/data/com.android.providers.calendar default 3003,1028,1015             //android:sharedUserId=”android.uid.calendar”   无指定签名</p>
+</blockquote>
+<blockquote>
+<p>com.android.contacts                       10001    0 /data/data/com.android.contacts default 3003,1028,1015                       //android:sharedUserId=”android.uid.shared”     share签名<br>com.android.providers.contacts              10001    0 /data/data/com.android.providers.contacts default 3003,1028,1015             //android:sharedUserId=”android.uid.shared”     share签名<br>com.android.providers.userdictionary        10001    0 /data/data/com.android.providers.userdictionary default 3003,1028,1015       //android:sharedUserId=”android.uid.shared”     share签名</p>
+</blockquote>
+<blockquote>
+<p>com.android.defcontainer                   10002    0 /data/data/com.android.defcontainer platform 1028,1015,1023,2001,1035</p>
+</blockquote>
+<blockquote>
+<p>com.android.providers.media                10003    0 /data/data/com.android.providers.media default 1028,1015,1023,1024,2001,3003,3007         //android:sharedUserId=”android.media” media签名<br>com.android.providers.downloads             10003    0 /data/data/com.android.providers.downloads default 1028,1015,1023,1024,2001,3003,3007     //android:sharedUserId=”android.media” media签名<br>com.android.providers.downloads.ui          10003    0 /data/data/com.android.providers.downloads.ui default 1028,1015,1023,1024,2001,3003,3007  //android:sharedUserId=”android.media” media签名</p>
+</blockquote>
+<blockquote>
+<p>com.android.externalstorage                10004    0 /data/data/com.android.externalstorage platform 1028,1015,1023<br>com.android.proxyhandler                    10005    0 /data/data/com.android.proxyhandler platform 3003<br>com.android.sharedstoragebackup             10006    0 /data/data/com.android.sharedstoragebackup platform 1028,1015,1023<br>com.android.systemui                        10007    0 /data/data/com.android.systemui platform 1028,1015,1035,3002,3001,3006       //android:sharedUserId=”android.uid.systemui”  未绑定UID  platform签名<br>com.android.vpndialogs                      10008    0 /data/data/com.android.vpndialogs platform none<br>com.android.browser                         10009    0 /data/data/com.android.browser default 3003,1028,1015<br>com.android.calendar                        10010    0 /data/data/com.android.calendar default 3003<br>com.android.captiveportallogin              10011    0 /data/data/com.android.captiveportallogin platform 3003<br>com.android.certinstaller                   10012    0 /data/data/com.android.certinstaller platform none                           //platform签名<br>com.android.deskclock                       10013    0 /data/data/com.android.deskclock default 1028<br>com.android.documentsui                     10014    0 /data/data/com.android.documentsui platform none                             //platform签名<br>com.android.inputmethod.latin               10015    0 /data/data/com.android.inputmethod.latin default 1028,1015<br>com.android.launcher                        10016    0 /data/data/com.android.launcher default none                                 //share签名，与contact 有交互<br>com.coocaa.multiscreenservice               10017    0 /data/data/com.coocaa.multiscreenservice platform 3003,1028,1015<br>com.android.music                           10018    0 /data/data/com.android.music default 3003,1028,1015<br>com.android.pacprocessor                    10019    0 /data/data/com.android.pacprocessor platform 3003<br>com.android.packageinstaller                10020    0 /data/data/com.android.packageinstaller platform 1028<br>com.svox.pico                               10021    0 /data/data/com.svox.pico default 1028,1015<br>com.android.printspooler                    10022    0 /data/data/com.android.printspooler default none<br>com.android.provision                       10023    0 /data/data/com.android.provision platform none<br>com.android.quicksearchbox                  10024    0 /data/data/com.android.quicksearchbox default 3003<br>com.android.webview                         10025    0 /data/data/com.android.webview default none</p>
+</blockquote>
+<p>附（缩写）：</p>
+<p>PKCS：Public-Key Cryptography Standards (PKCS) ，公钥加密标准<br>PKCS#8：定义了保存private key信息的标准语法，用来保存private keys。PKCS#8 有两个版本，加密的和非加密的。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/31/Android_uid_pid_appid/" data-id="cjrnarm7o00ankkus4caexul8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APK反编译/">APK反编译</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APK签名/">APK签名</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/19/Android_vector_list/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android中Vector、ArrayList、LinkedList和HashMap
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/08/Android_Others/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android 杂项</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RK/">RK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/sqlite/">sqlite</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API-level/">API level</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APK反编译/">APK反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APK签名/">APK签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP/">APP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Support/">Android Support</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-mk/">Android.mk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArrayList/">ArrayList</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binder/">Binder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Code/">Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Context/">Context</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HashMap/">HashMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPC/">IPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JNI/">JNI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LinkedList/">LinkedList</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MITM/">MITM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Makefile/">Makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NDK/">NDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OTA/">OTA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RK/">RK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReentrantLock/">ReentrantLock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEAndroid/">SEAndroid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELinux/">SELinux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEPolicy/">SEPolicy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source/">Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vector/">Vector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/abstract/">abstract</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/activity/">activity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/am/">am</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/const/">const</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/const-cast/">const_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/constructor/">constructor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/destructor/">destructor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/device-mk/">device.mk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-cast/">dynamic_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/event/">event</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/find/">find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/friend/">friend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fstab/">fstab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hal/">hal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/image/">image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init-rc/">init.rc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inotify/">inotify</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input/">input</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input系统/">input系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instance/">instance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioctl/">ioctl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/layout/">layout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/native调用/">native调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/newInstance/">newInstance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/open/">open</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission/">permission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm/">pm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/poll/">poll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/porting/">porting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protected/">protected</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/provider/">provider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/public/">public</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recovery/">recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reflect/">reflect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reinterpret-cast/">reinterpret_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/select/">select</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">sensor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static-cast/">static_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/synchronized/">synchronized</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/trace/">trace</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/update/">update</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/update-img/">update.img</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vector/">vector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分区/">分区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/加密/">加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/升级/">升级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/弱指针/">弱指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/强指针/">强指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抽象/">抽象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能指针/">智能指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本/">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/签名/">签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型转换/">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/继承/">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译/">编译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API-level/" style="font-size: 10px;">API level</a> <a href="/tags/APK反编译/" style="font-size: 12.5px;">APK反编译</a> <a href="/tags/APK签名/" style="font-size: 12.5px;">APK签名</a> <a href="/tags/APP/" style="font-size: 10px;">APP</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Support/" style="font-size: 10px;">Android Support</a> <a href="/tags/Android-mk/" style="font-size: 10px;">Android.mk</a> <a href="/tags/ArrayList/" style="font-size: 10px;">ArrayList</a> <a href="/tags/Binder/" style="font-size: 10px;">Binder</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Context/" style="font-size: 10px;">Context</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HashMap/" style="font-size: 10px;">HashMap</a> <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/LinkedList/" style="font-size: 10px;">LinkedList</a> <a href="/tags/MITM/" style="font-size: 10px;">MITM</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NDK/" style="font-size: 12.5px;">NDK</a> <a href="/tags/OTA/" style="font-size: 12.5px;">OTA</a> <a href="/tags/RK/" style="font-size: 12.5px;">RK</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/ReentrantLock/" style="font-size: 10px;">ReentrantLock</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/SEAndroid/" style="font-size: 10px;">SEAndroid</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/SEPolicy/" style="font-size: 10px;">SEPolicy</a> <a href="/tags/Source/" style="font-size: 10px;">Source</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Vector/" style="font-size: 10px;">Vector</a> <a href="/tags/abstract/" style="font-size: 10px;">abstract</a> <a href="/tags/activity/" style="font-size: 10px;">activity</a> <a href="/tags/am/" style="font-size: 10px;">am</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/broadcast/" style="font-size: 10px;">broadcast</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/class/" style="font-size: 12.5px;">class</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/const-cast/" style="font-size: 12.5px;">const_cast</a> <a href="/tags/constructor/" style="font-size: 12.5px;">constructor</a> <a href="/tags/db/" style="font-size: 10px;">db</a> <a href="/tags/destructor/" style="font-size: 12.5px;">destructor</a> <a href="/tags/device-mk/" style="font-size: 10px;">device.mk</a> <a href="/tags/dynamic-cast/" style="font-size: 12.5px;">dynamic_cast</a> <a href="/tags/event/" style="font-size: 17.5px;">event</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/fstab/" style="font-size: 10px;">fstab</a> <a href="/tags/hal/" style="font-size: 10px;">hal</a> <a href="/tags/image/" style="font-size: 10px;">image</a> <a href="/tags/init-rc/" style="font-size: 10px;">init.rc</a> <a href="/tags/inotify/" style="font-size: 10px;">inotify</a> <a href="/tags/input/" style="font-size: 20px;">input</a> <a href="/tags/input系统/" style="font-size: 20px;">input系统</a> <a href="/tags/instance/" style="font-size: 10px;">instance</a> <a href="/tags/ioctl/" style="font-size: 10px;">ioctl</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/list/" style="font-size: 12.5px;">list</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/map/" style="font-size: 12.5px;">map</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/native调用/" style="font-size: 10px;">native调用</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/newInstance/" style="font-size: 10px;">newInstance</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/pm/" style="font-size: 10px;">pm</a> <a href="/tags/poll/" style="font-size: 10px;">poll</a> <a href="/tags/porting/" style="font-size: 10px;">porting</a> <a href="/tags/private/" style="font-size: 12.5px;">private</a> <a href="/tags/protected/" style="font-size: 12.5px;">protected</a> <a href="/tags/provider/" style="font-size: 10px;">provider</a> <a href="/tags/public/" style="font-size: 12.5px;">public</a> <a href="/tags/recovery/" style="font-size: 12.5px;">recovery</a> <a href="/tags/reflect/" style="font-size: 15px;">reflect</a> <a href="/tags/reinterpret-cast/" style="font-size: 12.5px;">reinterpret_cast</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/select/" style="font-size: 10px;">select</a> <a href="/tags/sensor/" style="font-size: 10px;">sensor</a> <a href="/tags/service/" style="font-size: 10px;">service</a> <a href="/tags/set/" style="font-size: 12.5px;">set</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/static/" style="font-size: 12.5px;">static</a> <a href="/tags/static-cast/" style="font-size: 12.5px;">static_cast</a> <a href="/tags/synchronized/" style="font-size: 10px;">synchronized</a> <a href="/tags/trace/" style="font-size: 12.5px;">trace</a> <a href="/tags/update/" style="font-size: 10px;">update</a> <a href="/tags/update-img/" style="font-size: 10px;">update.img</a> <a href="/tags/vector/" style="font-size: 12.5px;">vector</a> <a href="/tags/内部类/" style="font-size: 10px;">内部类</a> <a href="/tags/分区/" style="font-size: 12.5px;">分区</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/升级/" style="font-size: 10px;">升级</a> <a href="/tags/弱指针/" style="font-size: 10px;">弱指针</a> <a href="/tags/强指针/" style="font-size: 10px;">强指针</a> <a href="/tags/抽象/" style="font-size: 10px;">抽象</a> <a href="/tags/智能指针/" style="font-size: 10px;">智能指针</a> <a href="/tags/版本/" style="font-size: 10px;">版本</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/类型转换/" style="font-size: 12.5px;">类型转换</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编译/" style="font-size: 12.5px;">编译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/12/Android_Context/">Android Context详解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/27/Android_Binder/">Android Binder</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/19/Linux_select_poll/">Linux select pselect poll epoll用法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/19/Linux_inotify/">Linux inotify机制</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/13/Other_undefined/">杂项</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

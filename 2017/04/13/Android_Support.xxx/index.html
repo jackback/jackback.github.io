@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Android支持库(转) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="随着 Android 5.0 Lollipop 的发布，Android 又为我们提供了更多的支持包，但是我相信大部分开发者都同我之前一样不知道这些包里究竟有些什么东西，我们应该在什么时候使用它。现在，我们就来逐个看看每一个版本的 Support 包中所拥有的东西，让用到他的时候不再迷茫。 首先，你需要了解每一个 Support 包版本后缀 vX 所代表的含义。当然我相信来看博客的诸位都一定知道 A">
+<meta name="keywords" content="Android Support">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android支持库(转)">
+<meta property="og:url" content="http://yoursite.com/2017/04/13/Android_Support.xxx/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="随着 Android 5.0 Lollipop 的发布，Android 又为我们提供了更多的支持包，但是我相信大部分开发者都同我之前一样不知道这些包里究竟有些什么东西，我们应该在什么时候使用它。现在，我们就来逐个看看每一个版本的 Support 包中所拥有的东西，让用到他的时候不再迷茫。 首先，你需要了解每一个 Support 包版本后缀 vX 所代表的含义。当然我相信来看博客的诸位都一定知道 A">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-04-27T03:17:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android支持库(转)">
+<meta name="twitter:description" content="随着 Android 5.0 Lollipop 的发布，Android 又为我们提供了更多的支持包，但是我相信大部分开发者都同我之前一样不知道这些包里究竟有些什么东西，我们应该在什么时候使用它。现在，我们就来逐个看看每一个版本的 Support 包中所拥有的东西，让用到他的时候不再迷茫。 首先，你需要了解每一个 Support 包版本后缀 vX 所代表的含义。当然我相信来看博客的诸位都一定知道 A">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android_Support.xxx" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/13/Android_Support.xxx/" class="article-date">
+  <time datetime="2017-04-12T23:42:30.000Z" itemprop="datePublished">2017-04-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android支持库(转)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>随着 Android 5.0 Lollipop 的发布，Android 又为我们提供了更多的支持包，但是我相信大部分开发者都同我之前一样不知道这些包里究竟有些什么东西，我们应该在什么时候使用它。现在，我们就来逐个看看每一个版本的 Support 包中所拥有的东西，让用到他的时候不再迷茫。</p>
+<p>首先，你需要了解每一个 Support 包版本后缀 vX 所代表的含义。当然我相信来看博客的诸位都一定知道 Android 对于每一个版本都有一个版本号，例如2.1是7，4.0是14，5.0是21。而这里，v 之后的数字，就代表着他能够被使用的最低版本等级，之所以无法在更低版本进行使用的原因，是因为随着版本的升级，在新版本中有很多之前不支持的特性或者 API，因此如果你在老版本中使用了这些支持包，就可能会导致应用崩溃。</p>
+<a id="more"></a>
+<p>现在，我们从头开始逐个浏览目前所支持的 support 包:</p>
+<h5 id="1-support-v4"><a href="#1-support-v4" class="headerlink" title="1. support-v4"></a>1. support-v4</h5><pre><code>support-v4包算是 Android 最低等级的支持包。所谓的 v4,代表着它最低支持 Android1.6(API Level4)，这个版本算得上是一个真正意义上比较成熟的 Android版本，更何况现在我们写应用的时候一般都只最低支持到 Android 2.x 系统，对于1.x 的系统基本已经已经完全抛弃了，因此你可已经他作为最基本的系统组件使用。
+
+在 support-v4包中，它所拥有的类还是很多的，主要包含了对应用组件的支持，用户交互体验的一些工具类，一些数据网络方面的工具类，相面我们将详细来看看它里面具体的一些类。
+
+1. 系统组件部分
+Fragment:其实 Fragment 是直到 Android3.0才正式进入 Android 框架体系的，但是 Android 为了低版本的兼容，因此他帮我们在低版本也适配了 Fragment 框架
+NotificationCompat:这是通知栏的一些适配，可以帮助你在低版本的通知栏显示更加丰富的信息
+LocalBroadcastManager:这个是用于本地广播通知的，当你希望发送的通知只被本应用接收时，你就应该使用它
+
+2. 用户界面交互部分
+ViewPager，这个相信我不用怎么说了，他主要用于帮助我们进行界面间的滑动交互
+PagerTitleStrip,PagerTabStrip 这两个算是 ViewPager 的帮助类吧，他们的作用是进行 Tab 栏的切换辅助显示
+DrawerLayout，主要用于侧滑栏的实现
+SlidingPaneLayout,这个类也是用于侧滑栏的实现，和 DrawerLayout 不同的是，DrawerLayout 侧滑栏出来的时候，默认是覆盖在当前页面上，而 SlidingPaneLayout 则是会将当前页面移走。
+
+3. Accessbility访问的帮助类
+ExploreByTouchHelper，帮助自定义 View 实现 Accessibility 的工具类
+AccessbilityEventCompat, AccessbilityNodeInfoCompat, AccessbilityNodeProviderCompat, AccessbilityDelegateCompat，这几个都是用作 Accessibility 功能适配的类
+
+4. 数据访问帮助类
+Loader，主要用于异步加载数据
+FileProvider，提供应用间的文件分享功能
+</code></pre><h5 id="2-support-v7"><a href="#2-support-v7" class="headerlink" title="2. support-v7"></a>2. support-v7</h5><pre><code>1.Appcompat
+这个包的主要作用是为了在低版本实现 Android 的 Holo 风格界面而引入的，与之类似的有一个开源项目叫做 SherlockActionbar
+
+2.CardView
+卡片布局是最近在 android5.0发布的时候才引入的新包，在我看来，他主要效果是让应用进行卡片花显示
+
+3.GridLayout
+网格布局能够帮助你将整个布局按照一格两格的格子形式进行排列
+
+4.MediaRouter
+这个布局主要是用来支持 GoogleCast 的，主要用于进行设备间的音频，视频交换显示
+
+5.Palette
+这个包也是最新出来的，他的作用是帮助 Android 实现他的 MaterialDesign，让你的 Actionbar 能够根据界面进行对应的颜色改变
+
+7.RecyclerView
+这个包同样也是刚出来的，他的作用是替换 ListView 和 GridView，但是可惜是没有实现 OnItemClick 这些接口，你需要自己处理它
+</code></pre><h5 id="3-support-v8"><a href="#3-support-v8" class="headerlink" title="3. support-v8"></a>3. support-v8</h5><pre><code>support-v8中其实只有一格特性，就是用来渲染脚本
+</code></pre><h5 id="4-support-v13"><a href="#4-support-v13" class="headerlink" title="4. support-v13"></a>4. support-v13</h5><pre><code>这个包的作用主要是为 Android3.2级以上的系统提供更多地 Framgnet 特性支持，使用它的原因在于，android-support-v4包中虽然也对 Fragment 做了支持，由于要兼容低版本，导致他是自行实现的 Fragment 效果，在高版本的 Fragment 的一些特性丢失了，而对于 v13以上的 sdk 版本，我们可以使用更加有效，特性更多的代码
+</code></pre><h5 id="5-support-v17"><a href="#5-support-v17" class="headerlink" title="5. support-v17"></a>5. support-v17</h5><pre><code>这个包得主要作用是用于支持电视设备，并为电视设备提供了很多组件
+例如下面的:
+BrowseFragment， DetailFragment， PlaybasckOverlayFragment， SearchFragment
+但是原谅我没有做过 Android TV 开发，我也不知道他们的用处是什么，如果真的想要查看，请去官网看看吧
+</code></pre><p><a href="https://developer.android.com/topic/libraries/support-library/index.html" title="Android支持库" target="_blank" rel="noopener">https://developer.android.com/topic/libraries/support-library/index.html</a></p>
+<p>转自<a href="http://www.2cto.com/kf/201411/350928.html" target="_blank" rel="noopener">http://www.2cto.com/kf/201411/350928.html</a></p>
+<h2 id="附：API与Android版本对应表："><a href="#附：API与Android版本对应表：" class="headerlink" title="附：API与Android版本对应表："></a>附：API与Android版本对应表：</h2><pre><code>Code name            Version             API level
+Nougat                7.1                 API level 25
+Nougat                7.0                 API level 24
+Marshmallow            6.0                 API level 23
+Lollipop            5.1                 API level 22
+Lollipop            5.0                 API level 21, NDK 10
+KitKat                4.4 - 4.4.4         API level 19
+Jelly Bean            4.3.x             API level 18
+Jelly Bean            4.2.x             API level 17
+Jelly Bean            4.1.x             API level 16
+Ice Cream Sandwich    4.0.3 - 4.0.4     API level 15, NDK 8
+Ice Cream Sandwich    4.0.1 - 4.0.2     API level 14, NDK 7
+Honeycomb            3.2.x             API level 13
+Honeycomb            3.1                 API level 12, NDK 6
+Honeycomb            3.0                 API level 11
+Gingerbread            2.3.3 - 2.3.7     API level 10
+Gingerbread            2.3 - 2.3.2         API level 9, NDK 5
+Froyo                2.2.x             API level 8, NDK 4
+Eclair                2.1                 API level 7, NDK 3
+Eclair                2.0.1             API level 6
+Eclair                2.0                 API level 5
+Donut                1.6                 API level 4, NDK 2
+Cupcake                1.5                 API level 3, NDK 1
+(no code name)        1.1                 API level 2
+(no code name)        1.0              API level 1
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/13/Android_Support.xxx/" data-id="cjrnarm3k000zkkuskjabizq3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Support/">Android Support</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/13/Android_porting_opensourcesoft/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移植开源程序到Android中
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/12/Android_Build_CompleteCompileProcess/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android编译系统——完整编译过程分析</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RK/">RK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/sqlite/">sqlite</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API-level/">API level</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APK反编译/">APK反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APK签名/">APK签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP/">APP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Support/">Android Support</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-mk/">Android.mk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArrayList/">ArrayList</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binder/">Binder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Code/">Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Context/">Context</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HashMap/">HashMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPC/">IPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JNI/">JNI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LinkedList/">LinkedList</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MITM/">MITM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Makefile/">Makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NDK/">NDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OTA/">OTA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RK/">RK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReentrantLock/">ReentrantLock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEAndroid/">SEAndroid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELinux/">SELinux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEPolicy/">SEPolicy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source/">Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vector/">Vector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/abstract/">abstract</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/activity/">activity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/am/">am</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/const/">const</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/const-cast/">const_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/constructor/">constructor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/destructor/">destructor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/device-mk/">device.mk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-cast/">dynamic_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/event/">event</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/find/">find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/friend/">friend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fstab/">fstab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hal/">hal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/image/">image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init-rc/">init.rc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inotify/">inotify</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input/">input</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input系统/">input系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instance/">instance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioctl/">ioctl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/layout/">layout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/native调用/">native调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/newInstance/">newInstance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/open/">open</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission/">permission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm/">pm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/poll/">poll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/porting/">porting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protected/">protected</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/provider/">provider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/public/">public</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recovery/">recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reflect/">reflect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reinterpret-cast/">reinterpret_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/select/">select</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">sensor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static-cast/">static_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/synchronized/">synchronized</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/trace/">trace</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/update/">update</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/update-img/">update.img</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vector/">vector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分区/">分区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/加密/">加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/升级/">升级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/弱指针/">弱指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/强指针/">强指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抽象/">抽象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能指针/">智能指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本/">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/签名/">签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型转换/">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/继承/">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译/">编译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API-level/" style="font-size: 10px;">API level</a> <a href="/tags/APK反编译/" style="font-size: 12.5px;">APK反编译</a> <a href="/tags/APK签名/" style="font-size: 12.5px;">APK签名</a> <a href="/tags/APP/" style="font-size: 10px;">APP</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Support/" style="font-size: 10px;">Android Support</a> <a href="/tags/Android-mk/" style="font-size: 10px;">Android.mk</a> <a href="/tags/ArrayList/" style="font-size: 10px;">ArrayList</a> <a href="/tags/Binder/" style="font-size: 10px;">Binder</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Context/" style="font-size: 10px;">Context</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HashMap/" style="font-size: 10px;">HashMap</a> <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/LinkedList/" style="font-size: 10px;">LinkedList</a> <a href="/tags/MITM/" style="font-size: 10px;">MITM</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NDK/" style="font-size: 12.5px;">NDK</a> <a href="/tags/OTA/" style="font-size: 12.5px;">OTA</a> <a href="/tags/RK/" style="font-size: 12.5px;">RK</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/ReentrantLock/" style="font-size: 10px;">ReentrantLock</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/SEAndroid/" style="font-size: 10px;">SEAndroid</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/SEPolicy/" style="font-size: 10px;">SEPolicy</a> <a href="/tags/Source/" style="font-size: 10px;">Source</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Vector/" style="font-size: 10px;">Vector</a> <a href="/tags/abstract/" style="font-size: 10px;">abstract</a> <a href="/tags/activity/" style="font-size: 10px;">activity</a> <a href="/tags/am/" style="font-size: 10px;">am</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/broadcast/" style="font-size: 10px;">broadcast</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/class/" style="font-size: 12.5px;">class</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/const-cast/" style="font-size: 12.5px;">const_cast</a> <a href="/tags/constructor/" style="font-size: 12.5px;">constructor</a> <a href="/tags/db/" style="font-size: 10px;">db</a> <a href="/tags/destructor/" style="font-size: 12.5px;">destructor</a> <a href="/tags/device-mk/" style="font-size: 10px;">device.mk</a> <a href="/tags/dynamic-cast/" style="font-size: 12.5px;">dynamic_cast</a> <a href="/tags/event/" style="font-size: 17.5px;">event</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/fstab/" style="font-size: 10px;">fstab</a> <a href="/tags/hal/" style="font-size: 10px;">hal</a> <a href="/tags/image/" style="font-size: 10px;">image</a> <a href="/tags/init-rc/" style="font-size: 10px;">init.rc</a> <a href="/tags/inotify/" style="font-size: 10px;">inotify</a> <a href="/tags/input/" style="font-size: 20px;">input</a> <a href="/tags/input系统/" style="font-size: 20px;">input系统</a> <a href="/tags/instance/" style="font-size: 10px;">instance</a> <a href="/tags/ioctl/" style="font-size: 10px;">ioctl</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/list/" style="font-size: 12.5px;">list</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/map/" style="font-size: 12.5px;">map</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/native调用/" style="font-size: 10px;">native调用</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/newInstance/" style="font-size: 10px;">newInstance</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/pm/" style="font-size: 10px;">pm</a> <a href="/tags/poll/" style="font-size: 10px;">poll</a> <a href="/tags/porting/" style="font-size: 10px;">porting</a> <a href="/tags/private/" style="font-size: 12.5px;">private</a> <a href="/tags/protected/" style="font-size: 12.5px;">protected</a> <a href="/tags/provider/" style="font-size: 10px;">provider</a> <a href="/tags/public/" style="font-size: 12.5px;">public</a> <a href="/tags/recovery/" style="font-size: 12.5px;">recovery</a> <a href="/tags/reflect/" style="font-size: 15px;">reflect</a> <a href="/tags/reinterpret-cast/" style="font-size: 12.5px;">reinterpret_cast</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/select/" style="font-size: 10px;">select</a> <a href="/tags/sensor/" style="font-size: 10px;">sensor</a> <a href="/tags/service/" style="font-size: 10px;">service</a> <a href="/tags/set/" style="font-size: 12.5px;">set</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/static/" style="font-size: 12.5px;">static</a> <a href="/tags/static-cast/" style="font-size: 12.5px;">static_cast</a> <a href="/tags/synchronized/" style="font-size: 10px;">synchronized</a> <a href="/tags/trace/" style="font-size: 12.5px;">trace</a> <a href="/tags/update/" style="font-size: 10px;">update</a> <a href="/tags/update-img/" style="font-size: 10px;">update.img</a> <a href="/tags/vector/" style="font-size: 12.5px;">vector</a> <a href="/tags/内部类/" style="font-size: 10px;">内部类</a> <a href="/tags/分区/" style="font-size: 12.5px;">分区</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/升级/" style="font-size: 10px;">升级</a> <a href="/tags/弱指针/" style="font-size: 10px;">弱指针</a> <a href="/tags/强指针/" style="font-size: 10px;">强指针</a> <a href="/tags/抽象/" style="font-size: 10px;">抽象</a> <a href="/tags/智能指针/" style="font-size: 10px;">智能指针</a> <a href="/tags/版本/" style="font-size: 10px;">版本</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/类型转换/" style="font-size: 12.5px;">类型转换</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编译/" style="font-size: 12.5px;">编译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/12/Android_Context/">Android Context详解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/27/Android_Binder/">Android Binder</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/19/Linux_select_poll/">Linux select pselect poll epoll用法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/19/Linux_inotify/">Linux inotify机制</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/13/Other_undefined/">杂项</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

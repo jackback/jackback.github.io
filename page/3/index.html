@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Android_Build_Img" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/11/Android_Build_Img/" class="article-date">
+  <time datetime="2017-04-11T09:35:57.000Z" itemprop="datePublished">2017-04-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/11/Android_Build_Img/">Android编译系统——ramdisk.img system.img userdata.img recovery.img目标编译过程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="image-介绍"><a href="#image-介绍" class="headerlink" title="image 介绍"></a>image 介绍</h2><pre><code>boot.img      Android 的初始文件映像，负责初始化并加载 system 分区，一般Android系统这个镜像中包含ramdisk.img根文件系统+kernel（RK平台的boot.img是没包含kernel部分的）
+recovery.img  恢复模式系统启动镜像。内容和boot.img雷同（RK平台recovery.img包含kernel部分），但是其中的ramdisk.img（ramdisk-recovery.img）有些许不同：
+              recovery.fstab文件、sbin下部分工具、build.prop、init.bootmode.emmc.rc、sepolicy等
+
+ramdisk.img   是根文件系统，是root目录打包成的镜像（ramdisk-recovery.img）
+system.img    包括了主要的包、库等文件
+userdata.img  包括了一些用户数据
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/11/Android_Build_Img/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/11/Android_Build_Img/" data-id="cjrnarm7l00akkkusb070uihz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/image/">image</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编译/">编译</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android_4_Component" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/11/Android_4_Component/" class="article-date">
+  <time datetime="2017-04-11T04:15:33.000Z" itemprop="datePublished">2017-04-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/11/Android_4_Component/">Android四大组件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android四大组件分别为activity、service、content provider、broadcast receiver。</p>
+<h1 id="一、Android四大组件详解"><a href="#一、Android四大组件详解" class="headerlink" title="一、Android四大组件详解"></a>一、Android四大组件详解</h1><h3 id="1、activity"><a href="#1、activity" class="headerlink" title="1、activity"></a>1、activity</h3><p>(1) 一个Activity通常就是一个单独的屏幕(窗口)。</p>
+<p>(2) Activity之间通过Intent进行通信。</p>
+<p>(3) Android应用中每一个Activity都必须要在AndroidManifest.xml配置文件中声明，否则系统将不识别也不执行该Activity。</p>
+<h3 id="2、service"><a href="#2、service" class="headerlink" title="2、service"></a>2、service</h3><p>(1) service用于在后台完成用户指定的操作。service分为两种：</p>
+<p>  (a) started(启动) ：当应用程序组件(如activity) 调用startService()方法启动服务时，服务处于started状态。</p>
+<p>  (b) bound(绑定) ：当应用程序组件调用bindService()方法绑定到服务时，服务处于bound状态。</p>
+<p>(2) startService()与 bindService()区别：</p>
+<p>  (a)started service(启动服务) 是由其他组件调用startService()方法启动的，这导致服务的onStartCommand()方法被调用。当服务是started状态时，其生命周期与启动它的组件无关，并且可以在后台无限期运行，即使启动服务的组件已经被销毁。因此，服务需要在完成任务后调用stopSelf()方法停止，或者由其他组件调用stopService()方法停止。</p>
+<p>  (b) 使用bindService()方法启用服务，调用者与服务绑定在了一起，调用者一旦退出，服务也就终止，大有“不求同时生，必须同时死”的特点。</p>
+<p>(3) 开发人员需要在应用程序配置文件中声明全部的service，使用<service></service>标签。</p>
+<p>(4) Service通常位于后台运行，它一般不需要与用户交互，因此Service组件没有图形用户界面。Service组件需要继承Service基类。Service组件通常用于为其他组件提供后台服务或监控其他组件的运行状态。</p>
+<h3 id="3、content-provider"><a href="#3、content-provider" class="headerlink" title="3、content provider"></a>3、content provider</h3><p>(1) android平台提供了Content Provider使一个应用程序的指定数据集提供给其他应用程序。其他应用可以通过ContentResolver类从该内容提供者中获取或存入数据。</p>
+<p>(2) 只有需要在多个应用程序间共享数据是才需要内容提供者。例如，通讯录数据被多个应用程序使用，且必须存储在一个内容提供者中。它的好处是统一数据访问方式。</p>
+<p>(3) ContentProvider实现数据共享。ContentProvider用于保存和获取数据，并使其对所有应用程序可见。这是不同应用程序间共享数据的唯一方式，因为android没有提供所有应用共同访问的公共存储区。</p>
+<p>(4) 开发人员不会直接使用ContentProvider类的对象，大多数是通过ContentResolver对象实现对ContentProvider的操作。</p>
+<p>(5) ContentProvider使用URI来唯一标识其数据集，这里的URI以content://作为前缀，表示该数据由ContentProvider来管理。</p>
+<h3 id="4、broadcast-receiver"><a href="#4、broadcast-receiver" class="headerlink" title="4、broadcast receiver"></a>4、broadcast receiver</h3><p>(1) 你的应用可以使用它对外部事件进行过滤，只对感兴趣的外部事件(如当电话呼入时，或者数据网络可用时)进行接收并做出响应。广播接收器没有用户界面。然而，它们可以启动一个activity或serice来响应它们收到的信息，或者用NotificationManager来通知用户。通知可以用很多种方式来吸引用户的注意力，例如闪动背灯、震动、播放声音等。一般来说是在状态栏上放一个持久的图标，用户可以打开它并获取消息。</p>
+<p>(2) 广播接收者的注册有两种方法，分别是程序动态注册和AndroidManifest文件中进行静态注册。</p>
+<p>(3) 动态注册广播接收器特点是当用来注册的Activity关掉后，广播也就失效了。静态注册无需担忧广播接收器是否被关闭，只要设备是开启状态，广播接收器也是打开着的。也就是说哪怕app本身未启动，该app订阅的广播在触发时也会对它起作用。</p>
+<h1 id="二、Android四大组件总结："><a href="#二、Android四大组件总结：" class="headerlink" title="二、Android四大组件总结："></a>二、Android四大组件总结：</h1><h3 id="1-4大组件的注册"><a href="#1-4大组件的注册" class="headerlink" title="(1) 4大组件的注册"></a>(1) 4大组件的注册</h3><p>4大基本组件都需要注册才能使用，每个Activity、service、Content Provider都需要在AndroidManifest文件中进行配置。AndroidManifest文件中未进行声明的activity、服务以及内容提供者将不为系统所见，从而也就不可用。而broadcast receiver广播接收者的注册分静态注册(在AndroidManifest文件中进行配置) 和通过代码动态创建并以调用Context.registerReceiver()的方式注册至系统。需要注意的是在AndroidManifest文件中进行配置的广播接收者会随系统的启动而一直处于活跃状态，只要接收到感兴趣的广播就会触发(即使程序未运行) 。</p>
+<h3 id="2-4大组件的激活"><a href="#2-4大组件的激活" class="headerlink" title="(2) 4大组件的激活"></a>(2) 4大组件的激活</h3><p>内容提供者的激活：当接收到ContentResolver发出的请求后，内容提供者被激活。而其它三种组件activity、服务和广播接收器被一种叫做intent的异步消息所激活。</p>
+<h3 id="3-4大组件的关闭"><a href="#3-4大组件的关闭" class="headerlink" title="(3) 4大组件的关闭"></a>(3) 4大组件的关闭</h3><p>内容提供者仅在响应ContentResolver提出请求的时候激活。而一个广播接收器仅在响应广播信息的时候激活。所以，没有必要去显式的关闭这些组件。Activity关闭：可以通过调用它的finish()方法来关闭一个activity。服务关闭：对于通过startService()方法启动的服务要调用Context.stopService()方法关闭服务，使用bindService()方法启动的服务要调用Contex.unbindService()方法关闭服务。</p>
+<h3 id="4-Android中的任务-activity栈"><a href="#4-Android中的任务-activity栈" class="headerlink" title="(4) Android中的任务(activity栈)"></a>(4) Android中的任务(activity栈)</h3><p>(a) 任务其实就是activity的栈，它由一个或多个Activity组成，共同完成一个完整的用户体验。栈底的是启动整个任务的Activity，栈顶的是当前运行的用户可以交互的Activity，当一个activity启动另外一个的时候，新的activity就被压入栈，并成为当前运行的activity。而前一个activity仍保持在栈之中。当用户按下BACK键的时候，当前activity出栈，而前一个恢复为当前运行的activity。栈中保存的其实是对象，栈中的Activity永远不会重排，只会压入或弹出。</p>
+<p>(b) 任务中的所有activity是作为一个整体进行移动的。整个的任务(即activity栈) 可以移到前台，或退至后台。</p>
+<p>(c) Android系统是一个多任务(Multi-Task)的操作系统，可以在用手机听音乐的同时，也执行其他多个程序。每多执行一个应用程序，就会多耗费一些系统内存，当同时执行的程序过多，或是关闭的程序没有正确释放掉内存，系统就会觉得越来越慢，甚至不稳定。为了解决这个问题，Android引入了一个新的机制，即生命周期(Life Cycle)。</p>
+<p>From <a href="https://www.cnblogs.com/to-creat/p/5891089.html" target="_blank" rel="noopener">https://www.cnblogs.com/to-creat/p/5891089.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/11/Android_4_Component/" data-id="cjrnarm30000ekkuscy0kexba" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/activity/">activity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/provider/">provider</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/service/">service</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lang_Java_Static_Inner_Class" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/11/Lang_Java_Static_Inner_Class/" class="article-date">
+  <time datetime="2017-04-11T02:15:33.000Z" itemprop="datePublished">2017-04-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/11/Lang_Java_Static_Inner_Class/">Java 静态内部内</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/Alex--Yang/p/3386863.html" target="_blank" rel="noopener">https://www.cnblogs.com/Alex--Yang/p/3386863.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/11/Lang_Java_Static_Inner_Class/" data-id="cjrnarm53003dkkusv1ukxgea" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/class/">class</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static/">static</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-RK_AndroidPartitionSizeModifyGuide" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/11/RK_AndroidPartitionSizeModifyGuide/" class="article-date">
+  <time datetime="2017-04-11T01:01:57.000Z" itemprop="datePublished">2017-04-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/11/RK_AndroidPartitionSizeModifyGuide/">RK平台Android分区大小修改说明</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不同于一般的Android系统（一般Android系统分区信息在BoardConfig.mk BoardConfigCommon.mk中），RK平台的分区信息文件在自带的烧录工具包中的parameter文件中</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/11/RK_AndroidPartitionSizeModifyGuide/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/11/RK_AndroidPartitionSizeModifyGuide/" data-id="cjrnarm5q004vkkusg40eje54" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RK/">RK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分区/">分区</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Other_HexoSetUp" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/07/Other_HexoSetUp/" class="article-date">
+  <time datetime="2017-04-07T10:01:57.000Z" itemprop="datePublished">2017-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Others/">Others</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/Other_HexoSetUp/">Hexo入手</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-安装Git和node-js"><a href="#1-安装Git和node-js" class="headerlink" title="1. 安装Git和node.js"></a>1. 安装Git和node.js</h4><pre><code>从官网下载对应平台binary 包，安装（linux直接将bin lib目录的文件cp到usr/local对应目录下，Window直接点击安装）
+Ubuntu平台:
+    sudo apt-get install git-core
+    curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh
+    安装完成后，重启终端并执行下列命令即可安装 Node.js。
+    nvm install stable
+Windows平台:
+    下载并安装 https://git-scm.com/download/win
+    下载并安装https://nodejs.org/en/download/
+</code></pre><h4 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h4><pre><code>npm install hexo-cli -g   //终端或者cmd命令行
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/07/Other_HexoSetUp/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/07/Other_HexoSetUp/" data-id="cjrnarm5j004gkkus6wy2kp77" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android_fstab" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/07/Android_fstab/" class="article-date">
+  <time datetime="2017-04-07T08:01:57.000Z" itemprop="datePublished">2017-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/Android_fstab/">Android fstab介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ubuntu-fstab文件格式"><a href="#ubuntu-fstab文件格式" class="headerlink" title="ubuntu fstab文件格式"></a>ubuntu fstab文件格式</h2><pre><code>下面是/etc/fatab文件的一个示例行：
+fs_spec     fs_file fs_type     fs_options  fs_dump    fs_pass
+/dev/hda1   /       ext2        defaults    1          1    
+
+fs_spec - 该字段定义希望加载的文件系统所在的设备或远程文件系统，对于一般的本地块设备情况来说：IDE设备一般描述为
+          /dev/hdaXN，X是IDE设备通道 (a, b, or c)，N代表分区号；SCSI设备一描述为/dev/sdaXN。对于NFS情况，格式一般为:
+         例 如：`knuth.aeb.nl:/&apos;。对于procfs，使用`proc&apos;来定义。
+fs_file - 该字段描述希望的文件系统加载的目录点，对于swap设备，该字段为none；对于加载目录名包含空格的情况，用40来
+          表示空格。
+fs_type - 定义了该设备上的文件系统，一般常见的文件类型为ext2 (linux设备的常用文件类型)、vfat(Windows系统的fat32格
+          式)、NTFS、iso9600等。
+fs_options - 指定加载该设备的文件系统是需要使用的特定参数选项，多个参数是由逗号分隔开来。对于大多数系统使用&quot;defaults&quot;
+             就可以满足需要。其他常见的选项包括：
+            选项含义:
+            ro      以只读模式加载该文件系统
+            sync    不对该设备的写操作进行缓冲处理，这可以防止在非正常关机时情况下破坏文件系统，但是却降低了计算机速度
+            user    允许普通用户加载该文件系统
+            quota   强制在该文件系统上进行磁盘定额限制
+            noauto  不再使用mount －a命令（例如系统启动时）加载该文件系统
+
+fs_dump 该选项被&quot;dump&quot;命令使用来检查一个文件系统应该以多快频率进行转储，若不需要转储就设置该字段为0
+fs_pass 该字段被fsck命令用来决定在启动时需要被扫描的文件系统的顺序，根文件系统&quot;/&quot;对应该字段的值应该为1，
+                    其他文件系统应该为2。若该文件系统无需在启动时扫描则设置该字段为0
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/07/Android_fstab/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/07/Android_fstab/" data-id="cjrnarm48001jkkus6v743mue" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fstab/">fstab</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-InputSystem005_ExampleAPP" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/01/InputSystem005_ExampleAPP/" class="article-date">
+  <time datetime="2016-12-31T16:00:00.000Z" itemprop="datePublished">2017-01-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/01/InputSystem005_ExampleAPP/">Input系统——APP事件监听及处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>InputDevice<br><a href="https://developer.android.com/reference/android/view/InputDevice.html" target="_blank" rel="noopener">https://developer.android.com/reference/android/view/InputDevice.html</a></p>
+<p>android.support.wearable 包</p>
+<p><a href="http://stackoverflow.com/questions/24520240/import-android-support-wearable-cannot-be-resolved" target="_blank" rel="noopener">http://stackoverflow.com/questions/24520240/import-android-support-wearable-cannot-be-resolved</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/01/InputSystem005_ExampleAPP/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/01/01/InputSystem005_ExampleAPP/" data-id="cjrnarm4p002kkkusvunvgi71" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APP/">APP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/input/">input</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/input系统/">input系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android_SmartPointer_SP_WP" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/01/Android_SmartPointer_SP_WP/" class="article-date">
+  <time datetime="2016-12-31T16:00:00.000Z" itemprop="datePublished">2017-01-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/01/Android_SmartPointer_SP_WP/">Android 智能指针——SP WP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>待续…<br></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/01/Android_SmartPointer_SP_WP/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/01/01/Android_SmartPointer_SP_WP/" data-id="cjrnarm3d000tkkusb6qzlt7t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/弱指针/">弱指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/强指针/">强指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/智能指针/">智能指针</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android_Version-sdk-ndk" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/12/Android_Version-sdk-ndk/" class="article-date">
+  <time datetime="2016-12-12T04:22:33.000Z" itemprop="datePublished">2016-12-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/12/Android_Version-sdk-ndk/">Android版本-sdk-ndk-对应关系表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th style="text-align:left">Code name</th>
+<th style="text-align:left">Version</th>
+<th style="text-align:left">API level</th>
+<th style="text-align:left">Rlease Date</th>
+<th>Kernel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Pie</td>
+<td style="text-align:left">9</td>
+<td style="text-align:left">API level 28</td>
+<td style="text-align:left">2018/8/6</td>
+<td>4.4.107, 4.9.84, and 4.14.42</td>
+</tr>
+<tr>
+<td style="text-align:left">Oreo</td>
+<td style="text-align:left">8.1</td>
+<td style="text-align:left">API level 27</td>
+<td style="text-align:left">2017/12/21</td>
+<td>4.10</td>
+</tr>
+<tr>
+<td style="text-align:left">Oreo</td>
+<td style="text-align:left">8.0</td>
+<td style="text-align:left">API level 26</td>
+<td style="text-align:left">2017/8/21</td>
+<td>4.10</td>
+</tr>
+<tr>
+<td style="text-align:left">Nougat</td>
+<td style="text-align:left">7.1</td>
+<td style="text-align:left">API level 25</td>
+<td style="text-align:left">2016/11/16</td>
+<td>4.4.1</td>
+</tr>
+<tr>
+<td style="text-align:left">Nougat</td>
+<td style="text-align:left">7.0</td>
+<td style="text-align:left">API level 24</td>
+<td style="text-align:left">2016/8/22</td>
+<td>4.4.1</td>
+</tr>
+<tr>
+<td style="text-align:left">Marshmallow</td>
+<td style="text-align:left">6.0.1</td>
+<td style="text-align:left">API level 23</td>
+<td style="text-align:left">2015/12/15</td>
+</tr>
+<tr>
+<td style="text-align:left">Marshmallow</td>
+<td style="text-align:left">6.0</td>
+<td style="text-align:left">API level 23</td>
+<td style="text-align:left">2015/10/5</td>
+<td>3.18.10</td>
+</tr>
+<tr>
+<td style="text-align:left">Lollipop</td>
+<td style="text-align:left">5.1.1</td>
+<td style="text-align:left">API level 22</td>
+<td style="text-align:left">2015/4/21</td>
+</tr>
+<tr>
+<td style="text-align:left">Lollipop</td>
+<td style="text-align:left">5.1</td>
+<td style="text-align:left">API level 22</td>
+<td style="text-align:left">2015/3/9</td>
+<td>3.16.1</td>
+</tr>
+<tr>
+<td style="text-align:left">Lollipop</td>
+<td style="text-align:left">5.0</td>
+<td style="text-align:left">API level 21, NDK 10</td>
+<td style="text-align:left">2014/11/12</td>
+<td>3.16.1</td>
+</tr>
+<tr>
+<td style="text-align:left">KitKat</td>
+<td style="text-align:left">4.4 - 4.4.4</td>
+<td style="text-align:left">API level 19</td>
+<td style="text-align:left">2013/10/31</td>
+<td>3.10</td>
+</tr>
+<tr>
+<td style="text-align:left">Jelly Bean</td>
+<td style="text-align:left">4.3.x</td>
+<td style="text-align:left">API level 18</td>
+<td style="text-align:left">2013/10/3</td>
+<td>3.4.39</td>
+</tr>
+<tr>
+<td style="text-align:left">Jelly Bean</td>
+<td style="text-align:left">4.2.x</td>
+<td style="text-align:left">API level 17</td>
+<td style="text-align:left">2013/2/11</td>
+<td>3.4.0</td>
+</tr>
+<tr>
+<td style="text-align:left">Jelly Bean</td>
+<td style="text-align:left">4.1.x</td>
+<td style="text-align:left">API level 16</td>
+<td style="text-align:left">2012/7/9</td>
+<td>3.0.31</td>
+</tr>
+<tr>
+<td style="text-align:left">Ice Cream Sandwich</td>
+<td style="text-align:left">4.0.3 - 4.0.4</td>
+<td style="text-align:left">API level 15, NDK 8</td>
+<td style="text-align:left">2012/3/29</td>
+<td>3.0.1</td>
+</tr>
+<tr>
+<td style="text-align:left">Ice Cream Sandwich</td>
+<td style="text-align:left">4.0.1 - 4.0.2</td>
+<td style="text-align:left">API level 14, NDK 7</td>
+<td style="text-align:left">2011/10/18</td>
+<td>3.0.1</td>
+</tr>
+<tr>
+<td style="text-align:left">Honeycomb</td>
+<td style="text-align:left">3.2.x</td>
+<td style="text-align:left">API level 13</td>
+<td style="text-align:left"></td>
+<td>2.6.36</td>
+</tr>
+<tr>
+<td style="text-align:left">Honeycomb</td>
+<td style="text-align:left">3.1</td>
+<td style="text-align:left">API level 12, NDK 6</td>
+<td style="text-align:left"></td>
+<td>2.6.36</td>
+</tr>
+<tr>
+<td style="text-align:left">Honeycomb</td>
+<td style="text-align:left">3.0</td>
+<td style="text-align:left">API level 11</td>
+<td style="text-align:left">2011/2/22</td>
+<td>2.6.36</td>
+</tr>
+<tr>
+<td style="text-align:left">Gingerbread</td>
+<td style="text-align:left">2.3.3 - 2.3.7</td>
+<td style="text-align:left">API level 10</td>
+<td style="text-align:left"></td>
+<td>2.6.35</td>
+</tr>
+<tr>
+<td style="text-align:left">Gingerbread</td>
+<td style="text-align:left">2.3 - 2.3.2</td>
+<td style="text-align:left">API level 9,  NDK 5</td>
+<td style="text-align:left">2010/12/6</td>
+<td>2.6.35</td>
+</tr>
+<tr>
+<td style="text-align:left">Froyo</td>
+<td style="text-align:left">2.2.x</td>
+<td style="text-align:left">API level 8,  NDK 4</td>
+<td style="text-align:left">2010/5/20</td>
+<td>2.6.32</td>
+</tr>
+<tr>
+<td style="text-align:left">Eclair</td>
+<td style="text-align:left">2.1</td>
+<td style="text-align:left">API level 7,  NDK 3</td>
+<td style="text-align:left"></td>
+<td>2.6.29</td>
+</tr>
+<tr>
+<td style="text-align:left">Eclair</td>
+<td style="text-align:left">2.0.1</td>
+<td style="text-align:left">API level 6</td>
+<td style="text-align:left"></td>
+<td>2.6.29</td>
+</tr>
+<tr>
+<td style="text-align:left">Eclair</td>
+<td style="text-align:left">2.0</td>
+<td style="text-align:left">API level 5</td>
+<td style="text-align:left">2009/10/26</td>
+<td>2.6.29</td>
+</tr>
+<tr>
+<td style="text-align:left">Donut</td>
+<td style="text-align:left">1.6</td>
+<td style="text-align:left">API level 4,  NDK 2</td>
+<td style="text-align:left">2009/9/15</td>
+<td>2.6.29</td>
+</tr>
+<tr>
+<td style="text-align:left">Cupcake</td>
+<td style="text-align:left">1.5</td>
+<td style="text-align:left">API level 3,  NDK 1</td>
+<td style="text-align:left">2009/4/27</td>
+<td>2.6.27</td>
+</tr>
+<tr>
+<td style="text-align:left">(no code name)</td>
+<td style="text-align:left">1.1</td>
+<td style="text-align:left">API level 2</td>
+<td style="text-align:left">2009/2/9</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td style="text-align:left">(no code name)</td>
+<td style="text-align:left">1.0</td>
+<td style="text-align:left">API level 1</td>
+<td style="text-align:left">2008/12/23</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p>References:<br><a href="https://en.wikipedia.org/wiki/Android_version_history" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Android_version_history</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/12/12/Android_Version-sdk-ndk/" data-id="cjrnarm3o0011kkussea72gao" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API-level/">API level</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NDK/">NDK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDK/">SDK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/版本/">版本</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android_init_rc" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/25/Android_init_rc/" class="article-date">
+  <time datetime="2016-11-25T04:22:33.000Z" itemprop="datePublished">2016-11-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/25/Android_init_rc/">Android init.rc</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>init.rc主要有两大元素:   Actions和Service</p>
+<p>一种是定时任务——Actions，由以下构成：<br>    on <trigger><br>        <command><br>        <command><br>        …</trigger></p>
+<p>一种是固定顺序的任务(初始化启动，可以重启)，即Services<br>    service <name> <binaray path="" name=""> [ <argument> ]*<br>        <option><br>        </option><option><br>        …</option></argument></binaray></name></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/25/Android_init_rc/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/11/25/Android_init_rc/" data-id="cjrnarm47001gkkus30rvwy0n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/init-rc/">init.rc</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RK/">RK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/sqlite/">sqlite</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API-level/">API level</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APK反编译/">APK反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APK签名/">APK签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP/">APP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Support/">Android Support</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-mk/">Android.mk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArrayList/">ArrayList</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binder/">Binder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Code/">Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Context/">Context</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HashMap/">HashMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPC/">IPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JNI/">JNI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LinkedList/">LinkedList</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MITM/">MITM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Makefile/">Makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NDK/">NDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OTA/">OTA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RK/">RK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReentrantLock/">ReentrantLock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEAndroid/">SEAndroid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELinux/">SELinux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEPolicy/">SEPolicy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Source/">Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vector/">Vector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/abstract/">abstract</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/activity/">activity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/am/">am</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/const/">const</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/const-cast/">const_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/constructor/">constructor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/destructor/">destructor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/device-mk/">device.mk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-cast/">dynamic_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/event/">event</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/find/">find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/friend/">friend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fstab/">fstab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hal/">hal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/image/">image</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/init-rc/">init.rc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inotify/">inotify</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input/">input</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/input系统/">input系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/instance/">instance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioctl/">ioctl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/layout/">layout</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/native调用/">native调用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/newInstance/">newInstance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/open/">open</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permission/">permission</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pm/">pm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/poll/">poll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/porting/">porting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/">private</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/protected/">protected</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/provider/">provider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/public/">public</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recovery/">recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reflect/">reflect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reinterpret-cast/">reinterpret_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/select/">select</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sensor/">sensor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/service/">service</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static/">static</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/static-cast/">static_cast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/synchronized/">synchronized</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/trace/">trace</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/update/">update</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/update-img/">update.img</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vector/">vector</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内部类/">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分区/">分区</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/加密/">加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/升级/">升级</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/弱指针/">弱指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/强指针/">强指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/抽象/">抽象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能指针/">智能指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本/">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/签名/">签名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/类型转换/">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/继承/">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译/">编译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API-level/" style="font-size: 10px;">API level</a> <a href="/tags/APK反编译/" style="font-size: 12.5px;">APK反编译</a> <a href="/tags/APK签名/" style="font-size: 12.5px;">APK签名</a> <a href="/tags/APP/" style="font-size: 10px;">APP</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Support/" style="font-size: 10px;">Android Support</a> <a href="/tags/Android-mk/" style="font-size: 10px;">Android.mk</a> <a href="/tags/ArrayList/" style="font-size: 10px;">ArrayList</a> <a href="/tags/Binder/" style="font-size: 10px;">Binder</a> <a href="/tags/Code/" style="font-size: 10px;">Code</a> <a href="/tags/Context/" style="font-size: 10px;">Context</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/HashMap/" style="font-size: 10px;">HashMap</a> <a href="/tags/IPC/" style="font-size: 10px;">IPC</a> <a href="/tags/JNI/" style="font-size: 10px;">JNI</a> <a href="/tags/LinkedList/" style="font-size: 10px;">LinkedList</a> <a href="/tags/MITM/" style="font-size: 10px;">MITM</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NDK/" style="font-size: 12.5px;">NDK</a> <a href="/tags/OTA/" style="font-size: 12.5px;">OTA</a> <a href="/tags/RK/" style="font-size: 12.5px;">RK</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/ReentrantLock/" style="font-size: 10px;">ReentrantLock</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/SEAndroid/" style="font-size: 10px;">SEAndroid</a> <a href="/tags/SELinux/" style="font-size: 10px;">SELinux</a> <a href="/tags/SEPolicy/" style="font-size: 10px;">SEPolicy</a> <a href="/tags/Source/" style="font-size: 10px;">Source</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/Vector/" style="font-size: 10px;">Vector</a> <a href="/tags/abstract/" style="font-size: 10px;">abstract</a> <a href="/tags/activity/" style="font-size: 10px;">activity</a> <a href="/tags/am/" style="font-size: 10px;">am</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/broadcast/" style="font-size: 10px;">broadcast</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/class/" style="font-size: 12.5px;">class</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/const-cast/" style="font-size: 12.5px;">const_cast</a> <a href="/tags/constructor/" style="font-size: 12.5px;">constructor</a> <a href="/tags/db/" style="font-size: 10px;">db</a> <a href="/tags/destructor/" style="font-size: 12.5px;">destructor</a> <a href="/tags/device-mk/" style="font-size: 10px;">device.mk</a> <a href="/tags/dynamic-cast/" style="font-size: 12.5px;">dynamic_cast</a> <a href="/tags/event/" style="font-size: 17.5px;">event</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/fstab/" style="font-size: 10px;">fstab</a> <a href="/tags/hal/" style="font-size: 10px;">hal</a> <a href="/tags/image/" style="font-size: 10px;">image</a> <a href="/tags/init-rc/" style="font-size: 10px;">init.rc</a> <a href="/tags/inotify/" style="font-size: 10px;">inotify</a> <a href="/tags/input/" style="font-size: 20px;">input</a> <a href="/tags/input系统/" style="font-size: 20px;">input系统</a> <a href="/tags/instance/" style="font-size: 10px;">instance</a> <a href="/tags/ioctl/" style="font-size: 10px;">ioctl</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/list/" style="font-size: 12.5px;">list</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/map/" style="font-size: 12.5px;">map</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/native调用/" style="font-size: 10px;">native调用</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/newInstance/" style="font-size: 10px;">newInstance</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/permission/" style="font-size: 10px;">permission</a> <a href="/tags/pm/" style="font-size: 10px;">pm</a> <a href="/tags/poll/" style="font-size: 10px;">poll</a> <a href="/tags/porting/" style="font-size: 10px;">porting</a> <a href="/tags/private/" style="font-size: 12.5px;">private</a> <a href="/tags/protected/" style="font-size: 12.5px;">protected</a> <a href="/tags/provider/" style="font-size: 10px;">provider</a> <a href="/tags/public/" style="font-size: 12.5px;">public</a> <a href="/tags/recovery/" style="font-size: 12.5px;">recovery</a> <a href="/tags/reflect/" style="font-size: 15px;">reflect</a> <a href="/tags/reinterpret-cast/" style="font-size: 12.5px;">reinterpret_cast</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/select/" style="font-size: 10px;">select</a> <a href="/tags/sensor/" style="font-size: 10px;">sensor</a> <a href="/tags/service/" style="font-size: 10px;">service</a> <a href="/tags/set/" style="font-size: 12.5px;">set</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/static/" style="font-size: 12.5px;">static</a> <a href="/tags/static-cast/" style="font-size: 12.5px;">static_cast</a> <a href="/tags/synchronized/" style="font-size: 10px;">synchronized</a> <a href="/tags/trace/" style="font-size: 12.5px;">trace</a> <a href="/tags/update/" style="font-size: 10px;">update</a> <a href="/tags/update-img/" style="font-size: 10px;">update.img</a> <a href="/tags/vector/" style="font-size: 12.5px;">vector</a> <a href="/tags/内部类/" style="font-size: 10px;">内部类</a> <a href="/tags/分区/" style="font-size: 12.5px;">分区</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/升级/" style="font-size: 10px;">升级</a> <a href="/tags/弱指针/" style="font-size: 10px;">弱指针</a> <a href="/tags/强指针/" style="font-size: 10px;">强指针</a> <a href="/tags/抽象/" style="font-size: 10px;">抽象</a> <a href="/tags/智能指针/" style="font-size: 10px;">智能指针</a> <a href="/tags/版本/" style="font-size: 10px;">版本</a> <a href="/tags/签名/" style="font-size: 10px;">签名</a> <a href="/tags/类型转换/" style="font-size: 12.5px;">类型转换</a> <a href="/tags/继承/" style="font-size: 10px;">继承</a> <a href="/tags/编译/" style="font-size: 12.5px;">编译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/12/Android_Context/">Android Context详解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/27/Android_Binder/">Android Binder</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/19/Linux_select_poll/">Linux select pselect poll epoll用法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/19/Linux_inotify/">Linux inotify机制</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/13/Other_undefined/">杂项</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -62,59 +62,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Lang_C" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/28/Lang_C/" class="article-date">
-  <time datetime="2016-05-28T04:22:33.000Z" itemprop="datePublished">2016-05-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Lang_C/">C++的类型转换——隐式、显式转换(xxx_cast)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第一部分-隐式类型转换"><a href="#第一部分-隐式类型转换" class="headerlink" title="第一部分. 隐式类型转换"></a>第一部分. 隐式类型转换</h1><pre><code>算数运算float + int =&gt; float  、  赋值int = float、传参、返回值
-</code></pre><h1 id="第二部分-显式类型转换"><a href="#第二部分-显式类型转换" class="headerlink" title="第二部分.显式类型转换"></a>第二部分.显式类型转换</h1><pre><code>C风格
-    (type) value
-
-C++风格
-    static_cast、dynamic_cast、reinterpret_cast和const_cast 
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2016/05/28/Lang_C/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_C/" data-id="cjrnarm7r00arkkus0iswbawo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/const-cast/">const_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dynamic-cast/">dynamic_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reinterpret-cast/">reinterpret_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static-cast/">static_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型转换/">类型转换</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-Lang_CPP_public_protected_private" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/05/28/Lang_CPP_public_protected_private/" class="article-date">
@@ -211,76 +158,10 @@ C++风格
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_public_protected_private/" data-id="cjrnarm4x002ykkusvcpmva3e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_public_protected_private/" data-id="cjrnbe4e70034iwusnxuoy74y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/protected/">protected</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/public/">public</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Lang_CPP_friend" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/28/Lang_CPP_friend/" class="article-date">
-  <time datetime="2016-05-28T04:22:33.000Z" itemprop="datePublished">2016-05-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Lang_CPP_friend/">C++ 友元</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C++ 友元<br>友元机制，开个后门，以让友元函数、类可以访问类内部私有成员。不过这个机制也破坏了类的封装性。</p>
-<h1 id="1-友元函数（这种函数是类外部定义函数）"><a href="#1-友元函数（这种函数是类外部定义函数）" class="headerlink" title="1. 友元函数（这种函数是类外部定义函数）"></a>1. 友元函数（这种函数是类外部定义函数）</h1><p>友元函数是类外部定义的函数，而将函数声明加friend放在需要访问的类的内部。</p>
-<p>#include <iostream><br>using namespace std;<br>class A<br>{<br>public:<br>    friend void set_show(int x, A &amp;a);      //该函数是友元函数的声明<br>private:<br>    int data;<br>};</iostream></p>
-<p>void set_show(int x, A &amp;a)  //友元函数定义，为了访问类A中的成员<br>{<br>    a.data = x;<br>    cout &lt;&lt; a.data &lt;&lt; endl;<br>}</p>
-<p>int main(void)<br>{<br>    class A a;</p>
-<pre><code>set_show(1, a);
-
-return 0;
-</code></pre><p>}</p>
-<h1 id="2-友元类"><a href="#2-友元类" class="headerlink" title="2. 友元类"></a>2. 友元类</h1><p>友元类的所有成员函数都是另一个类的友元函数。声明加friend放在需要访问的类的内部。</p>
-<p>关于友元类的注意事项：<br>(1) 友元关系不能被继承。<br>(2) 友元关系是单向的，不具有交换性。若类B是类A的友元，类A不一定是类B的友元，要看在类中是否有相应的声明。<br>(3) 友元关系不具有传递性。若类B是类A的友元，类C是B的友元，类C不一定是类A的友元，同样要看类中是否有相应的申明。</p>
-<p>#include <iostream><br>using namespace std;</iostream></p>
-<p>class A<br>{<br>public:<br>    friend class C;                         //这是友元类的声明<br>private:<br>    int data;<br>};</p>
-<p>class C             //友元类定义，为了访问类A中的成员<br>{<br>public:<br>    void set_show(int x, A &amp;a) { a.data = x; cout&lt;&lt;a.data&lt;&lt;endl;}<br>};</p>
-<p>int main(void)<br>{<br>    class A a;<br>    class C c;</p>
-<pre><code>c.set_show(1, a);
-
-return 0;
-</code></pre><p>}</p>
-<h1 id="3-友元成员函数"><a href="#3-友元成员函数" class="headerlink" title="3. 友元成员函数"></a>3. 友元成员函数</h1><p>类A的成员函数是类B的友元函数。</p>
-<p>class B;</p>
-<p>class A {<br>  public:<br>    friend void B::B_is_A_friend_function(A &amp; tempA);</p>
-<p>  private:<br>    int a;<br>};</p>
-<p>class B{<br>  public:<br>    void B::B_is_A_friend_function(A &amp; tempA) {<br>        cout &lt;&lt; tempA.a &lt;&lt; endl;<br>    }<br>};</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_friend/" data-id="cjrnarm4z0032kkuswblbz4c0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/friend/">friend</a></li></ul>
 
     </footer>
   </div>
@@ -340,10 +221,156 @@ return 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_static/" data-id="cjrnarm58003nkkus4molwb3r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_static/" data-id="cjrnbe4e90037iwus03zsscwk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static/">static</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lang_CPP_xxx_cast" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/28/Lang_CPP_xxx_cast/" class="article-date">
+  <time datetime="2016-05-28T04:22:33.000Z" itemprop="datePublished">2016-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/28/Lang_CPP_xxx_cast/">C++的类型转换——隐式、显式转换(xxx_cast)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第一部分-隐式类型转换"><a href="#第一部分-隐式类型转换" class="headerlink" title="第一部分. 隐式类型转换"></a>第一部分. 隐式类型转换</h1><pre><code>算数运算float + int =&gt; float  、  赋值int = float、传参、返回值
+</code></pre><h1 id="第二部分-显式类型转换"><a href="#第二部分-显式类型转换" class="headerlink" title="第二部分.显式类型转换"></a>第二部分.显式类型转换</h1><pre><code>C风格
+    (type) value
+
+C++风格
+    static_cast、dynamic_cast、reinterpret_cast和const_cast 
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/28/Lang_CPP_xxx_cast/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_xxx_cast/" data-id="cjrnbe4h600atiwus2wtendjo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/const-cast/">const_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dynamic-cast/">dynamic_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reinterpret-cast/">reinterpret_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static-cast/">static_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型转换/">类型转换</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lang_Java" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/28/Lang_Java/" class="article-date">
+  <time datetime="2016-05-28T04:22:33.000Z" itemprop="datePublished">2016-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/28/Lang_Java/">Java语言</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/28/Lang_Java/" data-id="cjrnbe4ec003diwusp0sgna16" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lang_C" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/28/Lang_C/" class="article-date">
+  <time datetime="2016-05-28T04:22:33.000Z" itemprop="datePublished">2016-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/28/Lang_C/">C++的类型转换——隐式、显式转换(xxx_cast)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第一部分-隐式类型转换"><a href="#第一部分-隐式类型转换" class="headerlink" title="第一部分. 隐式类型转换"></a>第一部分. 隐式类型转换</h1><pre><code>算数运算float + int =&gt; float  、  赋值int = float、传参、返回值
+</code></pre><h1 id="第二部分-显式类型转换"><a href="#第二部分-显式类型转换" class="headerlink" title="第二部分.显式类型转换"></a>第二部分.显式类型转换</h1><pre><code>C风格
+    (type) value
+
+C++风格
+    static_cast、dynamic_cast、reinterpret_cast和const_cast 
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/28/Lang_C/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/28/Lang_C/" data-id="cjrnbe4h400apiwusouaet23y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/const-cast/">const_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dynamic-cast/">dynamic_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reinterpret-cast/">reinterpret_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static-cast/">static_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型转换/">类型转换</a></li></ul>
 
     </footer>
   </div>
@@ -413,10 +440,77 @@ return 0;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_Java_innerClass/" data-id="cjrnarm59003rkkusqiym3xg7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/28/Lang_Java_innerClass/" data-id="cjrnbe4ei003qiwuskvaog76n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内部类/">内部类</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lang_CPP_const" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/28/Lang_CPP_const/" class="article-date">
+  <time datetime="2016-05-28T04:22:33.000Z" itemprop="datePublished">2016-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/28/Lang_CPP_const/">C++的const用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>C++ const 允许指定一个语义约束，编译器会强制实施这个约束，允许程序员告诉编译器某值是保持不变的。如果在编程中确实有某个值保持不变，就应该明确使用const，这样可以获得编译器的帮助。<br>const 有几种用法。下面将详细讲解。</p>
+<ol>
+<li><p>const 全局变量</p>
+<pre><code>用法： const int a;           //     const data
+      const int *p;          //     const data, non-const pointer
+      int * const p;         // non-const data, const pointer
+      const int * const p;   //     const data, const pointer
+</code></pre></li>
+<li><p>const 函数局部变量 (包括函数参数、返回值等)</p>
+<pre><code>用法：const int a; const int *p;int * const p;const int * const p;
+     const int* function(const int *a);  // 返回值必须传给const data,non-const pointer 的变量
+     void int function(const int&amp; a);
+</code></pre></li>
+<li><p>const 成员变量</p>
+<pre><code>用法：成员常量不能被修改，只能在构造函数初始化列表中赋值
+</code></pre></li>
+<li><p>const 成员方法</p>
+<pre><code>用法： 不能修改任何成员变量（mutable修饰的变量除外），不能调用非const成员函数
+定义格式：void function() const {}
+</code></pre></li>
+<li>const 类对象、类指针、类引用</li>
+</ol>
+<ol start="6">
+<li>将Const类型转化为非Const类型的方法<br>采用const_cast 进行转换。该运算符用来修改类型的const或volatile属性。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_const/" data-id="cjrnbe4e5002yiwusq2wt5e61" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/const/">const</a></li></ul>
 
     </footer>
   </div>
@@ -499,7 +593,7 @@ c) 具体实现，见： framewors/base/services/java/com/android/server/am/Acti
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Android_permission/" data-id="cjrnarm4b001qkkusljl3nm6p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/28/Android_permission/" data-id="cjrnbe4dl001riwus3t1bvdqw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/permission/">permission</a></li></ul>
@@ -511,9 +605,9 @@ c) 具体实现，见： framewors/base/services/java/com/android/server/am/Acti
 
 
   
-    <article id="post-Lang_CPP_xxx_cast" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Lang_CPP_friend" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/05/28/Lang_CPP_xxx_cast/" class="article-date">
+    <a href="/2016/05/28/Lang_CPP_friend/" class="article-date">
   <time datetime="2016-05-28T04:22:33.000Z" itemprop="datePublished">2016-05-28</time>
 </a>
     
@@ -529,7 +623,7 @@ c) 具体实现，见： framewors/base/services/java/com/android/server/am/Acti
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Lang_CPP_xxx_cast/">C++的类型转换——隐式、显式转换(xxx_cast)</a>
+      <a class="article-title" href="/2016/05/28/Lang_CPP_friend/">C++ 友元</a>
     </h1>
   
 
@@ -537,133 +631,39 @@ c) 具体实现，见： framewors/base/services/java/com/android/server/am/Acti
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一部分-隐式类型转换"><a href="#第一部分-隐式类型转换" class="headerlink" title="第一部分. 隐式类型转换"></a>第一部分. 隐式类型转换</h1><pre><code>算数运算float + int =&gt; float  、  赋值int = float、传参、返回值
-</code></pre><h1 id="第二部分-显式类型转换"><a href="#第二部分-显式类型转换" class="headerlink" title="第二部分.显式类型转换"></a>第二部分.显式类型转换</h1><pre><code>C风格
-    (type) value
+        <p>C++ 友元<br>友元机制，开个后门，以让友元函数、类可以访问类内部私有成员。不过这个机制也破坏了类的封装性。</p>
+<h1 id="1-友元函数（这种函数是类外部定义函数）"><a href="#1-友元函数（这种函数是类外部定义函数）" class="headerlink" title="1. 友元函数（这种函数是类外部定义函数）"></a>1. 友元函数（这种函数是类外部定义函数）</h1><p>友元函数是类外部定义的函数，而将函数声明加friend放在需要访问的类的内部。</p>
+<p>#include <iostream><br>using namespace std;<br>class A<br>{<br>public:<br>    friend void set_show(int x, A &amp;a);      //该函数是友元函数的声明<br>private:<br>    int data;<br>};</iostream></p>
+<p>void set_show(int x, A &amp;a)  //友元函数定义，为了访问类A中的成员<br>{<br>    a.data = x;<br>    cout &lt;&lt; a.data &lt;&lt; endl;<br>}</p>
+<p>int main(void)<br>{<br>    class A a;</p>
+<pre><code>set_show(1, a);
 
-C++风格
-    static_cast、dynamic_cast、reinterpret_cast和const_cast 
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2016/05/28/Lang_CPP_xxx_cast/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_xxx_cast/" data-id="cjrnarm7s00avkkus54qoo5tw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/const-cast/">const_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dynamic-cast/">dynamic_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reinterpret-cast/">reinterpret_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/static-cast/">static_cast</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类型转换/">类型转换</a></li></ul>
+return 0;
+</code></pre><p>}</p>
+<h1 id="2-友元类"><a href="#2-友元类" class="headerlink" title="2. 友元类"></a>2. 友元类</h1><p>友元类的所有成员函数都是另一个类的友元函数。声明加friend放在需要访问的类的内部。</p>
+<p>关于友元类的注意事项：<br>(1) 友元关系不能被继承。<br>(2) 友元关系是单向的，不具有交换性。若类B是类A的友元，类A不一定是类B的友元，要看在类中是否有相应的声明。<br>(3) 友元关系不具有传递性。若类B是类A的友元，类C是B的友元，类C不一定是类A的友元，同样要看类中是否有相应的申明。</p>
+<p>#include <iostream><br>using namespace std;</iostream></p>
+<p>class A<br>{<br>public:<br>    friend class C;                         //这是友元类的声明<br>private:<br>    int data;<br>};</p>
+<p>class C             //友元类定义，为了访问类A中的成员<br>{<br>public:<br>    void set_show(int x, A &amp;a) { a.data = x; cout&lt;&lt;a.data&lt;&lt;endl;}<br>};</p>
+<p>int main(void)<br>{<br>    class A a;<br>    class C c;</p>
+<pre><code>c.set_show(1, a);
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Lang_CPP_const" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/28/Lang_CPP_const/" class="article-date">
-  <time datetime="2016-05-28T04:22:33.000Z" itemprop="datePublished">2016-05-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Lang_CPP_const/">C++的const用法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C++ const 允许指定一个语义约束，编译器会强制实施这个约束，允许程序员告诉编译器某值是保持不变的。如果在编程中确实有某个值保持不变，就应该明确使用const，这样可以获得编译器的帮助。<br>const 有几种用法。下面将详细讲解。</p>
-<ol>
-<li><p>const 全局变量</p>
-<pre><code>用法： const int a;           //     const data
-      const int *p;          //     const data, non-const pointer
-      int * const p;         // non-const data, const pointer
-      const int * const p;   //     const data, const pointer
-</code></pre></li>
-<li><p>const 函数局部变量 (包括函数参数、返回值等)</p>
-<pre><code>用法：const int a; const int *p;int * const p;const int * const p;
-     const int* function(const int *a);  // 返回值必须传给const data,non-const pointer 的变量
-     void int function(const int&amp; a);
-</code></pre></li>
-<li><p>const 成员变量</p>
-<pre><code>用法：成员常量不能被修改，只能在构造函数初始化列表中赋值
-</code></pre></li>
-<li><p>const 成员方法</p>
-<pre><code>用法： 不能修改任何成员变量（mutable修饰的变量除外），不能调用非const成员函数
-定义格式：void function() const {}
-</code></pre></li>
-<li>const 类对象、类指针、类引用</li>
-</ol>
-<ol start="6">
-<li>将Const类型转化为非Const类型的方法<br>采用const_cast 进行转换。该运算符用来修改类型的const或volatile属性。</li>
-</ol>
+return 0;
+</code></pre><p>}</p>
+<h1 id="3-友元成员函数"><a href="#3-友元成员函数" class="headerlink" title="3. 友元成员函数"></a>3. 友元成员函数</h1><p>类A的成员函数是类B的友元函数。</p>
+<p>class B;</p>
+<p>class A {<br>  public:<br>    friend void B::B_is_A_friend_function(A &amp; tempA);</p>
+<p>  private:<br>    int a;<br>};</p>
+<p>class B{<br>  public:<br>    void B::B_is_A_friend_function(A &amp; tempA) {<br>        cout &lt;&lt; tempA.a &lt;&lt; endl;<br>    }<br>};</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_const/" data-id="cjrnarm4v002vkkusa9mp39p3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_friend/" data-id="cjrnbe4e60031iwusqvhu4xq3" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/const/">const</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/friend/">friend</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Lang_Java" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/28/Lang_Java/" class="article-date">
-  <time datetime="2016-05-28T04:22:33.000Z" itemprop="datePublished">2016-05-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Lang_Java/">Java语言</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_Java/" data-id="cjrnarm52003akkuso7lqcl25" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -713,7 +713,7 @@ C++风格
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_virtual/" data-id="cjrnarm500036kkusn1bz1sbk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_virtual/" data-id="cjrnbe4ea003aiwuscmoen7u9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/list/">list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/set/">set</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vector/">vector</a></li></ul>
@@ -798,7 +798,7 @@ C++风格
           </li>
         
           <li>
-            <a href="/2017/04/13/Other_undefined/">杂项</a>
+            <a href="/2017/04/13/Other_MarkdownGuide/">Markdown&amp;MarkdownPad编辑器</a>
           </li>
         
       </ul>

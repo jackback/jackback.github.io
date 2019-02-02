@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 安装Git和node.js从官网下载对应平台binary 包，安装（linux直接将bin lib目录的文件cp到usr/local对应目录下，Window直接点击安装） Ubuntu平台:     sudo apt-get install git-core     curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-02T09:38:00.720Z">
+<meta property="og:updated_time" content="2019-02-02T10:04:40.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo入手">
 <meta name="twitter:description" content="1. 安装Git和node.js从官网下载对应平台binary 包，安装（linux直接将bin lib目录的文件cp到usr/local对应目录下，Window直接点击安装） Ubuntu平台:     sudo apt-get install git-core     curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh">
@@ -102,25 +102,35 @@ Windows平台:
     下载并安装https://nodejs.org/en/download/
 </code></pre><h4 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h4><pre><code>npm install hexo-cli -g   //终端或者cmd命令行
 </code></pre><a id="more"></a>
-<h4 id="3-新建blog"><a href="#3-新建blog" class="headerlink" title="3. 新建blog"></a>3. 新建blog</h4><pre><code>hexo init blog
+<h4 id="3-新建blog"><a href="#3-新建blog" class="headerlink" title="3. 新建blog"></a>3. 新建blog</h4><pre><code>hexo init blog //创建网站所需要的文件
 cd blog
-npm install
-hexo server
+npm install    //安装依赖包
+hexo server //启动一个本都服务，预览下 http://localhost:4000
 </code></pre><h4 id="3-解决一个warning"><a href="#3-解决一个warning" class="headerlink" title="3. 解决一个warning"></a>3. 解决一个warning</h4><pre><code>npm install -g npm@3.3.12
 npm install hexo-deployer-git --save
 </code></pre><h4 id="4-配置-config-yml"><a href="#4-配置-config-yml" class="headerlink" title="4. 配置_config.yml"></a>4. 配置_config.yml</h4><pre><code>language: zh-CN
 deploy:
   type: git
-  repo: &lt;repository url&gt;
+  repo: &lt;repository url&gt;   //如果是windows上搭建环境的话，配置http协议的可以避免ssh-key
   branch: [branch]
   message: [message]
 </code></pre><h4 id="5-部署"><a href="#5-部署" class="headerlink" title="5. 部署"></a>5. 部署</h4><pre><code>hexo deploy -generate   //hexo d -g 
+</code></pre><h3 id="6-后续常用命令"><a href="#6-后续常用命令" class="headerlink" title="6. 后续常用命令"></a>6. 后续常用命令</h3><pre><code>本地预览 
+    hexo g //完整命令为hexo generate，用于生成静态文件 
+    hexo s //完整命令为hexo server，用于启动服务器，主要用来本地预览 
+服务器部署
+    hexo g //完整命令为hexo generate，用于生成静态文件 
+    hexo d //完整命令为hexo deploy，用于将本地文件发布到github上 
+    或者 hexo d -g //先generate再deploy
+
+新建一篇文章
+    hexo n //完整命令为hexo new，用于新建一篇文章
 </code></pre><h4 id="附（参考）"><a href="#附（参考）" class="headerlink" title="附（参考）"></a>附（参考）</h4><p><a href="https://hexo.io/docs/index.html" target="_blank" rel="noopener">https://hexo.io/docs/index.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/07/Other_HexoSetUp/" data-id="cjrnarm5j004gkkus6wy2kp77" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/07/Other_HexoSetUp/" data-id="cjrnbe4ha00b3iwusolcx2uco" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
@@ -217,7 +227,7 @@ deploy:
           </li>
         
           <li>
-            <a href="/2017/04/13/Other_undefined/">杂项</a>
+            <a href="/2017/04/13/Other_MarkdownGuide/">Markdown&amp;MarkdownPad编辑器</a>
           </li>
         
       </ul>

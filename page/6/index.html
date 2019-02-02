@@ -102,7 +102,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_STL_Container/" data-id="cjrnarm4u002skkusgtvfklt2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_STL_Container/" data-id="cjrnbe4e2002qiwusptf5zir5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/list/">list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/set/">set</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vector/">vector</a></li></ul>
@@ -147,134 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_BaseGrammar/" data-id="cjrnarm4q002mkkustpxj58e5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/constructor/">constructor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/destructor/">destructor</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Lang_Java_public_protected_private" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/28/Lang_Java_public_protected_private/" class="article-date">
-  <time datetime="2016-05-27T16:00:00.000Z" itemprop="datePublished">2016-05-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Lang_Java_public_protected_private/">Java public/protected/private</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>用于修饰类或者修饰成员变量。</p>
-<h1 id="1-基本规则"><a href="#1-基本规则" class="headerlink" title="1. 基本规则"></a>1. 基本规则</h1><h3 id="public-公有访问权限"><a href="#public-公有访问权限" class="headerlink" title="public(公有访问权限)"></a>public(公有访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰类                     //公共类，所有包可见<br>  ?修饰内部类?</p>
-<h3 id="protected-继承访问权限"><a href="#protected-继承访问权限" class="headerlink" title="protected(继承访问权限)"></a>protected(继承访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰内部类                 //基类和派生类可见；包内可见</p>
-<h3 id="default-friendly-包访问权限"><a href="#default-friendly-包访问权限" class="headerlink" title="default (friendly) (包访问权限)"></a>default (friendly) (包访问权限)</h3><p>  默认权限是包内访问。即未指定权限关键字的类成员，只有包内的类的成员方法才可以访问。<br>  类无修饰: 包内可见<br>  成员变量/方法无修饰: 包内可见<br>  内部类无修饰: 包内可见?</p>
-<h3 id="private-私有访问权限"><a href="#private-私有访问权限" class="headerlink" title="private(私有访问权限)"></a>private(私有访问权限)</h3><p>  修饰类成员变量/方法        //基类可见<br>  修饰内部类                 //基类可见</p>
-<h3 id="继承派生权限"><a href="#继承派生权限" class="headerlink" title="继承派生权限"></a>继承派生权限</h3><p>  Java 使用extends关键字进行派生基类，只有公共继承</p>
-<h1 id="1-public-用法示例"><a href="#1-public-用法示例" class="headerlink" title="1. public 用法示例"></a>1. public 用法示例</h1><p>/<em>Animal.java</em>/<br>package me.jingg.java;         //Java 以包为访问单元(一个包可有多个文件多个类)</p>
-<p>public abstract class Animal { //公共类: 可以通过import me.jingg.java.Animal 继承使用<br>    protected String name;<br>    protected int age;</p>
-<pre><code>private void eatBase() {}
-public void eat() {}
-public void run() {}
-public void showInfo() {}
-</code></pre><p>}</p>
-<p>/<em>AccessRule.java</em>/<br>package me.jingg.java;<br>//一个Java文件只能有一个public类(public的类名必须与文件名一致)，一个Java文件是一个编译单元，每个编译单元都有单一的公共接口—即public类<br>public class AccessRule extends Animal implements xxx {  //公共类: 可以通过import me.jingg.java.AccessRule 引用<br>    private eat_fish_num; //static一般在有初始值的，值固定的 (private表示私有) (final: 1.不能再改;2.不会被重载; 3.不会被继承.)</p>
-<pre><code>public static void main(int argc, char **argv) {
-
-}
-</code></pre><p>}</p>
-<h1 id="2-抽象接口"><a href="#2-抽象接口" class="headerlink" title="2. 抽象接口"></a>2. 抽象接口</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_Java_public_protected_private/" data-id="cjrnarm5b003ukkus12ygx5vh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/protected/">protected</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/public/">public</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Lang_CPP_Constructor_Destructor" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/28/Lang_CPP_Constructor_Destructor/" class="article-date">
-  <time datetime="2016-05-27T16:00:00.000Z" itemprop="datePublished">2016-05-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/28/Lang_CPP_Constructor_Destructor/">C++的构造函数和析构函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>构造函数调用顺序：Base::Constructor-&gt;Sub::Constructor<br>析构函数调用顺序：Sub::Destructor-&gt;Base::Destructor<br>一个类中只能有一个默认构造函数（提供了无参数构造函数或者默认参数构造函数，都属于默认构造函数，只能选其一）</p>
-<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><p>#include <iostream><br>using namespace std;</iostream></p>
-<p>class Base {<br>public:<br>    Base()  { cout &lt;&lt; “Base:Base()” &lt;&lt; endl;}<br>    virtual ~Base() { cout &lt;&lt; “Base:~Base()” &lt;&lt; endl;}</p>
-<pre><code>virtual void showInfo() { cout &lt;&lt; &quot;Base::showInfo()&quot; &lt;&lt; endl;}
-</code></pre><p>};</p>
-<p>class Sub : public Base {<br>private:<br>    int data;<br>public:<br>    //Sub() {data = 0;}                   //默认构造函数（只选其一）<br>    Sub(int data=4) {this-&gt;data = data; cout &lt;&lt; “Sub:~Sub(int data=4)” &lt;&lt; endl;} //默认构造函数（只选其一）<br>    void v3()     { cout &lt;&lt; “Call Sub::v3, data = “ &lt;&lt; data &lt;&lt; endl; }</p>
-<pre><code>~Sub() {cout &lt;&lt; &quot;Sub:~Sub()&quot; &lt;&lt; endl;}
-
-virtual void showInfo() { cout &lt;&lt; &quot;Sub::showInfo()&quot; &lt;&lt; endl;}
-</code></pre><p>};</p>
-<p>int main(int argc, char** argv) {</p>
-<pre><code>Sub* s = new Sub();
-s-&gt;showInfo();
-delete s;
-
-Base* s2 = new Sub();
-s2-&gt;showInfo();
-delete s2; 
-/*如果基类析构函数不加virtual;这样的删除只能属于静态编译调用的是基类析构，
-所以只删除基类对象，而我们想要的是调用Sub类析构(Sub类析构会自动调用Base类析构)
-*/
-return 0;
-</code></pre><p>}</p>
-<h1 id="私有构造-析构函数"><a href="#私有构造-析构函数" class="headerlink" title="私有构造/析构函数"></a>私有构造/析构函数</h1><p>class singleton {<br>private:<br>   singleton()  {}<br>   ~singleton() {}</p>
-<p>public:<br>    static singleton* GetSingleton(){<br>        return new singleton();<br>    }<br>};</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_Constructor_Destructor/" data-id="cjrnarm4r002pkkuszm9taez9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_BaseGrammar/" data-id="cjrnbe4e0002niwusxrt6bdv1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/constructor/">constructor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/destructor/">destructor</a></li></ul>
@@ -342,10 +215,137 @@ public void showInfo() { //定义
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/28/Lang_Java_abstract/" data-id="cjrnarm55003hkkusjs50oej0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/28/Lang_Java_abstract/" data-id="cjrnbe4eh003niwusv1ggnxv3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/abstract/">abstract</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/抽象/">抽象</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/继承/">继承</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lang_CPP_Constructor_Destructor" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/28/Lang_CPP_Constructor_Destructor/" class="article-date">
+  <time datetime="2016-05-27T16:00:00.000Z" itemprop="datePublished">2016-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/28/Lang_CPP_Constructor_Destructor/">C++的构造函数和析构函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>构造函数调用顺序：Base::Constructor-&gt;Sub::Constructor<br>析构函数调用顺序：Sub::Destructor-&gt;Base::Destructor<br>一个类中只能有一个默认构造函数（提供了无参数构造函数或者默认参数构造函数，都属于默认构造函数，只能选其一）</p>
+<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><p>#include <iostream><br>using namespace std;</iostream></p>
+<p>class Base {<br>public:<br>    Base()  { cout &lt;&lt; “Base:Base()” &lt;&lt; endl;}<br>    virtual ~Base() { cout &lt;&lt; “Base:~Base()” &lt;&lt; endl;}</p>
+<pre><code>virtual void showInfo() { cout &lt;&lt; &quot;Base::showInfo()&quot; &lt;&lt; endl;}
+</code></pre><p>};</p>
+<p>class Sub : public Base {<br>private:<br>    int data;<br>public:<br>    //Sub() {data = 0;}                   //默认构造函数（只选其一）<br>    Sub(int data=4) {this-&gt;data = data; cout &lt;&lt; “Sub:~Sub(int data=4)” &lt;&lt; endl;} //默认构造函数（只选其一）<br>    void v3()     { cout &lt;&lt; “Call Sub::v3, data = “ &lt;&lt; data &lt;&lt; endl; }</p>
+<pre><code>~Sub() {cout &lt;&lt; &quot;Sub:~Sub()&quot; &lt;&lt; endl;}
+
+virtual void showInfo() { cout &lt;&lt; &quot;Sub::showInfo()&quot; &lt;&lt; endl;}
+</code></pre><p>};</p>
+<p>int main(int argc, char** argv) {</p>
+<pre><code>Sub* s = new Sub();
+s-&gt;showInfo();
+delete s;
+
+Base* s2 = new Sub();
+s2-&gt;showInfo();
+delete s2; 
+/*如果基类析构函数不加virtual;这样的删除只能属于静态编译调用的是基类析构，
+所以只删除基类对象，而我们想要的是调用Sub类析构(Sub类析构会自动调用Base类析构)
+*/
+return 0;
+</code></pre><p>}</p>
+<h1 id="私有构造-析构函数"><a href="#私有构造-析构函数" class="headerlink" title="私有构造/析构函数"></a>私有构造/析构函数</h1><p>class singleton {<br>private:<br>   singleton()  {}<br>   ~singleton() {}</p>
+<p>public:<br>    static singleton* GetSingleton(){<br>        return new singleton();<br>    }<br>};</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/28/Lang_CPP_Constructor_Destructor/" data-id="cjrnbe4e3002uiwus3mx5jzjk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/constructor/">constructor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/destructor/">destructor</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lang_Java_public_protected_private" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/28/Lang_Java_public_protected_private/" class="article-date">
+  <time datetime="2016-05-27T16:00:00.000Z" itemprop="datePublished">2016-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/28/Lang_Java_public_protected_private/">Java public/protected/private</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用于修饰类或者修饰成员变量。</p>
+<h1 id="1-基本规则"><a href="#1-基本规则" class="headerlink" title="1. 基本规则"></a>1. 基本规则</h1><h3 id="public-公有访问权限"><a href="#public-公有访问权限" class="headerlink" title="public(公有访问权限)"></a>public(公有访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰类                     //公共类，所有包可见<br>  ?修饰内部类?</p>
+<h3 id="protected-继承访问权限"><a href="#protected-继承访问权限" class="headerlink" title="protected(继承访问权限)"></a>protected(继承访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰内部类                 //基类和派生类可见；包内可见</p>
+<h3 id="default-friendly-包访问权限"><a href="#default-friendly-包访问权限" class="headerlink" title="default (friendly) (包访问权限)"></a>default (friendly) (包访问权限)</h3><p>  默认权限是包内访问。即未指定权限关键字的类成员，只有包内的类的成员方法才可以访问。<br>  类无修饰: 包内可见<br>  成员变量/方法无修饰: 包内可见<br>  内部类无修饰: 包内可见?</p>
+<h3 id="private-私有访问权限"><a href="#private-私有访问权限" class="headerlink" title="private(私有访问权限)"></a>private(私有访问权限)</h3><p>  修饰类成员变量/方法        //基类可见<br>  修饰内部类                 //基类可见</p>
+<h3 id="继承派生权限"><a href="#继承派生权限" class="headerlink" title="继承派生权限"></a>继承派生权限</h3><p>  Java 使用extends关键字进行派生基类，只有公共继承</p>
+<h1 id="1-public-用法示例"><a href="#1-public-用法示例" class="headerlink" title="1. public 用法示例"></a>1. public 用法示例</h1><p>/<em>Animal.java</em>/<br>package me.jingg.java;         //Java 以包为访问单元(一个包可有多个文件多个类)</p>
+<p>public abstract class Animal { //公共类: 可以通过import me.jingg.java.Animal 继承使用<br>    protected String name;<br>    protected int age;</p>
+<pre><code>private void eatBase() {}
+public void eat() {}
+public void run() {}
+public void showInfo() {}
+</code></pre><p>}</p>
+<p>/<em>AccessRule.java</em>/<br>package me.jingg.java;<br>//一个Java文件只能有一个public类(public的类名必须与文件名一致)，一个Java文件是一个编译单元，每个编译单元都有单一的公共接口—即public类<br>public class AccessRule extends Animal implements xxx {  //公共类: 可以通过import me.jingg.java.AccessRule 引用<br>    private eat_fish_num; //static一般在有初始值的，值固定的 (private表示私有) (final: 1.不能再改;2.不会被重载; 3.不会被继承.)</p>
+<pre><code>public static void main(int argc, char **argv) {
+
+}
+</code></pre><p>}</p>
+<h1 id="2-抽象接口"><a href="#2-抽象接口" class="headerlink" title="2. 抽象接口"></a>2. 抽象接口</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/28/Lang_Java_public_protected_private/" data-id="cjrnbe4en0041iwusgx0b36b6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/private/">private</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/protected/">protected</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/public/">public</a></li></ul>
 
     </footer>
   </div>
@@ -408,7 +408,7 @@ public void showInfo() { //定义
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/27/Android_Java_reflect/" data-id="cjrnarm2x000akkusb7ojf4mn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/27/Android_Java_reflect/" data-id="cjrnbe4ca000eiwush2t7gt9u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reflect/">reflect</a></li></ul>
@@ -456,7 +456,7 @@ public void showInfo() { //定义
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/27/Lang_Java_reflect/" data-id="cjrnarm5e0042kkusd68jdvcg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/27/Lang_Java_reflect/" data-id="cjrnbe4em003yiwusg8yc5rhw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reflect/">reflect</a></li></ul>
@@ -510,101 +510,10 @@ public void showInfo() { //定义
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/27/Lang_Java_newInstance/" data-id="cjrnarm5c003ykkusmislce2l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/27/Lang_Java_newInstance/" data-id="cjrnbe4ek003uiwuss8psa5v4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/newInstance/">newInstance</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Android_dumpstack" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/26/Android_dumpstack/" class="article-date">
-  <time datetime="2016-05-26T07:13:00.000Z" itemprop="datePublished">2016-05-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/26/Android_dumpstack/">Android 打印函数调用栈</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="0-ActivityThread"><a href="#0-ActivityThread" class="headerlink" title="0. ActivityThread"></a>0. ActivityThread</h1><pre><code>StackTraceElement st[]= Thread.currentThread().getStackTrace();  
-for(int i=0;i&lt;st.length;i++)  
-    System.out.println(i+&quot;:&quot;+st[i]);  
-</code></pre><h1 id="1-Java层打印函数调用栈的方法"><a href="#1-Java层打印函数调用栈的方法" class="headerlink" title="1. Java层打印函数调用栈的方法"></a>1. Java层打印函数调用栈的方法</h1><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1:"></a>方法1:</h3><pre><code>StackTraceElement[] stes = new Throwable().getStackTrace();
-if(stes.length &gt;= 1)
-{
-  for(int i = 1; i &lt; stes.length; i++)
-  {
-    Log.d(TAG, &quot;File:&quot; + stes[i].getFileName() + &quot;, Line: &quot; + stes[i].getLineNumber() + &quot;, MethodName:&quot; + stes[i].getMethodName());
-  }
-
-  for(StackTraceElement elem : stes)
-  {
-    System.out.println(elem.getClassName() + &quot; &quot; + elem.getMethodName());
-  }
-}
-</code></pre><h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2:"></a>方法2:</h3><pre><code>StackTraceElement[] stes = Thread.getAllStackTraces().get(Thread.currentThread());
-for(StackTraceElement elem : stes)
-{
-  System.out.println(elem.getClassName() + &quot; &quot; + elem.getMethodName());
-}
-</code></pre><h3 id="方法3"><a href="#方法3" class="headerlink" title="方法3:"></a>方法3:</h3><pre><code>Throwable throwable = new Throwable(); Log.w(LOGTAG, Log.getStackTraceString(throwable)); 
-或者
-Log.d(TAG,Log.getStackTraceString(new Throwable()));
-</code></pre><h3 id="方法3-1"><a href="#方法3-1" class="headerlink" title="方法3:"></a>方法3:</h3><pre><code>java.util.Map&lt;Thread, StackTraceElement[]&gt; ts = Thread.getAllStackTraces();
-StackTraceElement[] stes = ts.get(Thread.currentThread());
-for (StackTraceElement elem : stes)
-{
-  Log.d(TAG, &quot;SS &quot;, elem.toString());
-}
-</code></pre><h3 id="方法4"><a href="#方法4" class="headerlink" title="方法4:"></a>方法4:</h3><pre><code>(new Exception()).printStackTrace();
-或
-Exception ex = new Exception(&quot;dingran&quot;);
-ex.printStackTrace();
-备注:此方法打印出的TAG是在W/System.err(4275)中;
-</code></pre><h3 id="方法5"><a href="#方法5" class="headerlink" title="方法5:"></a>方法5:</h3><pre><code>RuntimeException here = new RuntimeException(&quot;here&quot;);
-here.fillInStackTrace();
-Log.w(TAG, &quot;Called: &quot; + this, here);
-</code></pre><h1 id="2-Native层打印调用栈方法"><a href="#2-Native层打印调用栈方法" class="headerlink" title="2. Native层打印调用栈方法"></a>2. Native层打印调用栈方法</h1><h3 id="1、打印C-函数调用栈"><a href="#1、打印C-函数调用栈" class="headerlink" title="1、打印C++函数调用栈:"></a>1、打印C++函数调用栈:</h3><pre><code>#include &lt;utils/CallStack.h&gt;
-CallStack stack;
-stack.update();
-stack.dump();
-LOCAL_SHARED_LIBRARIES += libutils
-</code></pre><p>备注:下面操作是可选操作,但加上去之后会有一些额外的功能;</p>
-<pre><code>#define HAVE_DLADDR 1 --&gt; 可以从lib中自己转成C++代码行,不需要手动反编译;
-#define HAVE_CXXABI 1 --&gt; 将C++已被name mangling的函数名转化为源文件中定义的函数名;
-</code></pre><p>并在文件frameworks/base/libs/utils/Android.mk中大约105行(LOCAL_SHARED_LIBRARIES)后添加<br>    ifeq ($(TARGET_OS),linux)<br>    LOCAL_SHARED_LIBRARIES += libdl<br>    endif<br>重新编译push生成的libutils.so到/system/lib/目录下,重启设备;<br>此外,由于CallStack.dump中使用的LOGD进行的打印,因此需要将后台的Log Level设置为D一下才能出来;</p>
-<h3 id="2、打印C函数调用栈"><a href="#2、打印C函数调用栈" class="headerlink" title="2、打印C函数调用栈:"></a>2、打印C函数调用栈:</h3><p>可以参考CallStack.cpp的实现,通过调用_Unwind_Backtrace完成;</p>
-<h1 id="3-Kernel层打印调用栈方法"><a href="#3-Kernel层打印调用栈方法" class="headerlink" title="3. Kernel层打印调用栈方法"></a>3. Kernel层打印调用栈方法</h1><p>使用函数dump_stack()来打印出函数之间的调用关系;<br>另外,使用宏BUG()、BUG_ON(xxxx)、WARN()、WARN_ON()、BUILD_BUG_ON()和函数panic(“foo is %ld\n”,foo)也可以在内核中打印调试信息;<br>其中,宏WARN_ON()最终会调用函数dump_stack();</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/26/Android_dumpstack/" data-id="cjrnarm42001ckkus70ojs7ix" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack/">stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trace/">trace</a></li></ul>
 
     </footer>
   </div>
@@ -702,10 +611,101 @@ if (isDebug)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/26/Android_Log/" data-id="cjrnarm33000hkkusnz8cuuum" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/26/Android_Log/" data-id="cjrnbe4cf000jiwusuqcblkyn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trace/">trace</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android_dumpstack" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/26/Android_dumpstack/" class="article-date">
+  <time datetime="2016-05-26T07:13:00.000Z" itemprop="datePublished">2016-05-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/26/Android_dumpstack/">Android 打印函数调用栈</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0-ActivityThread"><a href="#0-ActivityThread" class="headerlink" title="0. ActivityThread"></a>0. ActivityThread</h1><pre><code>StackTraceElement st[]= Thread.currentThread().getStackTrace();  
+for(int i=0;i&lt;st.length;i++)  
+    System.out.println(i+&quot;:&quot;+st[i]);  
+</code></pre><h1 id="1-Java层打印函数调用栈的方法"><a href="#1-Java层打印函数调用栈的方法" class="headerlink" title="1. Java层打印函数调用栈的方法"></a>1. Java层打印函数调用栈的方法</h1><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1:"></a>方法1:</h3><pre><code>StackTraceElement[] stes = new Throwable().getStackTrace();
+if(stes.length &gt;= 1)
+{
+  for(int i = 1; i &lt; stes.length; i++)
+  {
+    Log.d(TAG, &quot;File:&quot; + stes[i].getFileName() + &quot;, Line: &quot; + stes[i].getLineNumber() + &quot;, MethodName:&quot; + stes[i].getMethodName());
+  }
+
+  for(StackTraceElement elem : stes)
+  {
+    System.out.println(elem.getClassName() + &quot; &quot; + elem.getMethodName());
+  }
+}
+</code></pre><h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2:"></a>方法2:</h3><pre><code>StackTraceElement[] stes = Thread.getAllStackTraces().get(Thread.currentThread());
+for(StackTraceElement elem : stes)
+{
+  System.out.println(elem.getClassName() + &quot; &quot; + elem.getMethodName());
+}
+</code></pre><h3 id="方法3"><a href="#方法3" class="headerlink" title="方法3:"></a>方法3:</h3><pre><code>Throwable throwable = new Throwable(); Log.w(LOGTAG, Log.getStackTraceString(throwable)); 
+或者
+Log.d(TAG,Log.getStackTraceString(new Throwable()));
+</code></pre><h3 id="方法3-1"><a href="#方法3-1" class="headerlink" title="方法3:"></a>方法3:</h3><pre><code>java.util.Map&lt;Thread, StackTraceElement[]&gt; ts = Thread.getAllStackTraces();
+StackTraceElement[] stes = ts.get(Thread.currentThread());
+for (StackTraceElement elem : stes)
+{
+  Log.d(TAG, &quot;SS &quot;, elem.toString());
+}
+</code></pre><h3 id="方法4"><a href="#方法4" class="headerlink" title="方法4:"></a>方法4:</h3><pre><code>(new Exception()).printStackTrace();
+或
+Exception ex = new Exception(&quot;dingran&quot;);
+ex.printStackTrace();
+备注:此方法打印出的TAG是在W/System.err(4275)中;
+</code></pre><h3 id="方法5"><a href="#方法5" class="headerlink" title="方法5:"></a>方法5:</h3><pre><code>RuntimeException here = new RuntimeException(&quot;here&quot;);
+here.fillInStackTrace();
+Log.w(TAG, &quot;Called: &quot; + this, here);
+</code></pre><h1 id="2-Native层打印调用栈方法"><a href="#2-Native层打印调用栈方法" class="headerlink" title="2. Native层打印调用栈方法"></a>2. Native层打印调用栈方法</h1><h3 id="1、打印C-函数调用栈"><a href="#1、打印C-函数调用栈" class="headerlink" title="1、打印C++函数调用栈:"></a>1、打印C++函数调用栈:</h3><pre><code>#include &lt;utils/CallStack.h&gt;
+CallStack stack;
+stack.update();
+stack.dump();
+LOCAL_SHARED_LIBRARIES += libutils
+</code></pre><p>备注:下面操作是可选操作,但加上去之后会有一些额外的功能;</p>
+<pre><code>#define HAVE_DLADDR 1 --&gt; 可以从lib中自己转成C++代码行,不需要手动反编译;
+#define HAVE_CXXABI 1 --&gt; 将C++已被name mangling的函数名转化为源文件中定义的函数名;
+</code></pre><p>并在文件frameworks/base/libs/utils/Android.mk中大约105行(LOCAL_SHARED_LIBRARIES)后添加<br>    ifeq ($(TARGET_OS),linux)<br>    LOCAL_SHARED_LIBRARIES += libdl<br>    endif<br>重新编译push生成的libutils.so到/system/lib/目录下,重启设备;<br>此外,由于CallStack.dump中使用的LOGD进行的打印,因此需要将后台的Log Level设置为D一下才能出来;</p>
+<h3 id="2、打印C函数调用栈"><a href="#2、打印C函数调用栈" class="headerlink" title="2、打印C函数调用栈:"></a>2、打印C函数调用栈:</h3><p>可以参考CallStack.cpp的实现,通过调用_Unwind_Backtrace完成;</p>
+<h1 id="3-Kernel层打印调用栈方法"><a href="#3-Kernel层打印调用栈方法" class="headerlink" title="3. Kernel层打印调用栈方法"></a>3. Kernel层打印调用栈方法</h1><p>使用函数dump_stack()来打印出函数之间的调用关系;<br>另外,使用宏BUG()、BUG_ON(xxxx)、WARN()、WARN_ON()、BUILD_BUG_ON()和函数panic(“foo is %ld\n”,foo)也可以在内核中打印调试信息;<br>其中,宏WARN_ON()最终会调用函数dump_stack();</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/26/Android_dumpstack/" data-id="cjrnbe4db001diwusmtx7w4yp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack/">stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trace/">trace</a></li></ul>
 
     </footer>
   </div>
@@ -787,7 +787,7 @@ if (isDebug)
           </li>
         
           <li>
-            <a href="/2017/04/13/Other_undefined/">杂项</a>
+            <a href="/2017/04/13/Other_MarkdownGuide/">Markdown&amp;MarkdownPad编辑器</a>
           </li>
         
       </ul>

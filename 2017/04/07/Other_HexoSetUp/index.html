@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Noobzhang">
 <meta property="og:description" content="1. 安装Git和node.js从官网下载对应平台binary 包，安装（linux直接将bin lib目录的文件cp到usr/local对应目录下，Window直接点击安装） Ubuntu平台:     sudo apt-get install git-core     curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-18T15:05:19.550Z">
+<meta property="og:updated_time" content="2019-02-18T15:08:15.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo入手">
 <meta name="twitter:description" content="1. 安装Git和node.js从官网下载对应平台binary 包，安装（linux直接将bin lib目录的文件cp到usr/local对应目录下，Window直接点击安装） Ubuntu平台:     sudo apt-get install git-core     curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh">
@@ -383,7 +383,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-18 23:05:19" itemprop="dateModified" datetime="2019-02-18T23:05:19+08:00">2019-02-18</time>
+                <time title="修改时间：2019-02-18 23:08:15" itemprop="dateModified" datetime="2019-02-18T23:08:15+08:00">2019-02-18</time>
               
             
           </span>
@@ -462,10 +462,15 @@ deploy:
 git config --global user.name &quot;252648955@qq.com&quot;
 </code></pre><h4 id="7-部署"><a href="#7-部署" class="headerlink" title="7. 部署"></a>7. 部署</h4><pre><code>hexo deploy -generate   //hexo d -g 
 
-可能的错误：
+[可能遇到的错误]：
 如果不是第一次推动到https://github.com/jackback/jackback.github.io.git 仓库，需要先git clone 下来，
 然后替换下hexo d -g 生成的.deploy_git目录
 然后手动做一次git push (git bash 终端执行)，后面就可以执行hexo d -g 不是报错了
+
+[HTTPS方式的Git仓每次需要输入密码的问题]:
+记住密码（默认15分钟）：git config --global credential.helper cache
+自己定义时间（一小时后失效）：git config credential.helper &apos;cache --timeout=3600&apos;
+永久存储密码：git config --global credential.helper store
 </code></pre><h4 id="8-后续常用命令"><a href="#8-后续常用命令" class="headerlink" title="8. 后续常用命令"></a>8. 后续常用命令</h4><pre><code>本地预览 
     hexo g //完整命令为hexo generate，用于生成静态文件 
     hexo s //完整命令为hexo server，用于启动服务器，主要用来本地预览 

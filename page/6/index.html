@@ -501,7 +501,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_abstract/">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_virtual/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jin">
@@ -521,7 +521,191 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/05/28/Lang_Java_abstract/" class="post-title-link" itemprop="url">Java abstract</a>
+                <a href="/2016/05/28/Lang_CPP_virtual/" class="post-title-link" itemprop="url">C++ virtual</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 11:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T11:22:33+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-23 01:37:03" itemprop="dateModified" datetime="2018-12-23T01:37:03+08:00">2018-12-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>C++ 中virtual 用于修饰函数，标记函数可以动态绑定</p>
+<ol>
+<li>虚函数</li>
+<li>纯虚函数(基类为抽象类)</li>
+</ol>
+<h1 id="虚函数表"><a href="#虚函数表" class="headerlink" title="虚函数表"></a>虚函数表</h1><p>编译器会给带虚函数的类添加一个虚函数表指针</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v1</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Call Base::v1"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Call Base::v2"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span> :</span> <span class="keyword">public</span> Base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v2</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Call Sub::v2"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">v3</span><span class="params">()</span>         </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Call Sub::v3"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//Only to explore principle</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"size of Base: "</span>&lt;&lt;<span class="keyword">sizeof</span>(Base) &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//4 bytes</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*Func)</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">    Base b;</span><br><span class="line">    Base *sPtr = <span class="keyword">new</span> Sub();    <span class="comment">//Sub的ptr</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span>* vptr = (<span class="keyword">long</span>*)(*(<span class="keyword">long</span>*)sPtr) <span class="comment">//Sub的ptr地址中第一个四字节是_vptr，即虚拟表指针。</span></span><br><span class="line">    Func v1 = (Func)vptr[<span class="number">0</span>];    <span class="comment">//</span></span><br><span class="line">    Func v2 = (Func)vptr[<span class="number">1</span>];    <span class="comment">//</span></span><br><span class="line"></span><br><span class="line">    v1(); <span class="comment">//Base::v1</span></span><br><span class="line">    v2(); <span class="comment">//Sub::v2</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Normal code</span></span><br><span class="line">    Base *bPtr = <span class="keyword">new</span> Sub();</span><br><span class="line">    bPtr-&gt;v1();   <span class="comment">//静态调用基类v1</span></span><br><span class="line">    bPtr-&gt;v2();   <span class="comment">//动态调用派生类v2</span></span><br><span class="line">    <span class="comment">//bPtr-&gt;v3(); //编译都不能通过，基类没有v3成员，而且也没有开通动态绑定，无法定位到派生类的v3。</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基类和派生类中虚函数内存示意图"><a href="#基类和派生类中虚函数内存示意图" class="headerlink" title="基类和派生类中虚函数内存示意图"></a>基类和派生类中虚函数内存示意图</h3><p>单继承<br><a href="https://i.loli.net/2018/12/22/5c1e0ba5a26af.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/22/5c1e0ba5a26af.png" alt="003_CPP_vptr.png"></a></p>
+<p>多重继承<br><a href="https://i.loli.net/2018/12/22/5c1e15f7e4f75.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/22/5c1e15f7e4f75.png" alt="003_CPP_vptr2.png"></a></p>
+<p>From : <a href="https://www.cnblogs.com/hushpa/p/5707475.html" target="_blank" rel="noopener">https://www.cnblogs.com/hushpa/p/5707475.html</a></p>
+<p>附：C++中的类所占内存空间<br>类所占内存的大小是由成员变量（静态变量除外）决定的，成员函数（这是笼统的说，后面会细说）是不计算在内的。<br>class CBase {}; //sizeof(CBase)=1； (C++要求每个实例在内存中都有独一无二的地址)<br>class CBase { int a; char p; }; //sizeof(CBase)=8; (4字节对齐)<br>class CBase { public: CBase(void); virtual ~CBase(void);  //sizeof(CBase)=12 (虚拟函数表指针_vptr占4个字节)<br>              private: int  a; char *p; };<br>class CSub : public CBase { public: CSub(void); ~CSub(void); virtual void test(); //sizeof(CSub)=16 (Base12+Sub4 以及共用_vptr)<br>                            private: int b; }; </p>
+<p>static修饰的静态变量：不占用内容，原因是编译器将其放在全局变量区。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_public_protected_private/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_Java_public_protected_private/" class="post-title-link" itemprop="url">Java public/protected/private</a>
               
             
           </h1>
@@ -563,7 +747,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-22 15:36:58" itemprop="dateModified" datetime="2018-12-22T15:36:58+08:00">2018-12-22</time>
+                <time title="修改时间：2018-12-22 14:34:36" itemprop="dateModified" datetime="2018-12-22T14:34:36+08:00">2018-12-22</time>
               
             
           </span>
@@ -617,33 +801,25 @@
       
         
           
-            <p>抽象可以修饰抽象类和抽象方法。<br>抽象类一般作为基类，提炼了派生类们相同的接口特征(但基类中不实现而在派生类中实现)和属性。<br>抽象接口，所在类一般也为基类，只有该方法可暂时不进行实现，而在派生类中实现。</p>
-<ol>
-<li>抽象类不能被实例化。</li>
-<li>抽象类中不一定要包含abstrace方法。即：抽象中可以没有abstract方法。</li>
-<li>一旦类中包含了abstract方法，那类该类必须声明为abstract类。</li>
-</ol>
-<h1 id="示例讲解"><a href="#示例讲解" class="headerlink" title="示例讲解"></a>示例讲解</h1><p>/<em>Animal.java ——————————————</em>/<br>package me.jingg.java.AbstractTest;</p>
-<p>public abstract class Animal { //abstract类不能实例化；供外部 包内类继承<br>    protected String name;<br>    protected int age;</p>
+            <p>用于修饰类或者修饰成员变量。</p>
+<h1 id="1-基本规则"><a href="#1-基本规则" class="headerlink" title="1. 基本规则"></a>1. 基本规则</h1><h3 id="public-公有访问权限"><a href="#public-公有访问权限" class="headerlink" title="public(公有访问权限)"></a>public(公有访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰类                     //公共类，所有包可见<br>  ?修饰内部类?</p>
+<h3 id="protected-继承访问权限"><a href="#protected-继承访问权限" class="headerlink" title="protected(继承访问权限)"></a>protected(继承访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰内部类                 //基类和派生类可见；包内可见</p>
+<h3 id="default-friendly-包访问权限"><a href="#default-friendly-包访问权限" class="headerlink" title="default (friendly) (包访问权限)"></a>default (friendly) (包访问权限)</h3><p>  默认权限是包内访问。即未指定权限关键字的类成员，只有包内的类的成员方法才可以访问。<br>  类无修饰: 包内可见<br>  成员变量/方法无修饰: 包内可见<br>  内部类无修饰: 包内可见?</p>
+<h3 id="private-私有访问权限"><a href="#private-私有访问权限" class="headerlink" title="private(私有访问权限)"></a>private(私有访问权限)</h3><p>  修饰类成员变量/方法        //基类可见<br>  修饰内部类                 //基类可见</p>
+<h3 id="继承派生权限"><a href="#继承派生权限" class="headerlink" title="继承派生权限"></a>继承派生权限</h3><p>  Java 使用extends关键字进行派生基类，只有公共继承</p>
+<h1 id="1-public-用法示例"><a href="#1-public-用法示例" class="headerlink" title="1. public 用法示例"></a>1. public 用法示例</h1><p>/<em>Animal.java</em>/<br>package me.jingg.java;         //Java 以包为访问单元(一个包可有多个文件多个类)</p>
+<p>public abstract class Animal { //公共类: 可以通过import me.jingg.java.Animal 继承使用<br>    protected String name;<br>    protected int age;</p>
 <pre><code>private void eatBase() {}
-public void eat() {}             //派生类可重写
-public void run() {}             //派生类可重写
-public abstract void showInfo(); //+abstract: 不确定具体函数定义的可以只声明, 后面再派生类中定义
+public void eat() {}
+public void run() {}
+public void showInfo() {}
 </code></pre><p>}</p>
-<p>/<em>Cat.java ———————————-</em>/<br>package me.jingg.java.AbstractTest;</p>
-<p>public class Cat {<br>    final private eat_fish_num;</p>
-<pre><code>public static main(int argc, char **argv) {
+<p>/<em>AccessRule.java</em>/<br>package me.jingg.java;<br>//一个Java文件只能有一个public类(public的类名必须与文件名一致)，一个Java文件是一个编译单元，每个编译单元都有单一的公共接口—即public类<br>public class AccessRule extends Animal implements xxx {  //公共类: 可以通过import me.jingg.java.AccessRule 引用<br>    private eat_fish_num; //static一般在有初始值的，值固定的 (private表示私有) (final: 1.不能再改;2.不会被重载; 3.不会被继承.)</p>
+<pre><code>public static void main(int argc, char **argv) {
 
-}
-
-public void run() { //重写
-    System.out.println(&quot;cat run&quot;)
-}
-public void showInfo() { //定义
-    System.out.println(&quot;I&apos;am a cat&quot;)
 }
 </code></pre><p>}</p>
-
+<h1 id="2-抽象接口"><a href="#2-抽象接口" class="headerlink" title="2. 抽象接口"></a>2. 抽象接口</h1>
           
         
       
@@ -1071,7 +1247,7 @@ return 0;
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_public_protected_private/">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_abstract/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jin">
@@ -1091,7 +1267,7 @@ return 0;
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/05/28/Lang_Java_public_protected_private/" class="post-title-link" itemprop="url">Java public/protected/private</a>
+                <a href="/2016/05/28/Lang_Java_abstract/" class="post-title-link" itemprop="url">Java abstract</a>
               
             
           </h1>
@@ -1133,7 +1309,7 @@ return 0;
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-22 14:34:36" itemprop="dateModified" datetime="2018-12-22T14:34:36+08:00">2018-12-22</time>
+                <time title="修改时间：2018-12-22 15:36:58" itemprop="dateModified" datetime="2018-12-22T15:36:58+08:00">2018-12-22</time>
               
             
           </span>
@@ -1187,25 +1363,33 @@ return 0;
       
         
           
-            <p>用于修饰类或者修饰成员变量。</p>
-<h1 id="1-基本规则"><a href="#1-基本规则" class="headerlink" title="1. 基本规则"></a>1. 基本规则</h1><h3 id="public-公有访问权限"><a href="#public-公有访问权限" class="headerlink" title="public(公有访问权限)"></a>public(公有访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰类                     //公共类，所有包可见<br>  ?修饰内部类?</p>
-<h3 id="protected-继承访问权限"><a href="#protected-继承访问权限" class="headerlink" title="protected(继承访问权限)"></a>protected(继承访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰内部类                 //基类和派生类可见；包内可见</p>
-<h3 id="default-friendly-包访问权限"><a href="#default-friendly-包访问权限" class="headerlink" title="default (friendly) (包访问权限)"></a>default (friendly) (包访问权限)</h3><p>  默认权限是包内访问。即未指定权限关键字的类成员，只有包内的类的成员方法才可以访问。<br>  类无修饰: 包内可见<br>  成员变量/方法无修饰: 包内可见<br>  内部类无修饰: 包内可见?</p>
-<h3 id="private-私有访问权限"><a href="#private-私有访问权限" class="headerlink" title="private(私有访问权限)"></a>private(私有访问权限)</h3><p>  修饰类成员变量/方法        //基类可见<br>  修饰内部类                 //基类可见</p>
-<h3 id="继承派生权限"><a href="#继承派生权限" class="headerlink" title="继承派生权限"></a>继承派生权限</h3><p>  Java 使用extends关键字进行派生基类，只有公共继承</p>
-<h1 id="1-public-用法示例"><a href="#1-public-用法示例" class="headerlink" title="1. public 用法示例"></a>1. public 用法示例</h1><p>/<em>Animal.java</em>/<br>package me.jingg.java;         //Java 以包为访问单元(一个包可有多个文件多个类)</p>
-<p>public abstract class Animal { //公共类: 可以通过import me.jingg.java.Animal 继承使用<br>    protected String name;<br>    protected int age;</p>
+            <p>抽象可以修饰抽象类和抽象方法。<br>抽象类一般作为基类，提炼了派生类们相同的接口特征(但基类中不实现而在派生类中实现)和属性。<br>抽象接口，所在类一般也为基类，只有该方法可暂时不进行实现，而在派生类中实现。</p>
+<ol>
+<li>抽象类不能被实例化。</li>
+<li>抽象类中不一定要包含abstrace方法。即：抽象中可以没有abstract方法。</li>
+<li>一旦类中包含了abstract方法，那类该类必须声明为abstract类。</li>
+</ol>
+<h1 id="示例讲解"><a href="#示例讲解" class="headerlink" title="示例讲解"></a>示例讲解</h1><p>/<em>Animal.java ——————————————</em>/<br>package me.jingg.java.AbstractTest;</p>
+<p>public abstract class Animal { //abstract类不能实例化；供外部 包内类继承<br>    protected String name;<br>    protected int age;</p>
 <pre><code>private void eatBase() {}
-public void eat() {}
-public void run() {}
-public void showInfo() {}
+public void eat() {}             //派生类可重写
+public void run() {}             //派生类可重写
+public abstract void showInfo(); //+abstract: 不确定具体函数定义的可以只声明, 后面再派生类中定义
 </code></pre><p>}</p>
-<p>/<em>AccessRule.java</em>/<br>package me.jingg.java;<br>//一个Java文件只能有一个public类(public的类名必须与文件名一致)，一个Java文件是一个编译单元，每个编译单元都有单一的公共接口—即public类<br>public class AccessRule extends Animal implements xxx {  //公共类: 可以通过import me.jingg.java.AccessRule 引用<br>    private eat_fish_num; //static一般在有初始值的，值固定的 (private表示私有) (final: 1.不能再改;2.不会被重载; 3.不会被继承.)</p>
-<pre><code>public static void main(int argc, char **argv) {
+<p>/<em>Cat.java ———————————-</em>/<br>package me.jingg.java.AbstractTest;</p>
+<p>public class Cat {<br>    final private eat_fish_num;</p>
+<pre><code>public static main(int argc, char **argv) {
 
 }
+
+public void run() { //重写
+    System.out.println(&quot;cat run&quot;)
+}
+public void showInfo() { //定义
+    System.out.println(&quot;I&apos;am a cat&quot;)
+}
 </code></pre><p>}</p>
-<h1 id="2-抽象接口"><a href="#2-抽象接口" class="headerlink" title="2. 抽象接口"></a>2. 抽象接口</h1>
+
           
         
       
@@ -1457,184 +1641,6 @@ public void showInfo() {}
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/27/Lang_Java_reflect/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/27/Lang_Java_reflect/" class="post-title-link" itemprop="url">Java为什么支持反射机制?</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-27 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-27T12:22:33+08:00">2016-05-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-05-18 15:48:20" itemprop="dateModified" datetime="2017-05-18T15:48:20+08:00">2017-05-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Java为什么能够支持Reflection？ 答案是Java运行时仍然拥有类型信息，它包含了这个类一切：它有哪些字段、哪些方法，各是何种保护级别等等，还有这个类依赖于哪些类。在Java中，类信息以对象的形式存放，这些对象是一种元对象，它们的类型就是Class。拥有了这些信息，无论是动态创建对象还是调用某些方法都是轻而易举的。在C++中，通过RTTI（运行时类型识别），我们也可以知道类的一些信息，但为什么C++中却没有 Reflection，原因是类型信息不完整。RTTI这个名字本身就告诉我们，C++的类型信息是用来进行类型识别的，因此，它也不需要其它额外的信息。并不是C++无法做到这一点，而是C++不希望给用户增加额外的负担。有所得，必然有所失，因此，C++放弃了元对象。关于这一点，C++之父 Bjarne Stroustrup在他的《C++语言的设计与演化》的14.2.8节中进行了深入的讨论。</p>
-<p>元对象是Java Reflection的物质基础，那它的精神基础又是什么呢？Java为什么要支持Reflection？</p>
-<p>经过上面的讨论，我们把这个问题再进一步，为什么Java要提供元对象？讨论这个问题，我们还要拉回到十年前，那时Java刚刚来到正式登上历史的舞台。Java实际上诞生在这之前的数年，那时候还叫Oak，环境所限使得这一划时代的杰作甫一出炉便被束之高阁。当Netscape掀起了为网络大戏的序幕，Java得以凤凰涅?，这其中很重要的一个原因就是Java是以网络为中心的。</p>
-<p>仔细观察，我们会发现，Java的整个基础架构的设计都是为网络服务。首当其冲的便是Java中最著名的跨平台。其实，在Java之前的年代，人们也需要考虑平台之间的可移植性，但这种移植大多数集中在源码一级，这也就是C语言可以流行的原因之一，在单机环境下，平台的差异并不那么明显。网络的出现使平台之间差异凸现出来，因为网络可能会连接各种各样的计算机和设备。没错，还有设备，你也许知道Java最初的开发是和嵌入式设备相关的。一旦应用可以跨平台，程序开发和后期管理维护工作将得到极大的简化，可移植性也从源码级晋升到二进制级（Java字节码）。所以，跨平台实际上也是为了网络打基础。Java中另一个重要的买点??安全性与网络之间的关系更为密切，谁都可以想出几条理由，把二者关联起来。</p>
-<p>再来具体看看Java的基础架构如何对网络进行支持的。还记得Java最初是怎么吸引人的吗？没错，Applet。熟悉原理的朋友都知道，Applet的运行是把远程的类文件下载到本地来执行的。相对于本地硬盘，网络给我们的感觉就是一个字????慢。如果Java采用传统可执行文件组织方式，即一个完整的可执行文件，把整个 Applet下载下来的运行，只怕等到花儿也谢了。Java采用的手法是把文件拆开，以类为单位进行组织，这就是我们今天见到的class文件。这样，执行的过程就变成第一个类下载之后就可以运行，大大节省了最初的等待时间。好的设计会把程序分成若干的模块，所以，绝大多数程序不可能写在一个类中。因此，类文件中必须包含它所用到类。对于引导部分，我们可以让它以特定的方式开始执行，比如把我们耳熟能详的main方法放在特定的字节，但对于没有定法的任意方法，是没有办法规定的，而一个类调用另一个类的方法就是这样随意，因此类文件中必须包含这个类方法的信息，进一步字段信息也会加进来，这样几乎一个完整类的信息就出来了，而这些信息对应的恰好是元对象。所以，元对象出现在Java基础架构中。有了元对象，Reflection也成了一件顺其自然的事情。有了Reflection，Java也就拥有了动态扩展的能力，这样就可以极大的提高程序的灵活性。</p>
-<p>关于Java基础结构对网络的支持还可以再说几句。class文件经过了精心的设计，本身相当紧凑，其目的就是为了方便在网络上传输，而JAR文件的出现，其目的也是为了方便网络传输，因为如果每次只传输一个类，大量的时间都被浪费在建立网络连接的过程中，JAR文件使得一次传输多个类成为可能，而且我们还知道JAR文件中的数据是经过压缩的，这样可以进一步减少下载时间。Java基础架构对网络的支持，《深入Java虚拟机》（第二版）的4.3节进行了很好阐述，有兴趣不妨看一下。对Reflection思考让我有机会对Java本身的设计进行深入的思考。一个好的软件设计需要一个核心理念作为支撑，所有的一切都是围绕核心进行的，而对于Java，这个核心就是网络。一次有趣的思考体验！</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/27/Lang_Java_newInstance/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1819,7 +1825,7 @@ public void showInfo() {}
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/26/Android_dumpstack/">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/27/Lang_Java_reflect/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jin">
@@ -1839,7 +1845,7 @@ public void showInfo() {}
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/05/26/Android_dumpstack/" class="post-title-link" itemprop="url">Android 打印函数调用栈</a>
+                <a href="/2016/05/27/Lang_Java_reflect/" class="post-title-link" itemprop="url">Java为什么支持反射机制?</a>
               
             
           </h1>
@@ -1864,7 +1870,7 @@ public void showInfo() {}
                 
               
 
-              <time title="创建时间：2016-05-26 15:13:00" itemprop="dateCreated datePublished" datetime="2016-05-26T15:13:00+08:00">2016-05-26</time>
+              <time title="创建时间：2016-05-27 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-27T12:22:33+08:00">2016-05-27</time>
             
 
             
@@ -1881,7 +1887,7 @@ public void showInfo() {}
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2017-05-18 17:39:32" itemprop="dateModified" datetime="2017-05-18T17:39:32+08:00">2017-05-18</time>
+                <time title="修改时间：2017-05-18 15:48:20" itemprop="dateModified" datetime="2017-05-18T15:48:20+08:00">2017-05-18</time>
               
             
           </span>
@@ -1898,7 +1904,7 @@ public void showInfo() {}
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
                 
                 
@@ -1935,55 +1941,12 @@ public void showInfo() {}
       
         
           
-            <h1 id="0-ActivityThread"><a href="#0-ActivityThread" class="headerlink" title="0. ActivityThread"></a>0. ActivityThread</h1><pre><code>StackTraceElement st[]= Thread.currentThread().getStackTrace();  
-for(int i=0;i&lt;st.length;i++)  
-    System.out.println(i+&quot;:&quot;+st[i]);  
-</code></pre><h1 id="1-Java层打印函数调用栈的方法"><a href="#1-Java层打印函数调用栈的方法" class="headerlink" title="1. Java层打印函数调用栈的方法"></a>1. Java层打印函数调用栈的方法</h1><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1:"></a>方法1:</h3><pre><code>StackTraceElement[] stes = new Throwable().getStackTrace();
-if(stes.length &gt;= 1)
-{
-  for(int i = 1; i &lt; stes.length; i++)
-  {
-    Log.d(TAG, &quot;File:&quot; + stes[i].getFileName() + &quot;, Line: &quot; + stes[i].getLineNumber() + &quot;, MethodName:&quot; + stes[i].getMethodName());
-  }
-
-  for(StackTraceElement elem : stes)
-  {
-    System.out.println(elem.getClassName() + &quot; &quot; + elem.getMethodName());
-  }
-}
-</code></pre><h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2:"></a>方法2:</h3><pre><code>StackTraceElement[] stes = Thread.getAllStackTraces().get(Thread.currentThread());
-for(StackTraceElement elem : stes)
-{
-  System.out.println(elem.getClassName() + &quot; &quot; + elem.getMethodName());
-}
-</code></pre><h3 id="方法3"><a href="#方法3" class="headerlink" title="方法3:"></a>方法3:</h3><pre><code>Throwable throwable = new Throwable(); Log.w(LOGTAG, Log.getStackTraceString(throwable)); 
-或者
-Log.d(TAG,Log.getStackTraceString(new Throwable()));
-</code></pre><h3 id="方法3-1"><a href="#方法3-1" class="headerlink" title="方法3:"></a>方法3:</h3><pre><code>java.util.Map&lt;Thread, StackTraceElement[]&gt; ts = Thread.getAllStackTraces();
-StackTraceElement[] stes = ts.get(Thread.currentThread());
-for (StackTraceElement elem : stes)
-{
-  Log.d(TAG, &quot;SS &quot;, elem.toString());
-}
-</code></pre><h3 id="方法4"><a href="#方法4" class="headerlink" title="方法4:"></a>方法4:</h3><pre><code>(new Exception()).printStackTrace();
-或
-Exception ex = new Exception(&quot;dingran&quot;);
-ex.printStackTrace();
-备注:此方法打印出的TAG是在W/System.err(4275)中;
-</code></pre><h3 id="方法5"><a href="#方法5" class="headerlink" title="方法5:"></a>方法5:</h3><pre><code>RuntimeException here = new RuntimeException(&quot;here&quot;);
-here.fillInStackTrace();
-Log.w(TAG, &quot;Called: &quot; + this, here);
-</code></pre><h1 id="2-Native层打印调用栈方法"><a href="#2-Native层打印调用栈方法" class="headerlink" title="2. Native层打印调用栈方法"></a>2. Native层打印调用栈方法</h1><h3 id="1、打印C-函数调用栈"><a href="#1、打印C-函数调用栈" class="headerlink" title="1、打印C++函数调用栈:"></a>1、打印C++函数调用栈:</h3><pre><code>#include &lt;utils/CallStack.h&gt;
-CallStack stack;
-stack.update();
-stack.dump();
-LOCAL_SHARED_LIBRARIES += libutils
-</code></pre><p>备注:下面操作是可选操作,但加上去之后会有一些额外的功能;</p>
-<pre><code>#define HAVE_DLADDR 1 --&gt; 可以从lib中自己转成C++代码行,不需要手动反编译;
-#define HAVE_CXXABI 1 --&gt; 将C++已被name mangling的函数名转化为源文件中定义的函数名;
-</code></pre><p>并在文件frameworks/base/libs/utils/Android.mk中大约105行(LOCAL_SHARED_LIBRARIES)后添加<br>    ifeq ($(TARGET_OS),linux)<br>    LOCAL_SHARED_LIBRARIES += libdl<br>    endif<br>重新编译push生成的libutils.so到/system/lib/目录下,重启设备;<br>此外,由于CallStack.dump中使用的LOGD进行的打印,因此需要将后台的Log Level设置为D一下才能出来;</p>
-<h3 id="2、打印C函数调用栈"><a href="#2、打印C函数调用栈" class="headerlink" title="2、打印C函数调用栈:"></a>2、打印C函数调用栈:</h3><p>可以参考CallStack.cpp的实现,通过调用_Unwind_Backtrace完成;</p>
-<h1 id="3-Kernel层打印调用栈方法"><a href="#3-Kernel层打印调用栈方法" class="headerlink" title="3. Kernel层打印调用栈方法"></a>3. Kernel层打印调用栈方法</h1><p>使用函数dump_stack()来打印出函数之间的调用关系;<br>另外,使用宏BUG()、BUG_ON(xxxx)、WARN()、WARN_ON()、BUILD_BUG_ON()和函数panic(“foo is %ld\n”,foo)也可以在内核中打印调试信息;<br>其中,宏WARN_ON()最终会调用函数dump_stack();</p>
+            <p>Java为什么能够支持Reflection？ 答案是Java运行时仍然拥有类型信息，它包含了这个类一切：它有哪些字段、哪些方法，各是何种保护级别等等，还有这个类依赖于哪些类。在Java中，类信息以对象的形式存放，这些对象是一种元对象，它们的类型就是Class。拥有了这些信息，无论是动态创建对象还是调用某些方法都是轻而易举的。在C++中，通过RTTI（运行时类型识别），我们也可以知道类的一些信息，但为什么C++中却没有 Reflection，原因是类型信息不完整。RTTI这个名字本身就告诉我们，C++的类型信息是用来进行类型识别的，因此，它也不需要其它额外的信息。并不是C++无法做到这一点，而是C++不希望给用户增加额外的负担。有所得，必然有所失，因此，C++放弃了元对象。关于这一点，C++之父 Bjarne Stroustrup在他的《C++语言的设计与演化》的14.2.8节中进行了深入的讨论。</p>
+<p>元对象是Java Reflection的物质基础，那它的精神基础又是什么呢？Java为什么要支持Reflection？</p>
+<p>经过上面的讨论，我们把这个问题再进一步，为什么Java要提供元对象？讨论这个问题，我们还要拉回到十年前，那时Java刚刚来到正式登上历史的舞台。Java实际上诞生在这之前的数年，那时候还叫Oak，环境所限使得这一划时代的杰作甫一出炉便被束之高阁。当Netscape掀起了为网络大戏的序幕，Java得以凤凰涅?，这其中很重要的一个原因就是Java是以网络为中心的。</p>
+<p>仔细观察，我们会发现，Java的整个基础架构的设计都是为网络服务。首当其冲的便是Java中最著名的跨平台。其实，在Java之前的年代，人们也需要考虑平台之间的可移植性，但这种移植大多数集中在源码一级，这也就是C语言可以流行的原因之一，在单机环境下，平台的差异并不那么明显。网络的出现使平台之间差异凸现出来，因为网络可能会连接各种各样的计算机和设备。没错，还有设备，你也许知道Java最初的开发是和嵌入式设备相关的。一旦应用可以跨平台，程序开发和后期管理维护工作将得到极大的简化，可移植性也从源码级晋升到二进制级（Java字节码）。所以，跨平台实际上也是为了网络打基础。Java中另一个重要的买点??安全性与网络之间的关系更为密切，谁都可以想出几条理由，把二者关联起来。</p>
+<p>再来具体看看Java的基础架构如何对网络进行支持的。还记得Java最初是怎么吸引人的吗？没错，Applet。熟悉原理的朋友都知道，Applet的运行是把远程的类文件下载到本地来执行的。相对于本地硬盘，网络给我们的感觉就是一个字????慢。如果Java采用传统可执行文件组织方式，即一个完整的可执行文件，把整个 Applet下载下来的运行，只怕等到花儿也谢了。Java采用的手法是把文件拆开，以类为单位进行组织，这就是我们今天见到的class文件。这样，执行的过程就变成第一个类下载之后就可以运行，大大节省了最初的等待时间。好的设计会把程序分成若干的模块，所以，绝大多数程序不可能写在一个类中。因此，类文件中必须包含它所用到类。对于引导部分，我们可以让它以特定的方式开始执行，比如把我们耳熟能详的main方法放在特定的字节，但对于没有定法的任意方法，是没有办法规定的，而一个类调用另一个类的方法就是这样随意，因此类文件中必须包含这个类方法的信息，进一步字段信息也会加进来，这样几乎一个完整类的信息就出来了，而这些信息对应的恰好是元对象。所以，元对象出现在Java基础架构中。有了元对象，Reflection也成了一件顺其自然的事情。有了Reflection，Java也就拥有了动态扩展的能力，这样就可以极大的提高程序的灵活性。</p>
+<p>关于Java基础结构对网络的支持还可以再说几句。class文件经过了精心的设计，本身相当紧凑，其目的就是为了方便在网络上传输，而JAR文件的出现，其目的也是为了方便网络传输，因为如果每次只传输一个类，大量的时间都被浪费在建立网络连接的过程中，JAR文件使得一次传输多个类成为可能，而且我们还知道JAR文件中的数据是经过压缩的，这样可以进一步减少下载时间。Java基础架构对网络的支持，《深入Java虚拟机》（第二版）的4.3节进行了很好阐述，有兴趣不妨看一下。对Reflection思考让我有机会对Java本身的设计进行深入的思考。一个好的软件设计需要一个核心理念作为支撑，所有的一切都是围绕核心进行的，而对于Java，这个核心就是网络。一次有趣的思考体验！</p>
 
           
         
@@ -2303,7 +2266,7 @@ if (isDebug)
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">69</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2555,7 +2518,9 @@ if (isDebug)
                     
                       
                     
-                    <span class="site-state-item-count">105</span>
+                      
+                    
+                    <span class="site-state-item-count">106</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

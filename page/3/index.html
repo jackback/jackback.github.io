@@ -1628,6 +1628,230 @@ fs_pass 该字段被fsck命令用来决定在启动时需要被扫描的文件�
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/01/01/Lang_Java_enum/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/01/Lang_Java_enum/" class="post-title-link" itemprop="url">Java enum</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-06 10:28:34" itemprop="dateModified" datetime="2019-03-06T10:28:34+08:00">2019-03-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-enum-基本概念和用法"><a href="#1-enum-基本概念和用法" class="headerlink" title="1. enum 基本概念和用法"></a>1. enum 基本概念和用法</h3><p>enum Color { RED,BLUE,BLACK YELLOW,GREEN}; //创建时自动继承java.lang.Enum这个类</p>
+<pre><code>   (1)  ordinal()方法: 返回枚举值在枚举类种的顺序。这个顺序根据枚举值声明的顺序而定。  
+             Color.RED.ordinal();  //返回结果：0
+             Color.BLUE.ordinal();  //返回结果：1
+   (2)  compareTo()方法: Enum实现了java.lang.Comparable接口，因此可以比较象与指定对象的顺序。Enum中的compareTo返回的是两个枚举值的顺序之差。
+                         当然，前提是两个枚举值必须属于同一个枚举类，否则会抛出ClassCastException()异常。(具体可见源代码)
+             Color.RED.compareTo(Color.BLUE);  //返回结果 -1
+   (2)  equals()方法： 比较两个枚举类对象的引用。
+   (3.1)  values()方法： 静态方法，返回一个包含全部枚举值的数组。
+             Color[] colors=Color.values();
+             for(Color c:colors){ System.out.print(c + &quot;,&quot;); }//返回结果：RED,BLUE,BLACK YELLOW,GREEN,
+   (3.2)  toString()方法： 返回枚举常量的名称。
+             Color c=Color.RED;
+             System.out.println(c);//返回结果: RED
+   (3.2)  name()方法: 返回枚举实例声明时的名字String //&quot;RED&quot;,&quot;BLUE&quot;,&quot;BLACK&quot; &quot;YELLOW&quot;,&quot;GREEN&quot;
+   (5)  valueOf()方法： 这个方法和toString方法是相对应的，返回带指定名称的指定枚举类型的枚举常量。
+             Color.valueOf(&quot;BLUE&quot;);   //返回结果: Color.BLUE
+   (8)  getDeclaringClass()方法: 返回该enum变量所属Class&lt;E&gt;
+
+总结：
+
+1. enum -&gt; int:    
+    int i =  enumValue.ordinal(); // enumValue = Color.RED;
+    int i = Color.ordinal();
+
+2. int -&gt; enum:    Color b = Color.values()[i]; // int i = 0 1 2 3 4;
+
+3. enum -&gt; String:   
+    String s = enumValue.name();    //enumValue = Color.RED;
+    String s = enumValue.toString(); //enumValue = Color.RED;
+    String s = Color.RED.name();
+    String s = Color.RED.toString();
+4. String -&gt; enum:   enumType.valueOf(name); //name = &quot;RED&quot;
+</code></pre><h3 id="2-enum类实现原理及扩展"><a href="#2-enum类实现原理及扩展" class="headerlink" title="2. enum类实现原理及扩展"></a>2. enum类实现原理及扩展</h3><p>final class enum Color extends java.lang.Enum {<br>    enum RED(“红色”),    //自带实例,在类前部定义<br>    enum BLUE(“蓝色”),   //自带实例,在类前部定义<br>    enum BLACK(“黑色”),  //自带实例,在类前部定义<br>    enum YELLOW(“黄色”), //自带实例,在类前部定义<br>    enum GREEN(“绿色”);  //自带实例,在类前部定义,最后一个需要加分号</p>
+<pre><code>//todo 可新增成员变量和成员方法 及 构造函数
+private Color (String description) { //此处需要声明为private,就算不声明,只用于自带实例进行构建,在外部不能构建???
+    this.description = description;
+}
+private String description;
+public String getDescr() { return description;}
+public static void main(String[ args]) {
+    for (Color c : Color.values()) {
+        System.out.println(c + &quot;: &quot; + c.getDescr());
+    }
+}
+</code></pre><p>}; </p>
+<pre><code>//Output:
+RED: 红色
+BLUE: 蓝色
+BLACK: 黑色
+YELLOW: 黄色
+GREEN: 绿色
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/01/01/Android_SmartPointer_SP_WP/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2179,187 +2403,6 @@ fs_pass 该字段被fsck命令用来决定在启动时需要被扫描的文件�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/11/25/Android_init_rc/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/11/25/Android_init_rc/" class="post-title-link" itemprop="url">Android init.rc</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-11-25 12:22:33" itemprop="dateCreated datePublished" datetime="2016-11-25T12:22:33+08:00">2016-11-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-05-18 16:01:21" itemprop="dateModified" datetime="2017-05-18T16:01:21+08:00">2017-05-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>init.rc主要有两大元素:   Actions和Service</p>
-<p>一种是定时任务——Actions，由以下构成：<br>    on <trigger><br>        <command><br>        <command><br>        …</trigger></p>
-<p>一种是固定顺序的任务(初始化启动，可以重启)，即Services<br>    service <name> <binaray path="" name=""> [ <argument> ]*<br>        <option><br>        </option><option><br>        …</option></argument></binaray></name></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/11/25/Android_init_rc/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2407,7 +2450,7 @@ fs_pass 该字段被fsck命令用来决定在启动时需要被扫描的文件�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">69</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2659,7 +2702,9 @@ fs_pass 该字段被fsck命令用来决定在启动时需要被扫描的文件�
                     
                       
                     
-                    <span class="site-state-item-count">105</span>
+                      
+                    
+                    <span class="site-state-item-count">106</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

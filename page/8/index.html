@@ -319,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/04/26/Android_HAL/">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/04/26/Android_update/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jin">
@@ -339,7 +339,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/04/26/Android_HAL/" class="post-title-link" itemprop="url">Android HAL 模型</a>
+                <a href="/2016/04/26/Android_update/" class="post-title-link" itemprop="url">Android 升级</a>
               
             
           </h1>
@@ -435,8 +435,372 @@
       
         
           
-            <p>前言暂时省略…</p>
-<h1 id="Android-HAL层模型"><a href="#Android-HAL层模型" class="headerlink" title="Android HAL层模型"></a>Android HAL层模型</h1><p>直接上图:<br><a href="https://i.loli.net/2018/12/15/5c14f2f942014.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2f942014.png" alt="Android_HAL.png"></a></p>
+            <p>TODO…</p>
+<h1 id="升级包-OTA-包-增量包-编译制作过程"><a href="#升级包-OTA-包-增量包-编译制作过程" class="headerlink" title="升级包 OTA 包 增量包 编译制作过程"></a>升级包 OTA 包 增量包 编译制作过程</h1><p>to do</p>
+<h1 id="升级流程"><a href="#升级流程" class="headerlink" title="升级流程"></a>升级流程</h1><p><a href="http://blog.csdn.net/chenyufei1013/article/details/12705719" target="_blank" rel="noopener">http://blog.csdn.net/chenyufei1013/article/details/12705719</a></p>
+<p><a href="https://i.loli.net/2018/12/15/5c14f2fa1f497.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2fa1f497.png" alt="OTA.png"></a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Linux_cmd/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2015/11/30/Linux_cmd/" class="post-title-link" itemprop="url">Linux cmd</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="find-搜索指定目录以外的文件"><a href="#find-搜索指定目录以外的文件" class="headerlink" title="find 搜索指定目录以外的文件"></a>find 搜索指定目录以外的文件</h1><p>find .  -path &lt;./proc&gt; -prune -o -name <pattern>  -print | grep -nr <key-words in="" file=""></key-words></pattern></p>
+<p>…</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Android_pm_cmd/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2015/11/30/Android_pm_cmd/" class="post-title-link" itemprop="url">Android pm cmd</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>pm命令实的实现方式在Pm.java，最后大多数都是调用PackageManagerService相应的方法来完成的。disbale之后，在桌面和应用程序列表里边都看到不该app。</p>
+<h3 id="命令格式及参数"><a href="#命令格式及参数" class="headerlink" title="命令格式及参数"></a>命令格式及参数</h3><p>pm <command></p>
+<p>命令    功能    实现方法<br>list packages    列举app包信息    PMS.getInstalledPackages<br>install [options] <path></path>    安装应用    PMS.installPackageAsUser<br>uninstall [options]<package>    卸载应用    IPackageInstaller.uninstall<br>enable &lt;包名或组件名&gt;    enable    PMS.setEnabledSetting<br>disable &lt;包名或组件名&gt;    disable    PMS.setEnabledSetting<br>hide <package>    隐藏应用    PMS.setApplicationHiddenSettingAsUser<br>unhide <package>    显示应用    PMS.setApplicationHiddenSettingAsUser<br>get-install-location    获取安装位置    PMS.getInstallLocation<br>set-install-location    设置安装位置    PMS.setInstallLocation<br>path <package>    查看App路径    PMS.getPackageInfo<br>clear <package>    清空App数据    AMS.clearApplicationUserData<br>get-max-users    最大用户数    UserManager.getMaxSupportedUsers<br>force-dex-opt <package>    dex优化    PMS.forceDexOpt<br>dump <package>    dump信息    AM.dumpPackageStateStatic<br>trim-caches &lt;目标size&gt;    紧缩cache目标大小    PMS.freeStorageAndNotify</package></package></package></package></package></package></package></p>
+<h1 id="详细参数"><a href="#详细参数" class="headerlink" title="详细参数"></a>详细参数</h1><h3 id="list-packages"><a href="#list-packages" class="headerlink" title="list packages*"></a>list packages*</h3><p>查看所有的package<br>list packages [options] <filter></filter></p>
+<p>其中[options]参数：</p>
+<p>-f: 显示包名所关联的文件；<br>-d: 只显示disabled包名；<br>-e: 只显示enabled包名；<br>-s: 只显示系统包名；<br>-3: 只显示第3方应用的包名；<br>-i: 包名所相应的installer;<br>-u: 包含uninstalled包名.</p>
+<p>规律： disabled + enabled = 总应用个数； 系统 + 第三方 = 总应用个数。</p>
+<p>比如：查看第3方应用：<br>pm list packages -3</p>
+<p>又比如，查看已经被禁用的包名。（国内的厂商一般把google的服务禁用了）<br>pm list packages -d</p>
+<p><filter>参数：<br>当FILTER为不为空时，则只会输出包名带有FILTER字段的应用；当FILTER为空时，则默认显示所有满足条件的应用。</filter></p>
+<p>比如，查看包名带google字段的包名<br>pm list packages google</p>
+<h3 id="pm-install"><a href="#pm-install" class="headerlink" title="pm install"></a>pm install</h3><p>pm install [options] <path></path></p>
+<p>其中[options]参数：</p>
+<p>-r: 覆盖安装已存在Apk，并保持原有数据；<br>-d: 运行安装低版本Apk;<br>-t: 运行安装测试Apk<br>-i : 指定Apk的安装器；<br>-s: 安装apk到共享快存储，比如sdcard;<br>-f: 安装apk到内部系统内存；<br>-l: 安装过程，持有转发锁<br>-g: 准许Apk manifest中的所有权限；</p>
+<p><path></path>参数：<br>该参数是必须的，是指需要安装的apk所在的路径。</p>
+<h3 id="其他参数"><a href="#其他参数" class="headerlink" title="其他参数"></a>其他参数</h3><p>pm list users //查看当前手机用户<br>pm list libraries //查看当前设备所支持的库<br>pm list features //查看系统所有的features<br>pm list instrumentation //所有测试包的信息<br>pm list permission-groups //查看所有的权限组<br>pm list permissions [options] <group> 查看权限<br>    -g: 以组形式组织；<br>    -f: 打印所有信息；<br>    -s: 简要信息；<br>    -d: 只列举危险权限；<br>    -u: 只列举用户可见的权限。</group></p>
 
           
         
@@ -745,368 +1109,6 @@ request: ----
     TIOCMBIS int *state add modem state bit flags, OR-ing in the new states
     TIOCMBIC int *state clear modem state bit flags
 </code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Android_pm_cmd/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/11/30/Android_pm_cmd/" class="post-title-link" itemprop="url">Android pm cmd</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>pm命令实的实现方式在Pm.java，最后大多数都是调用PackageManagerService相应的方法来完成的。disbale之后，在桌面和应用程序列表里边都看到不该app。</p>
-<h3 id="命令格式及参数"><a href="#命令格式及参数" class="headerlink" title="命令格式及参数"></a>命令格式及参数</h3><p>pm <command></p>
-<p>命令    功能    实现方法<br>list packages    列举app包信息    PMS.getInstalledPackages<br>install [options] <path></path>    安装应用    PMS.installPackageAsUser<br>uninstall [options]<package>    卸载应用    IPackageInstaller.uninstall<br>enable &lt;包名或组件名&gt;    enable    PMS.setEnabledSetting<br>disable &lt;包名或组件名&gt;    disable    PMS.setEnabledSetting<br>hide <package>    隐藏应用    PMS.setApplicationHiddenSettingAsUser<br>unhide <package>    显示应用    PMS.setApplicationHiddenSettingAsUser<br>get-install-location    获取安装位置    PMS.getInstallLocation<br>set-install-location    设置安装位置    PMS.setInstallLocation<br>path <package>    查看App路径    PMS.getPackageInfo<br>clear <package>    清空App数据    AMS.clearApplicationUserData<br>get-max-users    最大用户数    UserManager.getMaxSupportedUsers<br>force-dex-opt <package>    dex优化    PMS.forceDexOpt<br>dump <package>    dump信息    AM.dumpPackageStateStatic<br>trim-caches &lt;目标size&gt;    紧缩cache目标大小    PMS.freeStorageAndNotify</package></package></package></package></package></package></package></p>
-<h1 id="详细参数"><a href="#详细参数" class="headerlink" title="详细参数"></a>详细参数</h1><h3 id="list-packages"><a href="#list-packages" class="headerlink" title="list packages*"></a>list packages*</h3><p>查看所有的package<br>list packages [options] <filter></filter></p>
-<p>其中[options]参数：</p>
-<p>-f: 显示包名所关联的文件；<br>-d: 只显示disabled包名；<br>-e: 只显示enabled包名；<br>-s: 只显示系统包名；<br>-3: 只显示第3方应用的包名；<br>-i: 包名所相应的installer;<br>-u: 包含uninstalled包名.</p>
-<p>规律： disabled + enabled = 总应用个数； 系统 + 第三方 = 总应用个数。</p>
-<p>比如：查看第3方应用：<br>pm list packages -3</p>
-<p>又比如，查看已经被禁用的包名。（国内的厂商一般把google的服务禁用了）<br>pm list packages -d</p>
-<p><filter>参数：<br>当FILTER为不为空时，则只会输出包名带有FILTER字段的应用；当FILTER为空时，则默认显示所有满足条件的应用。</filter></p>
-<p>比如，查看包名带google字段的包名<br>pm list packages google</p>
-<h3 id="pm-install"><a href="#pm-install" class="headerlink" title="pm install"></a>pm install</h3><p>pm install [options] <path></path></p>
-<p>其中[options]参数：</p>
-<p>-r: 覆盖安装已存在Apk，并保持原有数据；<br>-d: 运行安装低版本Apk;<br>-t: 运行安装测试Apk<br>-i : 指定Apk的安装器；<br>-s: 安装apk到共享快存储，比如sdcard;<br>-f: 安装apk到内部系统内存；<br>-l: 安装过程，持有转发锁<br>-g: 准许Apk manifest中的所有权限；</p>
-<p><path></path>参数：<br>该参数是必须的，是指需要安装的apk所在的路径。</p>
-<h3 id="其他参数"><a href="#其他参数" class="headerlink" title="其他参数"></a>其他参数</h3><p>pm list users //查看当前手机用户<br>pm list libraries //查看当前设备所支持的库<br>pm list features //查看系统所有的features<br>pm list instrumentation //所有测试包的信息<br>pm list permission-groups //查看所有的权限组<br>pm list permissions [options] <group> 查看权限<br>    -g: 以组形式组织；<br>    -f: 打印所有信息；<br>    -s: 简要信息；<br>    -d: 只列举危险权限；<br>    -u: 只列举用户可见的权限。</group></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Linux_cmd/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/11/30/Linux_cmd/" class="post-title-link" itemprop="url">Linux cmd</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="find-搜索指定目录以外的文件"><a href="#find-搜索指定目录以外的文件" class="headerlink" title="find 搜索指定目录以外的文件"></a>find 搜索指定目录以外的文件</h1><p>find .  -path &lt;./proc&gt; -prune -o -name <pattern>  -print | grep -nr <key-words in="" file=""></key-words></pattern></p>
-<p>…</p>
-
           
         
       

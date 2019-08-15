@@ -576,7 +576,7 @@ package                 u:object_r:system_server_service:s0     //package 服务
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-15 14:35:31" itemprop="dateModified" datetime="2019-08-15T14:35:31+08:00">2019-08-15</time>
+                <time title="修改时间：2019-08-15 14:56:53" itemprop="dateModified" datetime="2019-08-15T14:56:53+08:00">2019-08-15</time>
               
             
           </span>
@@ -630,9 +630,8 @@ package                 u:object_r:system_server_service:s0     //package 服务
       
         
           <h1 id="JNI-介绍"><a href="#JNI-介绍" class="headerlink" title="JNI 介绍"></a>JNI 介绍</h1><p>JNI是Java Native Interface的缩写，它提供了若干的API实现了Java和其他语言的通信（主要是C&amp;C++）。</p>
-<h1 id="JNI-类型"><a href="#JNI-类型" class="headerlink" title="JNI 类型"></a>JNI 类型</h1><p><a href="https://i.loli.net/2018/12/15/5c14f2f87c115.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2f87c115.png" alt="001_JavaJNIType.png"></a></p>
-<p>jni中结构体层次结构</p>
-<p><a href="https://i.loli.net/2018/12/15/5c14f2f8833c4.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2f8833c4.png" alt="002_JaveJNIType2.png"></a></p>
+<h1 id="JNI-类型"><a href="#JNI-类型" class="headerlink" title="JNI 类型"></a>JNI 类型</h1><p><img src="https://i.loli.net/2018/12/15/5c14f2f87c115.png" alt="001_JavaJNIType.png"></p>
+<p>jni中结构体层次结构<br><img src="https://i.loli.net/2018/12/15/5c14f2f8833c4.png" alt="002_JaveJNIType2.png"></p>
 <p>jni sign 参照表<br><img src="https://i.loli.net/2019/08/15/TJQYGmFjrStn6wz.png" alt="003_JavaJNISign.png"></p>
 <p>下面是访问String的一些方法：</p>
 <pre><code>GetStringUTFChars 将jstring转换成为UTF-8格式的char*    /  ReleaseStringUTFChars  释放指向UTF-8格式的char*的指针
@@ -1967,7 +1966,7 @@ Class Sub extends Base  `implements  A`
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java/">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Android_permission/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jin">
@@ -1987,7 +1986,223 @@ Class Sub extends Base  `implements  A`
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/05/28/Lang_Java/" class="post-title-link" itemprop="url">Java语言</a>
+                <a href="/2016/05/28/Android_permission/" class="post-title-link" itemprop="url">Android 权限的实现</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T12:22:33+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>权限<br>每个程序在安装时都有建立一个系统ID，如app_15，用以保护数据不被其它应用获取。Android根据不同的用户和组，<br>分配不同权限，比如访问SD卡，访问网络等等。底层映射为Linux权限。</li>
+</ol>
+<ol start="2">
+<li><p>Android权限的实现<br> 1) 第一层：由应用设置，修改AndroidManifest.xml，形如：<br> <uses-permission android:name="”android.permission.INTERNET”/"></uses-permission></p>
+<pre><code>应用申请权限
+1) 应用开发者通过AndroidManifest.xml中&lt;uses-permission&gt;指定对应权限，再映射到底层的用户和组，默认情况下不设定特殊的权限。  
+   AndroidManifest加入权限后系统安装程序时会在图形界面中提示权限
+
+2) 如果是缺少某个权限（程序中使用的某种权限而在AndroidManifest.xml中并未声名），
+   程序运行时会在logcat中打印出错误信息requires &lt;permission&gt;
+3) 与某个进程使用相同的用户ID
+   应用程序可与系统中已存在的用户使用同一权限，需要在AndroidManifest.xml中设置sharedUserId，如android:sharedUserId=&quot;android.uid.shared&quot;，作用是获得系统权限，
+   但是这样的程序属性只能在build整个系统时放进去（就是系统软件）才起作用，共享ID的程序必须是同一签名的
+</code></pre><p> 2) 第二层：框架层，权限对应组，frameworks/base/data/etc/platform.xml，形如：</p>
+ <permission name="”android.permission.INTERNET”"><br>     <group gid="inet”"><br> </group></permission>
+
+<p> 3) 第三层：系统层，系统的权限，system/core/include/private/android_filesystem_config.h,形如：<br> #define AID_INET 3003      //建立SOCKET的权限<br> ……<br> { “inet”, AID_INET, },</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>系统权限<br> 特殊权限的用户</p>
+<pre><code>a)  system     uid 1000
+b)  radio      uid 1001
+</code></pre></li>
+<li><p>permission权限查看</p>
+<pre><code>$ adb shell
+$ pm list permissions
+</code></pre></li>
+</ol>
+<ol start="5">
+<li>framework层对权限的判断<br> 1) 相关源码实现<pre><code>frameworks/base/services/Java/com/android/server/PackageManagerService.java
+frameworks/base/services/java/com/android/server/am/ActivityManagerService.java
+</code></pre> 2) 在系统层，如何查看某个应用的权限<pre><code>a) 在应用进程开启时，ActivityManagerService.java会在logcat中输出该应用的权限，形如：
+    I/ActivityManager(1730): Start proc com.anbdroid.phone for restart com.android.phone:pid=2605 uid=1000 gids={3002,3001,3003}
+   即它有3001,3002,3003三个权限：访问蓝牙和建立socket
+b) 注意：此打印输出在应用第一次启动时。如果进程已存在，需要先把对应进程杀掉，以保证该进程重新启动，才能显示
+c) 具体实现，见： framewors/base/services/java/com/android/server/am/ActivityManagerService.java的
+   函数startProcessLocked()，其中取其组信息的具本语句是mContext.getPackageManager().getPackageGids(app.info.packageName);
+</code></pre></li>
+</ol>
+<ol start="6">
+<li>参考<br><a href="http://wenku.baidu.com/view/7754a4360b4c2e3f5727634e.html" target="_blank" rel="noopener">http://wenku.baidu.com/view/7754a4360b4c2e3f5727634e.html</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_innerClass/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_Java_innerClass/" class="post-title-link" itemprop="url">Java中四中内部类</a>
               
             
           </h1>
@@ -2083,199 +2298,37 @@ Class Sub extends Base  `implements  A`
       
         
           
-            
-          
-        
-      
-    </div>
+            <h1 id="常规内部类"><a href="#常规内部类" class="headerlink" title="常规内部类"></a>常规内部类</h1><pre><code>public class A{
+  private int a = 100;
 
-    
+  class B{  //其中可以直接使用外部类A中的实例变量和方法
+    int b;
+  }
+  public void createB{  //在外部类方法中创建内部类实例
+    B c = new B();
+  }
 
-    
-    
-    
+  public static void main(){
+    A out = new A();
+    A.B in = new out.B(); //内部类通过A实例创建对象
 
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_static/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/28/Lang_CPP_static/" class="post-title-link" itemprop="url">C++的static用法</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-28 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T12:22:33+08:00">2016-05-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>C++ 中static 关键字用法可以从两个方面来区分，一个是面向过程，另一个是面向对象。面向过程有三种用法，面向对象有两种用法。下文将详细讲解。</p>
-<h1 id="用法详解（从作用域，生命周期角度来解释）"><a href="#用法详解（从作用域，生命周期角度来解释）" class="headerlink" title="用法详解（从作用域，生命周期角度来解释）"></a>用法详解（从作用域，生命周期角度来解释）</h1><blockquote>
-<p>面向过程</p>
-</blockquote>
-<p>文件内全局static变量 （和C一样）<br>    作用域：本文件内<br>    生命周期：程序退出</p>
-<p>函数内static变量 （和C一样）<br>    作用域：本函数内<br>    生命周期：程序退出</p>
-<blockquote>
-<p>面向对象</p>
-</blockquote>
-<p>类中static成员变量<br>    用法：使用时不用实例化，与类实例无关。（静态数据成员存储在全局数据区，静态数据成员定义时要分配空间，所以不能在类声明中定义。应该在类外定义。此外，在类体外定义时不能指定static关键字）。<br>    初始化格式：&lt;数据类型&gt;&lt;类名&gt;::&lt;静态数据成员&gt; = &lt;值&gt;<br>    作用域：遵从类的public、private、protected访问规则<br>    生命周期：程序退出</p>
-<p>类中static成员方法<br>    用法：可以引用static成员变量。无法访问属于类对象的非静态数据成员变量/函数。此外，类体外定义时不能指定static关键字<br>         调用static成员方法方式： XClass::xxx_static_fun()、XClassInstant.xxx_static_fun()、XClassInstantP-&gt;xxx_static_fun()<br>    作用域：遵从类的public、private、protected访问规则<br>    生命周期：N/A</p>
-<h1 id="附1（可执行文件内存布局）"><a href="#附1（可执行文件内存布局）" class="headerlink" title="附1（可执行文件内存布局）"></a>附1（可执行文件内存布局）</h1><p><img src="https://i.loli.net/2018/12/15/5c14f2fa28125.bmp" alt="exec_view.bmp"></p>
-<ol>
-<li>.text 代码段存放可执行指令</li>
-<li>.data 初始化后数据 {<br> a. 只读数据区(const全局变量 字符串)<br> b. 已初始化可读数据区——全局区(全局变量)<br> c. 已初始化可读数据区——全局静态区(static全局变量) </li>
-<li>.bss 未初始化数据（只记录数据需要多少空间，不为其真正分配内存）<br> a. 未初始化静态和全局变量</li>
-<li>.heap 运行时malloc动态分配的数据占用空间<br> a. 动态内存分配</li>
-<li>.stack 函数运行时分配的自动变量占用空间<br> a. 局部变量、函数参数</li>
-<li>从可执行文件a.out的角度来讲，如果一个数据未被初始化那就不需要为其分配空间，所以.data和.bss一个重要的区别就是.bss并不占用可执行文件的大小，它只是记载需要多少空间来存储这些未初始化数据，而不分配实际的空间</li>
-</ol>
-<h1 id="附2（参考）"><a href="#附2（参考）" class="headerlink" title="附2（参考）"></a>附2（参考）</h1><p><a href="http://blog.csdn.net/kerry0071/article/details/25741425/" target="_blank" rel="noopener">http://blog.csdn.net/kerry0071/article/details/25741425/</a></p>
+  }
+}
+</code></pre><h1 id="静态内部类（静态内部类与静态内部方法相似）"><a href="#静态内部类（静态内部类与静态内部方法相似）" class="headerlink" title="静态内部类（静态内部类与静态内部方法相似）"></a>静态内部类（静态内部类与静态内部方法相似）</h1><p>由于static内部类不具有任何对外部类实例的引用，因此static内部类中不能使用this关键字来访问外部类中的实例成员，<br>但是可以访问外部类中的static成员。</p>
+<pre><code>MyOuter.MyInner si=new MyOuter.MyInner();//静态内部类不通过外部实例就可以创建对象
+</code></pre><h1 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h1><pre><code>在方法体或语句块（包括方法、构造方法、局部块或静态初始化块）内部定义的类成为局部内部类。
+局部内部类不能加任何访问修饰符，因为它只对局部块有效。
+</code></pre><p> 1.局部内部类只在方法体中有效，就想定义的局部变量一样，在定义的方法体外不能创建局部内部类的对象<br> 1.方法定义局部内部类同方法定义局部变量一样，不能使用private、protected、public等访问修饰说明符修饰，也不能使用static修饰，但可以使用final和   abstract修饰</p>
+<h1 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h1><p>  定义类的最终目的是创建一个类的实例，但是如果某个类的实例只是用一次，则可以将类的定义与类的创建，<br>  放到与一起完成，或者说在定义类的同时就创建一个类</p>
+<pre><code>new ClassOrInterfaceName(){
+    /*类体*/ 
+}
+</code></pre><p>  匿名内部类可以继承一个类或实现一个接口，这里的ClassOrInterfaceName是匿名内部类所继承的类名或实现的接口名。<br>  但匿名内部类不能同时实现一个接口和继承一个类，也不能实现多个接口。如果实现了一个接口，该类是Object类的直接子类，<br>  匿名类继承一个类或实现一个接口，不需要extends和implements关键字。</p>
+<p>由于匿名内部类没有名称，所以类体中不能定义构造方法，由于不知道类名也不能使用关键字来创建该类的实例。实际上匿名内部类的定义、构造、和第一次使用都发生在同样一个地方。此外，上式是一个表达式，返回的是一个对象的引用，所以可以直接使用或将其复制给一个对象变量。例：</p>
+<pre><code>TypeName obj=new Name（）{
+    /*此处为类体*/
+}
+</code></pre><p>  同样，也可以将构造的对象作为调用的参数。例：<br>    someMethod(new Name(){<br>        /<em>此处为类体</em>/<br>      }<br>    );</p>
 
           
         

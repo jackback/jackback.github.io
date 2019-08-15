@@ -319,6 +319,1380 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_public_protected_private/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_Java_public_protected_private/" class="post-title-link" itemprop="url">Java public/protected/private</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 00:00:00" itemprop="dateCreated datePublished" datetime="2016-05-28T00:00:00+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用于修饰类或者修饰成员变量。</p>
+<h1 id="1-基本规则"><a href="#1-基本规则" class="headerlink" title="1. 基本规则"></a>1. 基本规则</h1><h3 id="public-公有访问权限"><a href="#public-公有访问权限" class="headerlink" title="public(公有访问权限)"></a>public(公有访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰类                     //公共类，所有包可见<br>  ?修饰内部类?</p>
+<h3 id="protected-继承访问权限"><a href="#protected-继承访问权限" class="headerlink" title="protected(继承访问权限)"></a>protected(继承访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰内部类                 //基类和派生类可见；包内可见</p>
+<h3 id="default-friendly-包访问权限"><a href="#default-friendly-包访问权限" class="headerlink" title="default (friendly) (包访问权限)"></a>default (friendly) (包访问权限)</h3><p>  默认权限是包内访问。即未指定权限关键字的类成员，只有包内的类的成员方法才可以访问。<br>  类无修饰: 包内可见<br>  成员变量/方法无修饰: 包内可见<br>  内部类无修饰: 包内可见?</p>
+<h3 id="private-私有访问权限"><a href="#private-私有访问权限" class="headerlink" title="private(私有访问权限)"></a>private(私有访问权限)</h3><p>  修饰类成员变量/方法        //基类可见<br>  修饰内部类                 //基类可见</p>
+<h3 id="继承派生权限"><a href="#继承派生权限" class="headerlink" title="继承派生权限"></a>继承派生权限</h3><p>  Java 使用extends关键字进行派生基类，只有公共继承</p>
+<h1 id="1-public-用法示例"><a href="#1-public-用法示例" class="headerlink" title="1. public 用法示例"></a>1. public 用法示例</h1><p>/<em>Animal.java</em>/<br>package me.jingg.java;         //Java 以包为访问单元(一个包可有多个文件多个类)</p>
+<p>public abstract class Animal { //公共类: 可以通过import me.jingg.java.Animal 继承使用<br>    protected String name;<br>    protected int age;</p>
+<pre><code>private void eatBase() {}
+public void eat() {}
+public void run() {}
+public void showInfo() {}
+</code></pre><p>}</p>
+<p>/<em>AccessRule.java</em>/<br>package me.jingg.java;<br>//一个Java文件只能有一个public类(public的类名必须与文件名一致)，一个Java文件是一个编译单元，每个编译单元都有单一的公共接口—即public类<br>public class AccessRule extends Animal implements xxx {  //公共类: 可以通过import me.jingg.java.AccessRule 引用<br>    private eat_fish_num; //static一般在有初始值的，值固定的 (private表示私有) (final: 1.不能再改;2.不会被重载; 3.不会被继承.)</p>
+<pre><code>public static void main(int argc, char **argv) {
+
+}
+</code></pre><p>}</p>
+<h1 id="2-抽象接口"><a href="#2-抽象接口" class="headerlink" title="2. 抽象接口"></a>2. 抽象接口</h1>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_abstract/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_Java_abstract/" class="post-title-link" itemprop="url">Java abstract</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 00:00:00" itemprop="dateCreated datePublished" datetime="2016-05-28T00:00:00+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>抽象可以修饰抽象类和抽象方法。<br>抽象类一般作为基类，提炼了派生类们相同的接口特征(但基类中不实现而在派生类中实现)和属性。<br>抽象接口，所在类一般也为基类，只有该方法可暂时不进行实现，而在派生类中实现。</p>
+<ol>
+<li>抽象类不能被实例化。</li>
+<li>抽象类中不一定要包含abstrace方法。即：抽象中可以没有abstract方法。</li>
+<li>一旦类中包含了abstract方法，那类该类必须声明为abstract类。</li>
+</ol>
+<h1 id="示例讲解"><a href="#示例讲解" class="headerlink" title="示例讲解"></a>示例讲解</h1><p>/<em>Animal.java ——————————————</em>/<br>package me.jingg.java.AbstractTest;</p>
+<p>public abstract class Animal { //abstract类不能实例化；供外部 包内类继承<br>    protected String name;<br>    protected int age;</p>
+<pre><code>private void eatBase() {}
+public void eat() {}             //派生类可重写
+public void run() {}             //派生类可重写
+public abstract void showInfo(); //+abstract: 不确定具体函数定义的可以只声明, 后面再派生类中定义
+</code></pre><p>}</p>
+<p>/<em>Cat.java ———————————-</em>/<br>package me.jingg.java.AbstractTest;</p>
+<p>public class Cat {<br>    final private eat_fish_num;</p>
+<pre><code>public static main(int argc, char **argv) {
+
+}
+
+public void run() { //重写
+    System.out.println(&quot;cat run&quot;)
+}
+public void showInfo() { //定义
+    System.out.println(&quot;I&apos;am a cat&quot;)
+}
+</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_Constructor_Destructor/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_CPP_Constructor_Destructor/" class="post-title-link" itemprop="url">C++的构造函数和析构函数</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 00:00:00" itemprop="dateCreated datePublished" datetime="2016-05-28T00:00:00+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>构造函数调用顺序：Base::Constructor-&gt;Sub::Constructor<br>析构函数调用顺序：Sub::Destructor-&gt;Base::Destructor<br>一个类中只能有一个默认构造函数（提供了无参数构造函数或者默认参数构造函数，都属于默认构造函数，只能选其一）</p>
+<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><p>#include <iostream><br>using namespace std;</iostream></p>
+<p>class Base {<br>public:<br>    Base()  { cout &lt;&lt; “Base:Base()” &lt;&lt; endl;}<br>    virtual ~Base() { cout &lt;&lt; “Base:~Base()” &lt;&lt; endl;}</p>
+<pre><code>virtual void showInfo() { cout &lt;&lt; &quot;Base::showInfo()&quot; &lt;&lt; endl;}
+</code></pre><p>};</p>
+<p>class Sub : public Base {<br>private:<br>    int data;<br>public:<br>    //Sub() {data = 0;}                   //默认构造函数（只选其一）<br>    Sub(int data=4) {this-&gt;data = data; cout &lt;&lt; “Sub:~Sub(int data=4)” &lt;&lt; endl;} //默认构造函数（只选其一）<br>    void v3()     { cout &lt;&lt; “Call Sub::v3, data = “ &lt;&lt; data &lt;&lt; endl; }</p>
+<pre><code>~Sub() {cout &lt;&lt; &quot;Sub:~Sub()&quot; &lt;&lt; endl;}
+
+virtual void showInfo() { cout &lt;&lt; &quot;Sub::showInfo()&quot; &lt;&lt; endl;}
+</code></pre><p>};</p>
+<p>int main(int argc, char** argv) {</p>
+<pre><code>Sub* s = new Sub();
+s-&gt;showInfo();
+delete s;
+
+Base* s2 = new Sub();
+s2-&gt;showInfo();
+delete s2; 
+/*如果基类析构函数不加virtual;这样的删除只能属于静态编译调用的是基类析构，
+所以只删除基类对象，而我们想要的是调用Sub类析构(Sub类析构会自动调用Base类析构)
+*/
+return 0;
+</code></pre><p>}</p>
+<h1 id="私有构造-析构函数"><a href="#私有构造-析构函数" class="headerlink" title="私有构造/析构函数"></a>私有构造/析构函数</h1><p>class singleton {<br>private:<br>   singleton()  {}<br>   ~singleton() {}</p>
+<p>public:<br>    static singleton* GetSingleton(){<br>        return new singleton();<br>    }<br>};</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/27/Android_Java_reflect/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/27/Android_Java_reflect/" class="post-title-link" itemprop="url">Java反射：getClass   x.class Class.forName</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-27 15:13:00" itemprop="dateCreated datePublished" datetime="2016-05-27T15:13:00+08:00">2016-05-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-class装载验证流程"><a href="#1-class装载验证流程" class="headerlink" title="1. class装载验证流程"></a>1. class装载验证流程</h1><p>Class的装载过程（也就是从字节码文件到生成类的实例这个过程）分为三个阶段<br>loading（装载），linking（连接）和initializing（实例化）</p>
+<p><a href="https://i.loli.net/2018/12/15/5c14f2f8c25fb.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2f8c25fb.png" alt="Java_reflect.png"></a></p>
+<h3 id="1-1-加载"><a href="#1-1-加载" class="headerlink" title="1.1 加载"></a>1.1 加载</h3><p>装载类的第一个阶段<br>通过类的全限定名(eg: com.company.Employee)取得类的二进制流<br>转为方法区数据结构<br>在Java堆中生成对应的java.lang.Class对象</p>
+<h3 id="1-2-链接-gt-验证"><a href="#1-2-链接-gt-验证" class="headerlink" title="1.2 链接 -&gt; 验证"></a>1.2 链接 -&gt; 验证</h3><p>目的：保证Class流的格式是正确的</p>
+<p>文件格式的验证</p>
+<p>是否以0xCAFEBABE开头<br>版本号是否合理<br>元数据验证</p>
+<p>是否有父类<br>继承了final类？<br>非抽象类实现了所有的抽象方法<br>字节码验证 (很复杂)</p>
+<p>运行检查<br>栈数据类型和操作码数据参数吻合<br>跳转指令指定到合理的位置<br>符号引用验证</p>
+<p>常量池中描述类是否存在<br>访问的方法或字段是否存在且有足够的权限</p>
+<h3 id="1-3-链接-gt-准备"><a href="#1-3-链接-gt-准备" class="headerlink" title="1.3 链接 -&gt; 准备"></a>1.3 链接 -&gt; 准备</h3><p>分配内存，并为类设置初始值 （方法区中，关于方法区请查看Java内存区域）</p>
+<p>public static int v=1;<br>在准备阶段中，v会被设置为0<br>在初始化的<clinit>中才会被设置为1<br>对于static final类型（常量），在准备阶段就会被赋上正确的值<br>public static final  int v=1;</clinit></p>
+<p>###1.4 链接 -&gt; 解析</p>
+<h3 id="1-5-初始化"><a href="#1-5-初始化" class="headerlink" title="1.5 初始化"></a>1.5 初始化</h3><p>执行类构造器<clinit></clinit></p>
+<p>static变量 赋值语句<br>static{}语句</p>
+<h1 id="2-什么是类装载器ClassLoader"><a href="#2-什么是类装载器ClassLoader" class="headerlink" title="2. 什么是类装载器ClassLoader"></a>2. 什么是类装载器ClassLoader</h1><p>ClassLoader是一个抽象类<br>ClassLoader的实例将读入Java字节码将类装载到JVM中<br>ClassLoader可以定制，满足不同的字节码流获取方式（譬如从网络中加载，从文件中加载）<br>ClassLoader负责类装载过程中的加载阶段</p>
+<h1 id="3-Android中java反射使用"><a href="#3-Android中java反射使用" class="headerlink" title="3. Android中java反射使用"></a>3. Android中java反射使用</h1><p>Java的每个类必需被JVM加载到虚拟机中，然后就有一个运行时类对象，该Class对象中保存了创建对象所需的所有信息。</p>
+<h3 id="方法1-1：用于类提前已被加载，通过全限定名来获得类，法1——xxx-class"><a href="#方法1-1：用于类提前已被加载，通过全限定名来获得类，法1——xxx-class" class="headerlink" title="方法1.1：用于类提前已被加载，通过全限定名来获得类，法1——xxx.class"></a>方法1.1：用于类提前已被加载，通过全限定名来获得类，法1——xxx.class</h3><p>可以用.class返回此 Object 的运行时类Class对象，如：   //.class一般用于获得类型，JVM中加载已经加载过的类<br>Class&lt;?&gt; clazz = com.android.systemui.statusbar.SystemBars.class<br>clazz.newInstance();   //实例化</p>
+<h3 id="方法1-2：用于类提前已被加载，通过实例对象来获取类，法2——getClass"><a href="#方法1-2：用于类提前已被加载，通过实例对象来获取类，法2——getClass" class="headerlink" title="方法1.2：用于类提前已被加载，通过实例对象来获取类，法2——getClass"></a>方法1.2：用于类提前已被加载，通过实例对象来获取类，法2——getClass</h3><p>也可以用getClass()获得。  //<br>获得此对象后可以利用此Class对象的一些反射特性进行操作，<br>例如：//使用前类已加载<br>Class&lt;?&gt; clazz = this.getClass(); //用缺省构造函数创建一个该类的Class&lt;?&gt;对象<br>clazz.newInstance();  //用缺省构造函数创建一个该类的对象<br>clazz.getInterfaces(); //获得此类实现的接口信息<br>clazz.getMethods();  //获得此类实现的所有公有方法</p>
+<h3 id="方法2：-加载类到JVM中-使用全限定名-，并初始化-——Class-forName"><a href="#方法2：-加载类到JVM中-使用全限定名-，并初始化-——Class-forName" class="headerlink" title="方法2： 加载类到JVM中(使用全限定名)，并初始化 ——Class.forName"></a>方法2： 加载类到JVM中(使用全限定名)，并初始化 ——Class.forName</h3><p>Class&lt;?&gt; clazz = Class.forName(“类名，如’java.lang.Thread’ “); //动态加载类，并返回具有指定名的类的 Class 对象<br>在加载完成后，一般还要调用Class下的newInstance( )静态方法来实例化对象以便操作</p>
+<p>Class.forName有两个调用方法</p>
+<pre><code>1. 常用的 Class.forName(&quot;xx.xx&quot;)      //查找并加载类，最后执行了类static代码
+2. 多参数 Class.forName(&quot;xx.xx&quot;,true,CALLClass.class.getClassLoader())      //可指定是否初始化static语句，及指定类加载器
+</code></pre><h3 id="方法3：加载类到JVM-使用全限定名-，但不初始化——loadClass"><a href="#方法3：加载类到JVM-使用全限定名-，但不初始化——loadClass" class="headerlink" title="方法3：加载类到JVM(使用全限定名)，但不初始化——loadClass"></a>方法3：加载类到JVM(使用全限定名)，但不初始化——loadClass</h3><p>Class&lt;?&gt; clazz = loader.loadClass(“xx.xx”);  或者mContext.getClassLoader().loadClass(clsName); 都只是加载了类，但是没有执行类静态代码<br>使用loadClass只有执行clazz.NewInstance()才能够初始化类</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://blog.csdn.net/sunyujia/article/details/2501709" target="_blank" rel="noopener">http://blog.csdn.net/sunyujia/article/details/2501709</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/27/Lang_Java_reflect/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/27/Lang_Java_reflect/" class="post-title-link" itemprop="url">Java为什么支持反射机制?</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-27 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-27T12:22:33+08:00">2016-05-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Java为什么能够支持Reflection？ 答案是Java运行时仍然拥有类型信息，它包含了这个类一切：它有哪些字段、哪些方法，各是何种保护级别等等，还有这个类依赖于哪些类。在Java中，类信息以对象的形式存放，这些对象是一种元对象，它们的类型就是Class。拥有了这些信息，无论是动态创建对象还是调用某些方法都是轻而易举的。在C++中，通过RTTI（运行时类型识别），我们也可以知道类的一些信息，但为什么C++中却没有 Reflection，原因是类型信息不完整。RTTI这个名字本身就告诉我们，C++的类型信息是用来进行类型识别的，因此，它也不需要其它额外的信息。并不是C++无法做到这一点，而是C++不希望给用户增加额外的负担。有所得，必然有所失，因此，C++放弃了元对象。关于这一点，C++之父 Bjarne Stroustrup在他的《C++语言的设计与演化》的14.2.8节中进行了深入的讨论。</p>
+<p>元对象是Java Reflection的物质基础，那它的精神基础又是什么呢？Java为什么要支持Reflection？</p>
+<p>经过上面的讨论，我们把这个问题再进一步，为什么Java要提供元对象？讨论这个问题，我们还要拉回到十年前，那时Java刚刚来到正式登上历史的舞台。Java实际上诞生在这之前的数年，那时候还叫Oak，环境所限使得这一划时代的杰作甫一出炉便被束之高阁。当Netscape掀起了为网络大戏的序幕，Java得以凤凰涅?，这其中很重要的一个原因就是Java是以网络为中心的。</p>
+<p>仔细观察，我们会发现，Java的整个基础架构的设计都是为网络服务。首当其冲的便是Java中最著名的跨平台。其实，在Java之前的年代，人们也需要考虑平台之间的可移植性，但这种移植大多数集中在源码一级，这也就是C语言可以流行的原因之一，在单机环境下，平台的差异并不那么明显。网络的出现使平台之间差异凸现出来，因为网络可能会连接各种各样的计算机和设备。没错，还有设备，你也许知道Java最初的开发是和嵌入式设备相关的。一旦应用可以跨平台，程序开发和后期管理维护工作将得到极大的简化，可移植性也从源码级晋升到二进制级（Java字节码）。所以，跨平台实际上也是为了网络打基础。Java中另一个重要的买点??安全性与网络之间的关系更为密切，谁都可以想出几条理由，把二者关联起来。</p>
+<p>再来具体看看Java的基础架构如何对网络进行支持的。还记得Java最初是怎么吸引人的吗？没错，Applet。熟悉原理的朋友都知道，Applet的运行是把远程的类文件下载到本地来执行的。相对于本地硬盘，网络给我们的感觉就是一个字????慢。如果Java采用传统可执行文件组织方式，即一个完整的可执行文件，把整个 Applet下载下来的运行，只怕等到花儿也谢了。Java采用的手法是把文件拆开，以类为单位进行组织，这就是我们今天见到的class文件。这样，执行的过程就变成第一个类下载之后就可以运行，大大节省了最初的等待时间。好的设计会把程序分成若干的模块，所以，绝大多数程序不可能写在一个类中。因此，类文件中必须包含它所用到类。对于引导部分，我们可以让它以特定的方式开始执行，比如把我们耳熟能详的main方法放在特定的字节，但对于没有定法的任意方法，是没有办法规定的，而一个类调用另一个类的方法就是这样随意，因此类文件中必须包含这个类方法的信息，进一步字段信息也会加进来，这样几乎一个完整类的信息就出来了，而这些信息对应的恰好是元对象。所以，元对象出现在Java基础架构中。有了元对象，Reflection也成了一件顺其自然的事情。有了Reflection，Java也就拥有了动态扩展的能力，这样就可以极大的提高程序的灵活性。</p>
+<p>关于Java基础结构对网络的支持还可以再说几句。class文件经过了精心的设计，本身相当紧凑，其目的就是为了方便在网络上传输，而JAR文件的出现，其目的也是为了方便网络传输，因为如果每次只传输一个类，大量的时间都被浪费在建立网络连接的过程中，JAR文件使得一次传输多个类成为可能，而且我们还知道JAR文件中的数据是经过压缩的，这样可以进一步减少下载时间。Java基础架构对网络的支持，《深入Java虚拟机》（第二版）的4.3节进行了很好阐述，有兴趣不妨看一下。对Reflection思考让我有机会对Java本身的设计进行深入的思考。一个好的软件设计需要一个核心理念作为支撑，所有的一切都是围绕核心进行的，而对于Java，这个核心就是网络。一次有趣的思考体验！</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/27/Lang_Java_newInstance/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/27/Lang_Java_newInstance/" class="post-title-link" itemprop="url">Java中newInstance()和new()</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-27 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-27T12:22:33+08:00">2016-05-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Java开发特别是数据库开发中，经常会用到Class.forName( )这个方法。通过查询Java Documentation我们会发现使用Class.forName( )静态方法的目的是为了动态加载类。在加载完成后，一般还要调用Class下的newInstance( )静态方法来实例化对象以便操作。因此，单单使用Class.forName( )是动态加载类是没有用的，其最终目的是为了实例化对象。</p>
+<p>这里有必要提一下就是Class下的newInstance()和new有什么区别？，首先，newInstance( )是一个方法，而new是一个关键字，其次，Class下的newInstance()的使用有局限，因为它生成对象只能调用无参的构造函数，而使用new关键字生成对象没有这个限制。<br>好，到此为止，我们总结如下：<br>Class.forName(“”)返回的是类 class<br>Class.forName(“”).newInstance()返回的是object<br>有数据库开发经验朋友会发现，为什么在我们加载数据库驱动包的时候有的却没有调用newInstance( )方法呢？即:有的jdbc连接数据库的写法里是Class.forName(“xxx.xx.xx”);而有一些：Class.forName(xxx.xx.xx).newInstance()，为什么会有这两种写法呢？<br>刚才提到，Class.forName(“”);的作用是要求JVM查找并加载指定的类，如果在类中有静态初始化器的话，JVM必然会执行该类的静态代码段。而在JDBC规范中明确要求这个Driver类必须向DriverManager注册自己，即任何一个JDBC Driver的Driver类的代码都必须类似如下：</p>
+<pre><code>public class MyJDBCDriver implements Driver {  
+    static {  
+        DriverManager.registerDriver(new MyJDBCDriver());  
+    }  
+}  
+</code></pre><p>既然在静态初始化器的中已经进行了注册，所以我们在使用JDBC时只需要Class.forName(XXX.XXX);就可以了。<br>Java中工厂模式经常使用newInstance()方法来创建对象，因此从为什么要使用工厂模式上可以找到具体答案。 例如：<br>    class c = Class.forName(“Example”);<br>    factory = (ExampleInterface)c.newInstance();<br>其中ExampleInterface是Example的接口，可以写成如下形式：<br>    String className = “Example”;<br>    class c = Class.forName(className);<br>    factory = (ExampleInterface)c.newInstance();<br>进一步可以写成如下形式：<br>    String className = readfromXMlConfig;//从xml 配置文件中获得字符串<br>    class c = Class.forName(className);<br>    factory = (ExampleInterface)c.newInstance();<br>上面代码已经不存在Example的类名称，它的优点是，无论Example类怎么变化，上述代码不变，甚至可以更换Example的兄弟类Example2 , Example3 , Example4……，只要他们继承ExampleInterface就可以。</p>
+<p>从JVM的角度看，我们使用关键字new创建一个类的时候，这个类可以没有被加载。                                                                                                                           </p>
+<p>但是使用newInstance()方法的时候，就必须保证：1、这个 类已经加载；2、这个类已经连接了。而完成上面两个步骤的正是Class的静态方法forName()所完成的，这个静态方法调用了启动类加载器，即加载 java API的那个加载器。</p>
+<p>现在可以看出，newInstance()实际上是把new这个方式分解为两步，即首先调用Class加载方法加载某个类，然后实例化。 这样分步的好处是显而易见的。我们可以在调用class的静态加载方法forName时获得更好的灵活性，提供给了一种降耦的手段。</p>
+<p>最后用最简单的描述来区分new关键字和newInstance()方法的区别：<br>newInstance: 弱类型。低效率。只能调用无参构造。<br>new: 强类型。相对高效。能调用任何public构造。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/26/Android_Log/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/26/Android_Log/" class="post-title-link" itemprop="url">Android Log</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-26 15:13:00" itemprop="dateCreated datePublished" datetime="2016-05-26T15:13:00+08:00">2016-05-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android-各层中日志打印功能的应用"><a href="#Android-各层中日志打印功能的应用" class="headerlink" title="Android 各层中日志打印功能的应用"></a>Android 各层中日志打印功能的应用</h1><h3 id="1-HAL层"><a href="#1-HAL层" class="headerlink" title="1. HAL层"></a>1. HAL层</h3><p>头文件：</p>
+<p>#include &lt;utils/Log.h&gt;<br>Android.mk中：</p>
+<p>LOCAL_SHARED_LIBRARIES := liblog libcutils</p>
+<p>对应的级别 打印方法<br>VERBOSE LOGV()<br>DEBUG LOGD()<br>INFO LOGI()<br>WARN LOGW()<br>ERROR LOGE()</p>
+<p>方法：<br>LOGD(“%d, %s”, int, char* )</p>
+<h3 id="2-JNI层"><a href="#2-JNI层" class="headerlink" title="2. JNI层"></a>2. JNI层</h3><p>头文件：</p>
+<p>#include &lt;utils/Log.h&gt;</p>
+<p>对应的级别 打印方法<br>VERBOSE LOGV()<br>DEBUG LOGD()<br>INFO LOGI()<br>WARN LOGW()<br>ERROR LOGE()</p>
+<p>方法：<br>LOGD(“%d, %s”, int, char* )</p>
+<h3 id="3-FRAMEWORK层"><a href="#3-FRAMEWORK层" class="headerlink" title="3. FRAMEWORK层"></a>3. FRAMEWORK层</h3><p>import android.util.Slog;</p>
+<p>对应的级别 打印方法<br>VERBOSE Slog.v()<br>DEBUG Slog.d()<br>INFO Slog.i()<br>WARN Slog.w()<br>ERROR Slog.e()</p>
+<p>方法：<br>Slog.d(TAG, “something to say.”);</p>
+<h3 id="4-Java层"><a href="#4-Java层" class="headerlink" title="4. Java层"></a>4. Java层</h3><p>import android.util.Log;</p>
+<p>对应的级别 打印方法<br>VERBOSE Log.v()<br>DEBUG Log.d()<br>INFO Log.i()<br>WARN Log.w()<br>ERROR Log.e()</p>
+<p>方法：<br>Log.d(TAG, “something to say.”);</p>
+<hr>
+<h1 id="一、LOG等级：Verbose-Debug-Info-Warn-Error-Assert-Suppress】"><a href="#一、LOG等级：Verbose-Debug-Info-Warn-Error-Assert-Suppress】" class="headerlink" title="一、LOG等级：Verbose,Debug,Info,Warn,Error, Assert,Suppress】"></a>一、LOG等级：Verbose,Debug,Info,Warn,Error, Assert,Suppress】</h1><pre><code>Verbose最低级别，什么信息都输出；A是最高级别的日志，即assert；S表示Suppress，即停止该日志的输出。
+</code></pre><h1 id="二、选用标准："><a href="#二、选用标准：" class="headerlink" title="二、选用标准："></a>二、选用标准：</h1><p>Verbose：开发调试过程中一些详细信息，Verbose等级的Log，请不要在user版本中出现</p>
+<blockquote>
+<p>Java示例<br>  import android.os.Build;<br>    import android.util.Log<br>    final public Boolean isEng =Build.TYPE.equals(“eng”);<br>    if (isEng)<br>        Log.v(“LOG_TAG”,“LOG_MESSAGE”);</p>
+</blockquote>
+<blockquote>
+<p>C/C++示例</p>
+<p>  #include&lt;cutils/log.h&gt;     ———–C/C++示例———-<br>    char value[PROPERTY_VALUE_MAX];   int isEng=0;<br>    property_get(“ro.build.type”,value, “user”);<br>    isEng=strcmp(value, “eng”);<br>    if (isEng)<br>        ALOGV();</p>
+</blockquote>
+<p>Debug: 用于调试的信息，编译进产品，但可以在运行时关闭，Debug等级的log,默认不开启，通过终端命令开启;</p>
+<blockquote>
+<p>Java示例<br>  import android.util.Log      ———————————<br>    final String TAG=”MyActivity”;<br>    final public Boolean LOG_DEBUG = Log.isLoggable(TAG, Log.DEBUG);<br>    if (LOG_DEBUG)<br>        Log.d(“LOG_TAG”,“LOG_MESSAGE”);</p>
+<p>  运行时开启log: 在终端输入：setprop log.tag.MyActivity DEBUG<br>    运行时关闭log: 在终端输入：setprop log.tag.MyActivity INFO</p>
+</blockquote>
+<blockquote>
+<p>C/C++示例</p>
+<p>  #include&lt;cutils/log.h&gt;   —————–</p>
+</blockquote>
+<pre><code>#define LOG_CTL &quot;debug.MyActivity.enablelog&quot;
+charvalue[PROPERTY_VALUE_MAX]; 
+int isDebug=0;
+property_get(LOG_CTL, value, &quot;0&quot;);
+isDebug = strcmp(value,&quot;1&quot;);
+if (isDebug)
+    ALOGD();
+</code></pre><blockquote>
+<p>  运行时开启log: 在终端输入：setprop debug.MyActivity.enablelog 1<br>    运行时关闭log: 在终端输入：setprop debug.MyActivity.enablelog 0</p>
+</blockquote>
+<p>附：Log.isLoggable(TAG, log.DEBUG)   //这个函数表示通过setprop设置的level需要小于DEBUG，值才为True。（默认setprop配置的值是INFO，INFO&gt;DEBUG所以你不配置时，值为false的），通过setprop log.tag.<tag>  <level>  通过设置属性的方式来改变默认level，也可以将这些属性按照log.tag.<tag>=<level>的形式，写入/data/local.prop中；</level></tag></level></tag></p>
+<p>Info:例如一些运行时的状态信息，这些状态信息在出现问题的时候能提供帮助。<br>Warn：警告系统出现了异常，即将出现错误。<br>Error：系统已经出现了错误。</p>
+<p>注：Info、Warn、Error等级的Log禁止作为普通的调试信息使用，这些等级的Log是系统出现问题时候的重要分析线索，如果随意使用，将给Log分析人员带来极大困扰。请参考前面的等级介绍合理使用。</p>
+<p>注2：禁止使用new Exception(“print trace”).printStackTrace()或者Log. getStackTraceString(Exception)方式打印普通调试信息，因为这种方式打印Log非常消耗系统资源。此种方式打印Log一般只出现try..catch某个异常使用。</p>
+<p>注3：Log的tag命名，使用Activity名称或者类、模块的名称，不要出现自己的姓名拼音或其他简称。在c++/c代码中调用ALOGD等宏函数，参数没有传入tag,需要在文件头部#define LOG_TAG”YOUR_TAG_NAME”。</p>
+<p>注4：Log的内容，不要出现公司名称、个人名称或相关简称，Log内容不要出现无意义的内容，如连续的等号或星号或连续的数字等，Log内容要方便其他分析Log的人员查看。</p>
+<p>注5：Log输出的频率需要控制,例如1s打印一次的Log，尽量只在eng版本使用，user版本如需开启，请默认关闭，通过设置setprop命令来开启。</p>
+<h1 id="三、使用方法"><a href="#三、使用方法" class="headerlink" title="三、使用方法"></a>三、使用方法</h1><p>c++、c 层输出log：</p>
+<p>#include &lt;cutils/log.h&gt;<br>ALOGV(),     ALOGD(),    ALOGI(),    ALOGW(),    ALOGE()</p>
+<p>Java层输出log：<br>import android.util.Log<br>Log.v(String tag, String msg),    Log.d(String tag, String msg),<br>Log.i(String tag, String msg),    Log.w(String tag, String msg), Log.e(String tag, String msg)</p>
+<h1 id="四、log显示格式"><a href="#四、log显示格式" class="headerlink" title="四、log显示格式"></a>四、log显示格式</h1><p>log示例：I/SysInfoService(  488): SysInfoWorkThread running<br>            等级/TAG(PID)       :消息</p>
+<h1 id="五、过滤"><a href="#五、过滤" class="headerlink" title="五、过滤"></a>五、过滤</h1><p>logcat消息过滤<br>    logcat -c 清除log<br>    logcat -s TAG:D -v [process只显示pid] [tag 只显示 priority/Tag] [thread 显示process:thread and priority/tag]<br>                                        [raw只显示message][time显示date-time-priority/Tag PID ][long 将元数据和消息分行]</p>
+<h1 id="六、Java核心库打印"><a href="#六、Java核心库打印" class="headerlink" title="六、Java核心库打印"></a>六、Java核心库打印</h1><p>Java核心库在Android工程的\libcore\luni\src\main\java目录下。<br>在Android的java核心库中是无法使用Logcat打印的，因为Android的java层要使用Java库，即Java库是Android的Java运行的前提，所以。。。</p>
+<p>经过调试，发现其实运用Java的Logger可以很简单的实现(或许Android已经做了处理)，在adb logcat中输出。好了，演示一下。</p>
+<p>引入包<br>import java.util.logging.Logger;<br>static Logger logger = Logger.getLogger(“mytag”);<br>logger.info(“blala”);<br>然后在adb logcat直接输出就行了。标签是mytag</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/26/Android_dumpstack/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -381,7 +1755,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2017-05-18 17:39:32" itemprop="dateModified" datetime="2017-05-18T17:39:32+08:00">2017-05-18</time>
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
               
             
           </span>
@@ -540,182 +1914,6 @@ LOCAL_SHARED_LIBRARIES += libutils
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/04/26/Android_update/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/04/26/Android_update/" class="post-title-link" itemprop="url">Android 升级</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-04-26 10:37:33" itemprop="dateCreated datePublished" datetime="2016-04-26T10:37:33+08:00">2016-04-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-15 20:27:00" itemprop="dateModified" datetime="2018-12-15T20:27:00+08:00">2018-12-15</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>TODO…</p>
-<h1 id="升级包-OTA-包-增量包-编译制作过程"><a href="#升级包-OTA-包-增量包-编译制作过程" class="headerlink" title="升级包 OTA 包 增量包 编译制作过程"></a>升级包 OTA 包 增量包 编译制作过程</h1><p>to do</p>
-<h1 id="升级流程"><a href="#升级流程" class="headerlink" title="升级流程"></a>升级流程</h1><p><a href="http://blog.csdn.net/chenyufei1013/article/details/12705719" target="_blank" rel="noopener">http://blog.csdn.net/chenyufei1013/article/details/12705719</a></p>
-<p><a href="https://i.loli.net/2018/12/15/5c14f2fa1f497.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2fa1f497.png" alt="OTA.png"></a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/04/26/Protocol_HTTP_MITM/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -778,7 +1976,7 @@ LOCAL_SHARED_LIBRARIES += libutils
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-15 21:06:08" itemprop="dateModified" datetime="2018-12-15T21:06:08+08:00">2018-12-15</time>
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
               
             
           </span>
@@ -900,7 +2098,7 @@ LOCAL_SHARED_LIBRARIES += libutils
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/04/26/Android_HAL/">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/04/26/Android_update/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jin">
@@ -920,7 +2118,7 @@ LOCAL_SHARED_LIBRARIES += libutils
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/04/26/Android_HAL/" class="post-title-link" itemprop="url">Android HAL 模型</a>
+                <a href="/2016/04/26/Android_update/" class="post-title-link" itemprop="url">Android 升级</a>
               
             
           </h1>
@@ -962,7 +2160,7 @@ LOCAL_SHARED_LIBRARIES += libutils
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-15 20:33:52" itemprop="dateModified" datetime="2018-12-15T20:33:52+08:00">2018-12-15</time>
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
               
             
           </span>
@@ -1016,1350 +2214,12 @@ LOCAL_SHARED_LIBRARIES += libutils
       
         
           
-            <p>前言暂时省略…</p>
-<h1 id="Android-HAL层模型"><a href="#Android-HAL层模型" class="headerlink" title="Android HAL层模型"></a>Android HAL层模型</h1><p>直接上图:<br><a href="https://i.loli.net/2018/12/15/5c14f2f942014.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2f942014.png" alt="Android_HAL.png"></a></p>
+            <p>TODO…</p>
+<h1 id="升级包-OTA-包-增量包-编译制作过程"><a href="#升级包-OTA-包-增量包-编译制作过程" class="headerlink" title="升级包 OTA 包 增量包 编译制作过程"></a>升级包 OTA 包 增量包 编译制作过程</h1><p>to do</p>
+<h1 id="升级流程"><a href="#升级流程" class="headerlink" title="升级流程"></a>升级流程</h1><p><a href="http://blog.csdn.net/chenyufei1013/article/details/12705719" target="_blank" rel="noopener">http://blog.csdn.net/chenyufei1013/article/details/12705719</a></p>
+<p><a href="https://i.loli.net/2018/12/15/5c14f2fa1f497.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2fa1f497.png" alt="OTA.png"></a></p>
 
           
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Android_am_cmd/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/11/30/Android_am_cmd/" class="post-title-link" itemprop="url">Android am cmd</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-04 22:28:47" itemprop="dateModified" datetime="2019-01-04T22:28:47+08:00">2019-01-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>am命令实的实现方式在Am.java，最终几乎都是调用ActivityManagerService相应的方法来完成的，am monitor除外。比如前面概述中介绍的命令am start -a android.intent.action.VIEW -d <a href="http://gityuan.com，" target="_blank" rel="noopener">http://gityuan.com，</a> 启动Acitivty最终调用的是ActivityManagerService类的startActivityAsUser()方法来完成的。再比如am kill-all命令，最终的实现工作是由ActivityManagerService的killBackgroundProcesses()方法完成的。</p>
-<h3 id="命令格式及列表"><a href="#命令格式及列表" class="headerlink" title="命令格式及列表"></a>命令格式及列表</h3><p>am [subcommand] [options]</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">命令</th>
-<th style="text-align:left">功能</th>
-<th style="text-align:left">实现方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">am start [options] <intent></intent></td>
-<td style="text-align:left">启动Activity</td>
-<td style="text-align:left">startActivityAsUser</td>
-</tr>
-<tr>
-<td style="text-align:left">am startservice <intent></intent></td>
-<td style="text-align:left">启动Service</td>
-<td style="text-align:left">startService</td>
-</tr>
-<tr>
-<td style="text-align:left">am stopservice <intent></intent></td>
-<td style="text-align:left">停止Service</td>
-<td style="text-align:left">stopService</td>
-</tr>
-<tr>
-<td style="text-align:left">am broadcast <intent></intent></td>
-<td style="text-align:left">发送广播</td>
-<td style="text-align:left">broadcastIntent</td>
-</tr>
-<tr>
-<td style="text-align:left">am kill <package></package></td>
-<td style="text-align:left">杀指定后台进程</td>
-<td style="text-align:left">killBackgroundProcesses</td>
-</tr>
-<tr>
-<td style="text-align:left">am kill-all</td>
-<td style="text-align:left">杀所有后台进程</td>
-<td style="text-align:left">killAllBackgroundProcesses</td>
-</tr>
-<tr>
-<td style="text-align:left">am force-stop <package></package></td>
-<td style="text-align:left">强杀进程</td>
-<td style="text-align:left">forceStopPackage</td>
-</tr>
-<tr>
-<td style="text-align:left">am hang</td>
-<td style="text-align:left">系统卡住</td>
-<td style="text-align:left">hang</td>
-</tr>
-<tr>
-<td style="text-align:left">am restart</td>
-<td style="text-align:left">重启</td>
-<td style="text-align:left">restart</td>
-</tr>
-<tr>
-<td style="text-align:left">am bug-report</td>
-<td style="text-align:left">创建bugreport</td>
-<td style="text-align:left">requestBugReport</td>
-</tr>
-<tr>
-<td style="text-align:left">am dumpheap <pid> <file></file></pid></td>
-<td style="text-align:left">进程pid的堆信息输出到file</td>
-<td style="text-align:left">dumpheap</td>
-</tr>
-<tr>
-<td style="text-align:left">am send-trim-memory <pid> <level></level></pid></td>
-<td style="text-align:left">收紧进程的内存</td>
-<td style="text-align:left">setProcessMemoryTrimLevel</td>
-</tr>
-<tr>
-<td style="text-align:left">am monitor</td>
-<td style="text-align:left">监控</td>
-<td style="text-align:left">MyActivityController.run</td>
-</tr>
-</tbody>
-</table>
-<h3 id="am用法详解-–-options"><a href="#am用法详解-–-options" class="headerlink" title="am用法详解 – [options]"></a>am用法详解 – [options]</h3><h4 id="启动Activity"><a href="#启动Activity" class="headerlink" title="启动Activity"></a>启动Activity</h4><p>am start [options] <intent>， 实现原理： 存在-W参数则调用startActivityAndWait()方法来运行，否则startActivityAsUser()。<br>[options]参数：</intent></p>
-<ul>
-<li>-D: 允许调试功能</li>
-<li>-W: 等待app启动完成</li>
-<li>-R <count>: 重复启动Activity COUNT次</count></li>
-<li>-S: 启动activity之前，先调用forceStopPackage()方法强制停止app.</li>
-<li>–opengl-trace: 运行获取OpenGL函数的trace</li>
-<li>–user &lt;USER_ID&gt; | current: 指定用户来运行App,默认为当前用户。</li>
-<li>–start-profiler <file>: 启动profiler，并将结果发送到 <file>;</file></file></li>
-<li>-P <file>: 类似 –start-profiler，不同的是当app进入idle状态，则停止profiling</file></li>
-<li>–sampling INTERVAL: 设置profiler 取样时间间隔，单位ms;</li>
-</ul>
-<h4 id="收紧内存"><a href="#收紧内存" class="headerlink" title="收紧内存"></a>收紧内存</h4><p>am send-trim-memory  <pid> <level><br>用例:<br>向pid=12345的进程，发出level=RUNNING_LOW的收紧内存命令<br>am send-trim-memory 12345 RUNNING_LOW</level></pid></p>
-<p><level>参数:<br>level取值范围为： HIDDEN、RUNNING_MODERATE、BACKGROUND、RUNNING_LOW、MODERATE、RUNNING_CRITICAL、COMPLETE</level></p>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>am的子命令，startservice, stopservice, broadcast, kill, profile start, profile stop, dumpheap的可选参数都允许设置–user &lt;USER_ID&gt;。目前市面上的绝大多数手机还是单用户模式，故可以忽略该参数，默认为当前用户。</p>
-<p>例如：启动id=10010的用户的指定service。<br>am startservice –user 10010 <intent></intent></p>
-<h4 id="am用法详解-–"><a href="#am用法详解-–" class="headerlink" title="am用法详解 – "></a>am用法详解 – <intent></intent></h4><p>Intent的参数和flags较多，本文为方便起见，分为3种类型参数，常用参数，Extra参数，Flags参数。</p>
-<ul>
-<li>-a <action>: 指定Intent action， 实现原理Intent.setAction()；</action></li>
-<li>-n <component>: 指定组件名，格式为{包名}/.{主Activity名}，实现原理Intent.setComponent(）；</component></li>
-<li>-d &lt;DATA_URI&gt;: 指定Intent data URI</li>
-<li>-t &lt;MIME_TYPE&gt;: 指定Intent MIME Type</li>
-<li>-c <category> [-c <category>] …]:指定Intent category，实现原理Intent.addCategory()</category></category></li>
-<li>-p <package>: 指定包名，实现原理Intent.setPackage();</package></li>
-<li>-f <flags>: 添加flags，实现原理Intent.setFlags(int )，紧接着的参数必须是int型；</flags></li>
-</ul>
-<p>am start -a android.intent.action.VIEW<br>am start -n com.yuanhh.app/.MainActivity<br>am start -d content://contacts/people/1<br>am start -t image/png<br>am start -c android.intent.category.APP_CONTACTS</p>
-<h5 id="Extra参数"><a href="#Extra参数" class="headerlink" title="Extra参数"></a>Extra参数</h5><p><em>基本类型</em></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>-e/-es</th>
-<th>-esn</th>
-<th>-ez</th>
-<th>-ei</th>
-<th>-el</th>
-<th>-ef</th>
-<th>-eu</th>
-<th>-ecn</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>类型</td>
-<td>String</td>
-<td>(String)null</td>
-<td>boolean</td>
-<td>int</td>
-<td>long</td>
-<td>float</td>
-<td>uri</td>
-<td>component</td>
-</tr>
-</tbody>
-</table>
-<p>比如参数es是Extra String首字母简称，实例：<br>  am start -n com.yuanhh.app/.MainActivity -es website gityuan.com<br>此处-es website gityuan.com，等价于Intent.putExtra(“website”, “gityuan.com”);</p>
-<p><em>数组类型</em></p>
-<p>参数    -esa    -eia    -ela    -efa<br>数组类型    String[]    int[]    long[]    float[]</p>
-<p>比如参数eia，是Extra int array首字母简称，多个value值之间以逗号隔开，实例：<br>am start -n com.yuanhh.app/.MainActivity -ela weekday 1,2,3,4,5<br>此处-ela weekday 1,2,3,4,5，等价于Intent.putExtra(“weekday”, new int[]{1,2,3,4,5});</p>
-<p><em>ArrayList类型</em></p>
-<p>参数    -esal    -eial    -elal    -efal<br>List类型    String    int    long    float</p>
-<p>比如参数efal，是Extra float Array List首字母简称，多个value值之间以逗号隔开，实例：<br>am start -n com.yuanhh.app/.MainActivity -efal nums 1.2,2.2<br>此处-efal nums 1.2,2.2，等价于先构造ArrayList变量，再通过putExtra放入第二个参数。</p>
-<h5 id="Flags参数"><a href="#Flags参数" class="headerlink" title="Flags参数"></a>Flags参数</h5><p>在参数类型1中，提到有-f <flags>，是通过Intent.setFlags(int )方法，来设置Intent的flags.本小节也是关于flags，是通过Intent.addFlags(int )方法。如下所示，所有的flags参数。</flags></p>
-<p>[–grant-read-uri-permission] [–grant-write-uri-permission]<br>[–grant-persistable-uri-permission] [–grant-prefix-uri-permission]<br>[–debug-log-resolution]<br>[–exclude-stopped-packages] [–include-stopped-packages]<br>[–activity-brought-to-front] [–activity-clear-top]<br>[–activity-clear-when-task-reset] [–activity-exclude-from-recents]<br>[–activity-launched-from-history] [–activity-multiple-task]<br>[–activity-no-animation] [–activity-no-history]<br>[–activity-no-user-action] [–activity-previous-is-top]<br>[–activity-reorder-to-front] [–activity-reset-task-if-needed]<br>[–activity-single-top] [–activity-clear-task]<br>[–activity-task-on-home]<br>[–receiver-registered-only] [–receiver-replace-pending]</p>
-<p>例如，发送action=”broadcast.demo”的广播，并且对于forceStopPackage()的应用不允许接收该广播，命令如下：<br>am broadcast -a broadcast.demo –exclude-stopped-packages</p>
-<p>用例：<br>am start -n com.android.dialer/com.android.dialer.DialtactsActivity</p>
-<p>From:<a href="http://gityuan.com/2016/02/27/am-command/" target="_blank" rel="noopener">http://gityuan.com/2016/02/27/am-command/</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Android_NDKPorting_Za/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/11/30/Android_NDKPorting_Za/" class="post-title-link" itemprop="url">Android NDK移植杂项</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-04-27 20:45:05" itemprop="dateModified" datetime="2017-04-27T20:45:05+08:00">2017-04-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>android上gcc编译与linux上有点点差别：<br> ndk中gcc不需要需要显式指定-lpthread。Android pthread系列函数libc_bionic.a(即bionic C库)中，所以在默认就会链接。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Linux_FileOperationAPI/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/11/30/Linux_FileOperationAPI/" class="post-title-link" itemprop="url">Linux 文件操作API</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-02 17:40:05" itemprop="dateModified" datetime="2019-02-02T17:40:05+08:00">2019-02-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="open"><a href="#open" class="headerlink" title="open"></a>open</h1><pre><code>#include &lt;sys/types.h&gt;
-#include &lt;sys/stat.h&gt;
-#include &lt;fcntl.h&gt;
-
-int open(const char *pathname, int flags); //打开一个现有的文件
-int open(const char *pathname, int flags, mode_t mode);  //打开文件不存在，则先创建
-
-【flags】:----------
-O_RDONLY, O_WRONLY, or O_RDWR.  这三个之一必备
-O_APPEND:  The file is opened in append mode.
-O_ASYNC:   This feature is available only for terminals, pseudoterminals, sockets, pipes and FIFOs 
-O_CLOEXEC: Enable the close-on-exec flag for the new file descriptor.
-    了解这个选项需要明白fork后跟随exec和fork后不跟随exec的区别
-    fork之后若跟随执行exec后，该进程执行的程序完全替换为新程序，而新程序则从其main函数开始执行。因为调用exec并不创建新进程，所以先后的进程ID并未改变。exec只是用一个全新的程序替换了当前进程的正文、数据、堆和栈段。
-    也就是说之前的打开的文件描述符fd会被清理掉，导致打开的文件句柄无法释放，所以有了这个选项，在当前进程执行exec族函数时，会先做一个清理工作，close掉当前进程的文件描述符，再载入要执行的程序到当前进程环境。
-
-O_CREAT:-
-    【mode】: （如果是新建文件，就设置初始访问权限）
-        S_IRWXU  00700 user (file owner) has read, write and execute permission
-        S_IRUSR  00400 user has read permission
-        S_IWUSR  00200 user has write permission
-        S_IXUSR  00100 user has execute permission
-        S_IRWXG  00070 group has read, write and execute permission
-        S_IRGRP  00040 group has read permission
-        S_IWGRP  00020 group has write permission
-        S_IXGRP  00010 group has execute permission
-        S_IRWXO  00007 others have read, write and execute permission
-        S_IROTH  00004 others have read permission
-        S_IWOTH  00002 others have write permission
-        S_IXOTH  00001 others have execute permission
-        多个模式可位或 bitwise-or
-
-O_DIRECT:    Try to minimize cache effects of the I/O to and from this file.
-O_DIRECTORY: If  pathname is not a directory, cause the open to fail.
-O_EXCL:      如果同时指定了O_CREAT，而文件已经存在，则导致调用出错
-O_LARGEFILE: 
-O_NOATIME:   
-O_NOCTTY: 如果pathname指的是终端设备(tty)，则不将此设备分配作为此进程的控制终端
-O_NOFOLLOW
-O_NONBLOCK : When possible, the file is opened in nonblocking mode.
-O_PATH: 
-O_SYNC: The file is opened for synchronous I/O. Any write(2)s on the resulting file descriptor will block  
-        the calling process until the data has been physically written to the underlying hardware.
-        只在数据被写入外存或者其他设备之后操作才返回
-O_TRUNC: If  the  file already exists and is a regular file and the open mode allows writing
-         (i.e., is O_RDWR or O_WRONLY) it will be truncated to length 0.
-        如果文件存在，而且为读写或只写方式打开，则将其长度截断为0
-</code></pre><h1 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h1><pre><code>ls -l
-drwxr-xr-x. 2 anxier anxier 4096 1月 15 00:29 desktop
-第一栏的信息包含10字符。第1个字符，表示文件的类型；第2～4位，代表文件所有者（User）的权限，分别为读、写、执行；第5～7位，代表文件所有者的同组用户（Group）的权限，分别是读、写、执行；第8～10位，代表其他用户（Other）的权限，分别为读、写、执行。
-</code></pre><table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-/l/c/s/d/b/p</td>
-<td>r/-</td>
-<td>w/-</td>
-<td>x/-</td>
-<td>r/-</td>
-<td>w/-</td>
-<td>x/-</td>
-<td>r/-</td>
-<td>w/-</td>
-<td>x/-</td>
-</tr>
-</tbody>
-</table>
-<pre><code>- 普通文件
-d 目录文件      文本文件和二进制文件。
-l 链接文件
-b 块设备文件
-c 字符设备文件
-p 管道文件      用于在进程间传递数据
-s 套接口文件
-</code></pre><h1 id="ioctl"><a href="#ioctl" class="headerlink" title="ioctl"></a>ioctl</h1><pre><code>#include &lt;sys/ioctl.h&gt;
-
-int ioctl(int d, int request, ...);
-
-request: ----
-    TIOCSETD int *ldisc change the line discipline:
-    TTYDISC termios interactive line discipline
-    TABLDISC tablet line discipline
-    SLIPDISC serial IP line discipline
-    PPPDISC PPP line discipline
-    TIOCGETD int *ldisc return the current line discipline
-    TIOCSBRK set the terminal into BREAK condition
-    TIOCCBRK clear the terminal BREAK condition
-    TIOCSDTR assert data terminal ready
-    TIOCCDTR clear data terminal ready
-    TIOCGPGRP int *tpgrp return the terminal&apos;s process group
-    TIOCSPGRP int *tpgrp associate the terminal&apos;s process group
-    TIOCGETA struct termios *term get the terminal&apos;s termios attributes
-    TIOCSETA struct termios *term set the terminal&apos;s termios attributes
-    TIOCSETAW struct termios *term set the termios attrs after any output completes
-    TIOCSETAF struct termios *term after any output completes, clear input and set termios attrs
-    TIOCOUTQ int *num current number of characters in the output queue
-    TIOCSTI char *cp manually send a character to the terminal
-    TIOCSTOP stop output (like typing ^S)
-    TIOCSTART start output (like typing ^Q)
-    TIOCSCTTY make this the controlling terminal for the process
-    TIOCDRAIN wait until all output is drained
-    TIOCEXCL set exclusive use on the terminal
-    TIOCNXCL clear exclusive use of the terminal
-    TIOCFLUSH int *what clear input/output if `what&apos; has FREAD/FWRITE set
-    TIOCGWINSZ struct winsize *ws get the winsize information
-    TIOCSWINSZ struct winsize *ws set the winsize information
-    TIOCCONS int *on redirect kernel console messages
-    TIOCMSET int *state set the modem state bit flags according to the following:
-    TIOCM_LE Line Enable
-    TIOCM_DTR Data Terminal Ready
-    TIOCM_RTS Request To Send
-    TIOCM_ST Secondary Transmit
-    TIOCM_SR Secondary Receive
-    TIOCM_CTS Clear To Send
-    TIOCM_CAR Carrier Detect
-    TIOCM_CD Carrier Detect (synonym)
-    TIOCM_RNG Ring Indication
-    TIOCM_RI Ring Indication (synonym)
-    TIOCM_DSR Data Set Ready
-    TIOCMGET int *state get the modem state bit flags
-    TIOCMBIS int *state add modem state bit flags, OR-ing in the new states
-    TIOCMBIC int *state clear modem state bit flags
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Android_pm_cmd/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/11/30/Android_pm_cmd/" class="post-title-link" itemprop="url">Android pm cmd</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-28 22:50:37" itemprop="dateModified" datetime="2018-12-28T22:50:37+08:00">2018-12-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>pm命令实的实现方式在Pm.java，最后大多数都是调用PackageManagerService相应的方法来完成的。disbale之后，在桌面和应用程序列表里边都看到不该app。</p>
-<h3 id="命令格式及参数"><a href="#命令格式及参数" class="headerlink" title="命令格式及参数"></a>命令格式及参数</h3><p>pm <command></p>
-<p>命令    功能    实现方法<br>list packages    列举app包信息    PMS.getInstalledPackages<br>install [options] <path></path>    安装应用    PMS.installPackageAsUser<br>uninstall [options]<package>    卸载应用    IPackageInstaller.uninstall<br>enable &lt;包名或组件名&gt;    enable    PMS.setEnabledSetting<br>disable &lt;包名或组件名&gt;    disable    PMS.setEnabledSetting<br>hide <package>    隐藏应用    PMS.setApplicationHiddenSettingAsUser<br>unhide <package>    显示应用    PMS.setApplicationHiddenSettingAsUser<br>get-install-location    获取安装位置    PMS.getInstallLocation<br>set-install-location    设置安装位置    PMS.setInstallLocation<br>path <package>    查看App路径    PMS.getPackageInfo<br>clear <package>    清空App数据    AMS.clearApplicationUserData<br>get-max-users    最大用户数    UserManager.getMaxSupportedUsers<br>force-dex-opt <package>    dex优化    PMS.forceDexOpt<br>dump <package>    dump信息    AM.dumpPackageStateStatic<br>trim-caches &lt;目标size&gt;    紧缩cache目标大小    PMS.freeStorageAndNotify</package></package></package></package></package></package></package></p>
-<h1 id="详细参数"><a href="#详细参数" class="headerlink" title="详细参数"></a>详细参数</h1><h3 id="list-packages"><a href="#list-packages" class="headerlink" title="list packages*"></a>list packages*</h3><p>查看所有的package<br>list packages [options] <filter></filter></p>
-<p>其中[options]参数：</p>
-<p>-f: 显示包名所关联的文件；<br>-d: 只显示disabled包名；<br>-e: 只显示enabled包名；<br>-s: 只显示系统包名；<br>-3: 只显示第3方应用的包名；<br>-i: 包名所相应的installer;<br>-u: 包含uninstalled包名.</p>
-<p>规律： disabled + enabled = 总应用个数； 系统 + 第三方 = 总应用个数。</p>
-<p>比如：查看第3方应用：<br>pm list packages -3</p>
-<p>又比如，查看已经被禁用的包名。（国内的厂商一般把google的服务禁用了）<br>pm list packages -d</p>
-<p><filter>参数：<br>当FILTER为不为空时，则只会输出包名带有FILTER字段的应用；当FILTER为空时，则默认显示所有满足条件的应用。</filter></p>
-<p>比如，查看包名带google字段的包名<br>pm list packages google</p>
-<h3 id="pm-install"><a href="#pm-install" class="headerlink" title="pm install"></a>pm install</h3><p>pm install [options] <path></path></p>
-<p>其中[options]参数：</p>
-<p>-r: 覆盖安装已存在Apk，并保持原有数据；<br>-d: 运行安装低版本Apk;<br>-t: 运行安装测试Apk<br>-i : 指定Apk的安装器；<br>-s: 安装apk到共享快存储，比如sdcard;<br>-f: 安装apk到内部系统内存；<br>-l: 安装过程，持有转发锁<br>-g: 准许Apk manifest中的所有权限；</p>
-<p><path></path>参数：<br>该参数是必须的，是指需要安装的apk所在的路径。</p>
-<h3 id="其他参数"><a href="#其他参数" class="headerlink" title="其他参数"></a>其他参数</h3><p>pm list users //查看当前手机用户<br>pm list libraries //查看当前设备所支持的库<br>pm list features //查看系统所有的features<br>pm list instrumentation //所有测试包的信息<br>pm list permission-groups //查看所有的权限组<br>pm list permissions [options] <group> 查看权限<br>    -g: 以组形式组织；<br>    -f: 打印所有信息；<br>    -s: 简要信息；<br>    -d: 只列举危险权限；<br>    -u: 只列举用户可见的权限。</group></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Linux_cmd/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/11/30/Linux_cmd/" class="post-title-link" itemprop="url">Linux cmd</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-28 21:38:49" itemprop="dateModified" datetime="2018-12-28T21:38:49+08:00">2018-12-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="find-搜索指定目录以外的文件"><a href="#find-搜索指定目录以外的文件" class="headerlink" title="find 搜索指定目录以外的文件"></a>find 搜索指定目录以外的文件</h1><p>find .  -path &lt;./proc&gt; -prune -o -name <pattern>  -print | grep -nr <key-words in="" file=""></key-words></pattern></p>
-<p>…</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2015/11/30/Android_SourceCodePathGuide/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/11/30/Android_SourceCodePathGuide/" class="post-title-link" itemprop="url">Android 源码目录解析</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-11-30 00:00:00" itemprop="dateCreated datePublished" datetime="2015-11-30T00:00:00+08:00">2015-11-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-04-27 12:15:43" itemprop="dateModified" datetime="2017-04-27T12:15:43+08:00">2017-04-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Android 源码目录繁多，本文旨在更详尽做出说明。<br>.<br>├── abi<br>├── art<br>├── bionic<br>├── bootable<br>├── build<br>├── cts<br>├── dalvik<br>├── developers<br>├── development<br>├── device<br>├── docs<br>├── external<br>├── frameworks<br>├── hardware<br>├── libcore<br>├── libnativehelper<br>├── ndk<br>├── packages<br>├── pdk<br>├── prebuilts<br>├── sdk<br>├── system<br>└── tools</p>
-<p>待续。。。<br></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/11/30/Android_SourceCodePathGuide/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -2403,7 +2263,7 @@ request: ----
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2446,7 +2306,7 @@ request: ----
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2475,7 +2335,9 @@ request: ----
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2700,7 +2562,25 @@ request: ----
                     
                       
                     
-                    <span class="site-state-item-count">106</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

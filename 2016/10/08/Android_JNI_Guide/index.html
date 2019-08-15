@@ -96,20 +96,21 @@
 
 
 
-  <meta name="description" content="JNI 介绍JNI是Java Native Interface的缩写，它提供了若干的API实现了Java和其他语言的通信（主要是C&amp;amp;C++）。 JNI 类型 jni中结构体层次结构  下面是访问String的一些方法： GetStringUTFChars 将jstring转换成为UTF-8格式的char*    /  ReleaseStringUTFChars  释放指向UTF-8格式的c">
+  <meta name="description" content="JNI 介绍JNI是Java Native Interface的缩写，它提供了若干的API实现了Java和其他语言的通信（主要是C&amp;amp;C++）。 JNI 类型 jni中结构体层次结构  jni sign 参照表 下面是访问String的一些方法： GetStringUTFChars 将jstring转换成为UTF-8格式的char*    /  ReleaseStringUTFChars">
 <meta name="keywords" content="JNI,native调用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android JNI介绍及使用">
 <meta property="og:url" content="http://jackback.github.io/2016/10/08/Android_JNI_Guide/index.html">
 <meta property="og:site_name" content="Noobzhang">
-<meta property="og:description" content="JNI 介绍JNI是Java Native Interface的缩写，它提供了若干的API实现了Java和其他语言的通信（主要是C&amp;amp;C++）。 JNI 类型 jni中结构体层次结构  下面是访问String的一些方法： GetStringUTFChars 将jstring转换成为UTF-8格式的char*    /  ReleaseStringUTFChars  释放指向UTF-8格式的c">
+<meta property="og:description" content="JNI 介绍JNI是Java Native Interface的缩写，它提供了若干的API实现了Java和其他语言的通信（主要是C&amp;amp;C++）。 JNI 类型 jni中结构体层次结构  jni sign 参照表 下面是访问String的一些方法： GetStringUTFChars 将jstring转换成为UTF-8格式的char*    /  ReleaseStringUTFChars">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2018/12/15/5c14f2f87c115.png">
 <meta property="og:image" content="https://i.loli.net/2018/12/15/5c14f2f8833c4.png">
-<meta property="og:updated_time" content="2018-12-15T12:31:37.186Z">
+<meta property="og:image" content="https://i.loli.net/2019/08/15/TJQYGmFjrStn6wz.png">
+<meta property="og:updated_time" content="2019-08-15T06:35:31.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android JNI介绍及使用">
-<meta name="twitter:description" content="JNI 介绍JNI是Java Native Interface的缩写，它提供了若干的API实现了Java和其他语言的通信（主要是C&amp;amp;C++）。 JNI 类型 jni中结构体层次结构  下面是访问String的一些方法： GetStringUTFChars 将jstring转换成为UTF-8格式的char*    /  ReleaseStringUTFChars  释放指向UTF-8格式的c">
+<meta name="twitter:description" content="JNI 介绍JNI是Java Native Interface的缩写，它提供了若干的API实现了Java和其他语言的通信（主要是C&amp;amp;C++）。 JNI 类型 jni中结构体层次结构  jni sign 参照表 下面是访问String的一些方法： GetStringUTFChars 将jstring转换成为UTF-8格式的char*    /  ReleaseStringUTFChars">
 <meta name="twitter:image" content="https://i.loli.net/2018/12/15/5c14f2f87c115.png">
 
 
@@ -386,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-15 20:31:37" itemprop="dateModified" datetime="2018-12-15T20:31:37+08:00">2018-12-15</time>
+                <time title="修改时间：2019-08-15 14:35:31" itemprop="dateModified" datetime="2019-08-15T14:35:31+08:00">2019-08-15</time>
               
             
           </span>
@@ -442,6 +443,7 @@
 <h1 id="JNI-类型"><a href="#JNI-类型" class="headerlink" title="JNI 类型"></a>JNI 类型</h1><p><a href="https://i.loli.net/2018/12/15/5c14f2f87c115.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2f87c115.png" alt="001_JavaJNIType.png"></a></p>
 <p>jni中结构体层次结构</p>
 <p><a href="https://i.loli.net/2018/12/15/5c14f2f8833c4.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2f8833c4.png" alt="002_JaveJNIType2.png"></a></p>
+<p>jni sign 参照表<br><img src="https://i.loli.net/2019/08/15/TJQYGmFjrStn6wz.png" alt="003_JavaJNISign.png"></p>
 <p>下面是访问String的一些方法：</p>
 <pre><code>GetStringUTFChars 将jstring转换成为UTF-8格式的char*    /  ReleaseStringUTFChars  释放指向UTF-8格式的char*的指针
 GetStringChars    将jstring转换成为Unicode格式的char*  /  ReleaseStringChars     释放指向Unicode格式的char*的指针
@@ -644,7 +646,7 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -673,7 +675,9 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -898,7 +902,25 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
                     
                       
                     
-                    <span class="site-state-item-count">106</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

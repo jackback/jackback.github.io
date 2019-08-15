@@ -319,6 +319,1426 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_innerClass/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_Java_innerClass/" class="post-title-link" itemprop="url">Java中四中内部类</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T12:22:33+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常规内部类"><a href="#常规内部类" class="headerlink" title="常规内部类"></a>常规内部类</h1><pre><code>public class A{
+  private int a = 100;
+
+  class B{  //其中可以直接使用外部类A中的实例变量和方法
+    int b;
+  }
+  public void createB{  //在外部类方法中创建内部类实例
+    B c = new B();
+  }
+
+  public static void main(){
+    A out = new A();
+    A.B in = new out.B(); //内部类通过A实例创建对象
+
+  }
+}
+</code></pre><h1 id="静态内部类（静态内部类与静态内部方法相似）"><a href="#静态内部类（静态内部类与静态内部方法相似）" class="headerlink" title="静态内部类（静态内部类与静态内部方法相似）"></a>静态内部类（静态内部类与静态内部方法相似）</h1><p>由于static内部类不具有任何对外部类实例的引用，因此static内部类中不能使用this关键字来访问外部类中的实例成员，<br>但是可以访问外部类中的static成员。</p>
+<pre><code>MyOuter.MyInner si=new MyOuter.MyInner();//静态内部类不通过外部实例就可以创建对象
+</code></pre><h1 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h1><pre><code>在方法体或语句块（包括方法、构造方法、局部块或静态初始化块）内部定义的类成为局部内部类。
+局部内部类不能加任何访问修饰符，因为它只对局部块有效。
+</code></pre><p> 1.局部内部类只在方法体中有效，就想定义的局部变量一样，在定义的方法体外不能创建局部内部类的对象<br> 1.方法定义局部内部类同方法定义局部变量一样，不能使用private、protected、public等访问修饰说明符修饰，也不能使用static修饰，但可以使用final和   abstract修饰</p>
+<h1 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h1><p>  定义类的最终目的是创建一个类的实例，但是如果某个类的实例只是用一次，则可以将类的定义与类的创建，<br>  放到与一起完成，或者说在定义类的同时就创建一个类</p>
+<pre><code>new ClassOrInterfaceName(){
+    /*类体*/ 
+}
+</code></pre><p>  匿名内部类可以继承一个类或实现一个接口，这里的ClassOrInterfaceName是匿名内部类所继承的类名或实现的接口名。<br>  但匿名内部类不能同时实现一个接口和继承一个类，也不能实现多个接口。如果实现了一个接口，该类是Object类的直接子类，<br>  匿名类继承一个类或实现一个接口，不需要extends和implements关键字。</p>
+<p>由于匿名内部类没有名称，所以类体中不能定义构造方法，由于不知道类名也不能使用关键字来创建该类的实例。实际上匿名内部类的定义、构造、和第一次使用都发生在同样一个地方。此外，上式是一个表达式，返回的是一个对象的引用，所以可以直接使用或将其复制给一个对象变量。例：</p>
+<pre><code>TypeName obj=new Name（）{
+    /*此处为类体*/
+}
+</code></pre><p>  同样，也可以将构造的对象作为调用的参数。例：<br>    someMethod(new Name(){<br>        /<em>此处为类体</em>/<br>      }<br>    );</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_public_protected_private/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_CPP_public_protected_private/" class="post-title-link" itemprop="url">C++ public/protected/private</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T12:22:33+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>C++ public protected private关键字<br>用于成员变量，成员函数权限的设置；以及用于类继承权限的设置。</p>
+<h1 id="1-成员权限设置"><a href="#1-成员权限设置" class="headerlink" title="1. 成员权限设置"></a>1. 成员权限设置</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">权限</th>
+<th style="text-align:left">类内部</th>
+<th style="text-align:left">该类对象</th>
+<th style="text-align:left">子类（派生类）</th>
+<th style="text-align:left">友元函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">private</td>
+<td style="text-align:left">可访问</td>
+<td style="text-align:left">不可访问</td>
+<td style="text-align:left">不可访问</td>
+<td style="text-align:left">可访问</td>
+</tr>
+<tr>
+<td style="text-align:left">public</td>
+<td style="text-align:left">可访问</td>
+<td style="text-align:left">可访问</td>
+<td style="text-align:left">可访问</td>
+<td style="text-align:left">可访问</td>
+</tr>
+<tr>
+<td style="text-align:left">protected</td>
+<td style="text-align:left">可访问</td>
+<td style="text-align:left">不可访问</td>
+<td style="text-align:left">可访问</td>
+<td style="text-align:left">可访问</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-类继承权限设置"><a href="#2-类继承权限设置" class="headerlink" title="2. 类继承权限设置"></a>2. 类继承权限设置</h1><p>C++的类和对象的权限(相对于基类成员)</p>
+<table>
+<thead>
+<tr>
+<th>继承方式</th>
+<th>基类对象</th>
+<th>派生类继承的基类成员权限变化</th>
+<th>派生类对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>可访问</td>
+<td>public-&gt;public    <br> protected-&gt;protected <br> private-&gt;private</td>
+<td>可访问</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>不可访问</td>
+<td>public-&gt;protected <br> protected-&gt;protected <br> private-&gt;private</td>
+<td>不可访问</td>
+</tr>
+<tr>
+<td>private</td>
+<td>不可访问</td>
+<td>public-&gt;private   <br> private-&gt;private     <br> protected-&gt;private</td>
+<td>不可访问</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_C/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_C/" class="post-title-link" itemprop="url">C++的类型转换——隐式、显式转换(xxx_cast)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T12:22:33+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="第一部分-隐式类型转换"><a href="#第一部分-隐式类型转换" class="headerlink" title="第一部分. 隐式类型转换"></a>第一部分. 隐式类型转换</h1><pre><code>算数运算float + int =&gt; float  、  赋值int = float、传参、返回值
+</code></pre><h1 id="第二部分-显式类型转换"><a href="#第二部分-显式类型转换" class="headerlink" title="第二部分.显式类型转换"></a>第二部分.显式类型转换</h1><pre><code>C风格
+    (type) value
+
+C++风格
+    static_cast、dynamic_cast、reinterpret_cast和const_cast 
+</code></pre>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2016/05/28/Lang_C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Android_permission/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Android_permission/" class="post-title-link" itemprop="url">Android 权限的实现</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T12:22:33+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>权限<br>每个程序在安装时都有建立一个系统ID，如app_15，用以保护数据不被其它应用获取。Android根据不同的用户和组，<br>分配不同权限，比如访问SD卡，访问网络等等。底层映射为Linux权限。</li>
+</ol>
+<ol start="2">
+<li><p>Android权限的实现<br> 1) 第一层：由应用设置，修改AndroidManifest.xml，形如：<br> <uses-permission android:name="”android.permission.INTERNET”/"></uses-permission></p>
+<pre><code>应用申请权限
+1) 应用开发者通过AndroidManifest.xml中&lt;uses-permission&gt;指定对应权限，再映射到底层的用户和组，默认情况下不设定特殊的权限。  
+   AndroidManifest加入权限后系统安装程序时会在图形界面中提示权限
+
+2) 如果是缺少某个权限（程序中使用的某种权限而在AndroidManifest.xml中并未声名），
+   程序运行时会在logcat中打印出错误信息requires &lt;permission&gt;
+3) 与某个进程使用相同的用户ID
+   应用程序可与系统中已存在的用户使用同一权限，需要在AndroidManifest.xml中设置sharedUserId，如android:sharedUserId=&quot;android.uid.shared&quot;，作用是获得系统权限，
+   但是这样的程序属性只能在build整个系统时放进去（就是系统软件）才起作用，共享ID的程序必须是同一签名的
+</code></pre><p> 2) 第二层：框架层，权限对应组，frameworks/base/data/etc/platform.xml，形如：</p>
+ <permission name="”android.permission.INTERNET”"><br>     <group gid="inet”"><br> </group></permission>
+
+<p> 3) 第三层：系统层，系统的权限，system/core/include/private/android_filesystem_config.h,形如：<br> #define AID_INET 3003      //建立SOCKET的权限<br> ……<br> { “inet”, AID_INET, },</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>系统权限<br> 特殊权限的用户</p>
+<pre><code>a)  system     uid 1000
+b)  radio      uid 1001
+</code></pre></li>
+<li><p>permission权限查看</p>
+<pre><code>$ adb shell
+$ pm list permissions
+</code></pre></li>
+</ol>
+<ol start="5">
+<li>framework层对权限的判断<br> 1) 相关源码实现<pre><code>frameworks/base/services/Java/com/android/server/PackageManagerService.java
+frameworks/base/services/java/com/android/server/am/ActivityManagerService.java
+</code></pre> 2) 在系统层，如何查看某个应用的权限<pre><code>a) 在应用进程开启时，ActivityManagerService.java会在logcat中输出该应用的权限，形如：
+    I/ActivityManager(1730): Start proc com.anbdroid.phone for restart com.android.phone:pid=2605 uid=1000 gids={3002,3001,3003}
+   即它有3001,3002,3003三个权限：访问蓝牙和建立socket
+b) 注意：此打印输出在应用第一次启动时。如果进程已存在，需要先把对应进程杀掉，以保证该进程重新启动，才能显示
+c) 具体实现，见： framewors/base/services/java/com/android/server/am/ActivityManagerService.java的
+   函数startProcessLocked()，其中取其组信息的具本语句是mContext.getPackageManager().getPackageGids(app.info.packageName);
+</code></pre></li>
+</ol>
+<ol start="6">
+<li>参考<br><a href="http://wenku.baidu.com/view/7754a4360b4c2e3f5727634e.html" target="_blank" rel="noopener">http://wenku.baidu.com/view/7754a4360b4c2e3f5727634e.html</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_friend/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_CPP_friend/" class="post-title-link" itemprop="url">C++ 友元</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T12:22:33+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>C++ 友元<br>友元机制，开个后门，以让友元函数、类可以访问类内部私有成员。不过这个机制也破坏了类的封装性。</p>
+<h1 id="1-友元函数（这种函数是类外部定义函数）"><a href="#1-友元函数（这种函数是类外部定义函数）" class="headerlink" title="1. 友元函数（这种函数是类外部定义函数）"></a>1. 友元函数（这种函数是类外部定义函数）</h1><p>友元函数是类外部定义的函数，而将函数声明加friend放在需要访问的类的内部。</p>
+<p>#include <iostream><br>using namespace std;<br>class A<br>{<br>public:<br>    friend void set_show(int x, A &amp;a);      //该函数是友元函数的声明<br>private:<br>    int data;<br>};</iostream></p>
+<p>void set_show(int x, A &amp;a)  //友元函数定义，为了访问类A中的成员<br>{<br>    a.data = x;<br>    cout &lt;&lt; a.data &lt;&lt; endl;<br>}</p>
+<p>int main(void)<br>{<br>    class A a;</p>
+<pre><code>set_show(1, a);
+
+return 0;
+</code></pre><p>}</p>
+<h1 id="2-友元类"><a href="#2-友元类" class="headerlink" title="2. 友元类"></a>2. 友元类</h1><p>友元类的所有成员函数都是另一个类的友元函数。声明加friend放在需要访问的类的内部。</p>
+<p>关于友元类的注意事项：<br>(1) 友元关系不能被继承。<br>(2) 友元关系是单向的，不具有交换性。若类B是类A的友元，类A不一定是类B的友元，要看在类中是否有相应的声明。<br>(3) 友元关系不具有传递性。若类B是类A的友元，类C是B的友元，类C不一定是类A的友元，同样要看类中是否有相应的申明。</p>
+<p>#include <iostream><br>using namespace std;</iostream></p>
+<p>class A<br>{<br>public:<br>    friend class C;                         //这是友元类的声明<br>private:<br>    int data;<br>};</p>
+<p>class C             //友元类定义，为了访问类A中的成员<br>{<br>public:<br>    void set_show(int x, A &amp;a) { a.data = x; cout&lt;&lt;a.data&lt;&lt;endl;}<br>};</p>
+<p>int main(void)<br>{<br>    class A a;<br>    class C c;</p>
+<pre><code>c.set_show(1, a);
+
+return 0;
+</code></pre><p>}</p>
+<h1 id="3-友元成员函数"><a href="#3-友元成员函数" class="headerlink" title="3. 友元成员函数"></a>3. 友元成员函数</h1><p>类A的成员函数是类B的友元函数。</p>
+<p>class B;</p>
+<p>class A {<br>  public:<br>    friend void B::B_is_A_friend_function(A &amp; tempA);</p>
+<p>  private:<br>    int a;<br>};</p>
+<p>class B{<br>  public:<br>    void B::B_is_A_friend_function(A &amp; tempA) {<br>        cout &lt;&lt; tempA.a &lt;&lt; endl;<br>    }<br>};</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_xxx_cast/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_CPP_xxx_cast/" class="post-title-link" itemprop="url">C++的类型转换——隐式、显式转换(xxx_cast)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T12:22:33+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="第一部分-隐式类型转换"><a href="#第一部分-隐式类型转换" class="headerlink" title="第一部分. 隐式类型转换"></a>第一部分. 隐式类型转换</h1><pre><code>算数运算float + int =&gt; float  、  赋值int = float、传参、返回值
+</code></pre><h1 id="第二部分-显式类型转换"><a href="#第二部分-显式类型转换" class="headerlink" title="第二部分.显式类型转换"></a>第二部分.显式类型转换</h1><pre><code>C风格
+    (type) value
+
+C++风格
+    static_cast、dynamic_cast、reinterpret_cast和const_cast 
+</code></pre>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2016/05/28/Lang_CPP_xxx_cast/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_const/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/05/28/Lang_CPP_const/" class="post-title-link" itemprop="url">C++的const用法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-28 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-28T12:22:33+08:00">2016-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>C++ const 允许指定一个语义约束，编译器会强制实施这个约束，允许程序员告诉编译器某值是保持不变的。如果在编程中确实有某个值保持不变，就应该明确使用const，这样可以获得编译器的帮助。<br>const 有几种用法。下面将详细讲解。</p>
+<ol>
+<li><p>const 全局变量</p>
+<pre><code>用法： const int a;           //     const data
+      const int *p;          //     const data, non-const pointer
+      int * const p;         // non-const data, const pointer
+      const int * const p;   //     const data, const pointer
+</code></pre></li>
+<li><p>const 函数局部变量 (包括函数参数、返回值等)</p>
+<pre><code>用法：const int a; const int *p;int * const p;const int * const p;
+     const int* function(const int *a);  // 返回值必须传给const data,non-const pointer 的变量
+     void int function(const int&amp; a);
+</code></pre></li>
+<li><p>const 成员变量</p>
+<pre><code>用法：成员常量不能被修改，只能在构造函数初始化列表中赋值
+</code></pre></li>
+<li><p>const 成员方法</p>
+<pre><code>用法： 不能修改任何成员变量（mutable修饰的变量除外），不能调用非const成员函数
+定义格式：void function() const {}
+</code></pre></li>
+<li>const 类对象、类指针、类引用</li>
+</ol>
+<ol start="6">
+<li>将Const类型转化为非Const类型的方法<br>采用const_cast 进行转换。该运算符用来修改类型的const或volatile属性。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_STL_Container/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -381,7 +1801,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-23 22:21:01" itemprop="dateModified" datetime="2018-12-23T22:21:01+08:00">2018-12-23</time>
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
               
             
           </span>
@@ -563,7 +1983,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-23 01:37:03" itemprop="dateModified" datetime="2018-12-23T01:37:03+08:00">2018-12-23</time>
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
               
             
           </span>
@@ -685,196 +2105,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_public_protected_private/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/28/Lang_Java_public_protected_private/" class="post-title-link" itemprop="url">Java public/protected/private</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-28 00:00:00" itemprop="dateCreated datePublished" datetime="2016-05-28T00:00:00+08:00">2016-05-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-22 14:34:36" itemprop="dateModified" datetime="2018-12-22T14:34:36+08:00">2018-12-22</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>用于修饰类或者修饰成员变量。</p>
-<h1 id="1-基本规则"><a href="#1-基本规则" class="headerlink" title="1. 基本规则"></a>1. 基本规则</h1><h3 id="public-公有访问权限"><a href="#public-公有访问权限" class="headerlink" title="public(公有访问权限)"></a>public(公有访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰类                     //公共类，所有包可见<br>  ?修饰内部类?</p>
-<h3 id="protected-继承访问权限"><a href="#protected-继承访问权限" class="headerlink" title="protected(继承访问权限)"></a>protected(继承访问权限)</h3><p>  修饰类成员变量/方法        //基类和派生类可见<br>  修饰内部类                 //基类和派生类可见；包内可见</p>
-<h3 id="default-friendly-包访问权限"><a href="#default-friendly-包访问权限" class="headerlink" title="default (friendly) (包访问权限)"></a>default (friendly) (包访问权限)</h3><p>  默认权限是包内访问。即未指定权限关键字的类成员，只有包内的类的成员方法才可以访问。<br>  类无修饰: 包内可见<br>  成员变量/方法无修饰: 包内可见<br>  内部类无修饰: 包内可见?</p>
-<h3 id="private-私有访问权限"><a href="#private-私有访问权限" class="headerlink" title="private(私有访问权限)"></a>private(私有访问权限)</h3><p>  修饰类成员变量/方法        //基类可见<br>  修饰内部类                 //基类可见</p>
-<h3 id="继承派生权限"><a href="#继承派生权限" class="headerlink" title="继承派生权限"></a>继承派生权限</h3><p>  Java 使用extends关键字进行派生基类，只有公共继承</p>
-<h1 id="1-public-用法示例"><a href="#1-public-用法示例" class="headerlink" title="1. public 用法示例"></a>1. public 用法示例</h1><p>/<em>Animal.java</em>/<br>package me.jingg.java;         //Java 以包为访问单元(一个包可有多个文件多个类)</p>
-<p>public abstract class Animal { //公共类: 可以通过import me.jingg.java.Animal 继承使用<br>    protected String name;<br>    protected int age;</p>
-<pre><code>private void eatBase() {}
-public void eat() {}
-public void run() {}
-public void showInfo() {}
-</code></pre><p>}</p>
-<p>/<em>AccessRule.java</em>/<br>package me.jingg.java;<br>//一个Java文件只能有一个public类(public的类名必须与文件名一致)，一个Java文件是一个编译单元，每个编译单元都有单一的公共接口—即public类<br>public class AccessRule extends Animal implements xxx {  //公共类: 可以通过import me.jingg.java.AccessRule 引用<br>    private eat_fish_num; //static一般在有初始值的，值固定的 (private表示私有) (final: 1.不能再改;2.不会被重载; 3.不会被继承.)</p>
-<pre><code>public static void main(int argc, char **argv) {
-
-}
-</code></pre><p>}</p>
-<h1 id="2-抽象接口"><a href="#2-抽象接口" class="headerlink" title="2. 抽象接口"></a>2. 抽象接口</h1>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_BaseGrammar/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -937,7 +2167,7 @@ public void showInfo() {}
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-23 21:58:13" itemprop="dateModified" datetime="2018-12-23T21:58:13+08:00">2018-12-23</time>
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
               
             
           </span>
@@ -1035,1195 +2265,11 @@ public void showInfo() {}
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_CPP_Constructor_Destructor/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/28/Lang_CPP_Constructor_Destructor/" class="post-title-link" itemprop="url">C++的构造函数和析构函数</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-28 00:00:00" itemprop="dateCreated datePublished" datetime="2016-05-28T00:00:00+08:00">2016-05-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-23 15:31:09" itemprop="dateModified" datetime="2018-12-23T15:31:09+08:00">2018-12-23</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>构造函数调用顺序：Base::Constructor-&gt;Sub::Constructor<br>析构函数调用顺序：Sub::Destructor-&gt;Base::Destructor<br>一个类中只能有一个默认构造函数（提供了无参数构造函数或者默认参数构造函数，都属于默认构造函数，只能选其一）</p>
-<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><p>#include <iostream><br>using namespace std;</iostream></p>
-<p>class Base {<br>public:<br>    Base()  { cout &lt;&lt; “Base:Base()” &lt;&lt; endl;}<br>    virtual ~Base() { cout &lt;&lt; “Base:~Base()” &lt;&lt; endl;}</p>
-<pre><code>virtual void showInfo() { cout &lt;&lt; &quot;Base::showInfo()&quot; &lt;&lt; endl;}
-</code></pre><p>};</p>
-<p>class Sub : public Base {<br>private:<br>    int data;<br>public:<br>    //Sub() {data = 0;}                   //默认构造函数（只选其一）<br>    Sub(int data=4) {this-&gt;data = data; cout &lt;&lt; “Sub:~Sub(int data=4)” &lt;&lt; endl;} //默认构造函数（只选其一）<br>    void v3()     { cout &lt;&lt; “Call Sub::v3, data = “ &lt;&lt; data &lt;&lt; endl; }</p>
-<pre><code>~Sub() {cout &lt;&lt; &quot;Sub:~Sub()&quot; &lt;&lt; endl;}
-
-virtual void showInfo() { cout &lt;&lt; &quot;Sub::showInfo()&quot; &lt;&lt; endl;}
-</code></pre><p>};</p>
-<p>int main(int argc, char** argv) {</p>
-<pre><code>Sub* s = new Sub();
-s-&gt;showInfo();
-delete s;
-
-Base* s2 = new Sub();
-s2-&gt;showInfo();
-delete s2; 
-/*如果基类析构函数不加virtual;这样的删除只能属于静态编译调用的是基类析构，
-所以只删除基类对象，而我们想要的是调用Sub类析构(Sub类析构会自动调用Base类析构)
-*/
-return 0;
-</code></pre><p>}</p>
-<h1 id="私有构造-析构函数"><a href="#私有构造-析构函数" class="headerlink" title="私有构造/析构函数"></a>私有构造/析构函数</h1><p>class singleton {<br>private:<br>   singleton()  {}<br>   ~singleton() {}</p>
-<p>public:<br>    static singleton* GetSingleton(){<br>        return new singleton();<br>    }<br>};</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/28/Lang_Java_abstract/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/28/Lang_Java_abstract/" class="post-title-link" itemprop="url">Java abstract</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-28 00:00:00" itemprop="dateCreated datePublished" datetime="2016-05-28T00:00:00+08:00">2016-05-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-22 15:36:58" itemprop="dateModified" datetime="2018-12-22T15:36:58+08:00">2018-12-22</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>抽象可以修饰抽象类和抽象方法。<br>抽象类一般作为基类，提炼了派生类们相同的接口特征(但基类中不实现而在派生类中实现)和属性。<br>抽象接口，所在类一般也为基类，只有该方法可暂时不进行实现，而在派生类中实现。</p>
-<ol>
-<li>抽象类不能被实例化。</li>
-<li>抽象类中不一定要包含abstrace方法。即：抽象中可以没有abstract方法。</li>
-<li>一旦类中包含了abstract方法，那类该类必须声明为abstract类。</li>
-</ol>
-<h1 id="示例讲解"><a href="#示例讲解" class="headerlink" title="示例讲解"></a>示例讲解</h1><p>/<em>Animal.java ——————————————</em>/<br>package me.jingg.java.AbstractTest;</p>
-<p>public abstract class Animal { //abstract类不能实例化；供外部 包内类继承<br>    protected String name;<br>    protected int age;</p>
-<pre><code>private void eatBase() {}
-public void eat() {}             //派生类可重写
-public void run() {}             //派生类可重写
-public abstract void showInfo(); //+abstract: 不确定具体函数定义的可以只声明, 后面再派生类中定义
-</code></pre><p>}</p>
-<p>/<em>Cat.java ———————————-</em>/<br>package me.jingg.java.AbstractTest;</p>
-<p>public class Cat {<br>    final private eat_fish_num;</p>
-<pre><code>public static main(int argc, char **argv) {
-
-}
-
-public void run() { //重写
-    System.out.println(&quot;cat run&quot;)
-}
-public void showInfo() { //定义
-    System.out.println(&quot;I&apos;am a cat&quot;)
-}
-</code></pre><p>}</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/27/Android_Java_reflect/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/27/Android_Java_reflect/" class="post-title-link" itemprop="url">Java反射：getClass   x.class Class.forName</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-27 15:13:00" itemprop="dateCreated datePublished" datetime="2016-05-27T15:13:00+08:00">2016-05-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-15 20:34:14" itemprop="dateModified" datetime="2018-12-15T20:34:14+08:00">2018-12-15</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-class装载验证流程"><a href="#1-class装载验证流程" class="headerlink" title="1. class装载验证流程"></a>1. class装载验证流程</h1><p>Class的装载过程（也就是从字节码文件到生成类的实例这个过程）分为三个阶段<br>loading（装载），linking（连接）和initializing（实例化）</p>
-<p><a href="https://i.loli.net/2018/12/15/5c14f2f8c25fb.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/12/15/5c14f2f8c25fb.png" alt="Java_reflect.png"></a></p>
-<h3 id="1-1-加载"><a href="#1-1-加载" class="headerlink" title="1.1 加载"></a>1.1 加载</h3><p>装载类的第一个阶段<br>通过类的全限定名(eg: com.company.Employee)取得类的二进制流<br>转为方法区数据结构<br>在Java堆中生成对应的java.lang.Class对象</p>
-<h3 id="1-2-链接-gt-验证"><a href="#1-2-链接-gt-验证" class="headerlink" title="1.2 链接 -&gt; 验证"></a>1.2 链接 -&gt; 验证</h3><p>目的：保证Class流的格式是正确的</p>
-<p>文件格式的验证</p>
-<p>是否以0xCAFEBABE开头<br>版本号是否合理<br>元数据验证</p>
-<p>是否有父类<br>继承了final类？<br>非抽象类实现了所有的抽象方法<br>字节码验证 (很复杂)</p>
-<p>运行检查<br>栈数据类型和操作码数据参数吻合<br>跳转指令指定到合理的位置<br>符号引用验证</p>
-<p>常量池中描述类是否存在<br>访问的方法或字段是否存在且有足够的权限</p>
-<h3 id="1-3-链接-gt-准备"><a href="#1-3-链接-gt-准备" class="headerlink" title="1.3 链接 -&gt; 准备"></a>1.3 链接 -&gt; 准备</h3><p>分配内存，并为类设置初始值 （方法区中，关于方法区请查看Java内存区域）</p>
-<p>public static int v=1;<br>在准备阶段中，v会被设置为0<br>在初始化的<clinit>中才会被设置为1<br>对于static final类型（常量），在准备阶段就会被赋上正确的值<br>public static final  int v=1;</clinit></p>
-<p>###1.4 链接 -&gt; 解析</p>
-<h3 id="1-5-初始化"><a href="#1-5-初始化" class="headerlink" title="1.5 初始化"></a>1.5 初始化</h3><p>执行类构造器<clinit></clinit></p>
-<p>static变量 赋值语句<br>static{}语句</p>
-<h1 id="2-什么是类装载器ClassLoader"><a href="#2-什么是类装载器ClassLoader" class="headerlink" title="2. 什么是类装载器ClassLoader"></a>2. 什么是类装载器ClassLoader</h1><p>ClassLoader是一个抽象类<br>ClassLoader的实例将读入Java字节码将类装载到JVM中<br>ClassLoader可以定制，满足不同的字节码流获取方式（譬如从网络中加载，从文件中加载）<br>ClassLoader负责类装载过程中的加载阶段</p>
-<h1 id="3-Android中java反射使用"><a href="#3-Android中java反射使用" class="headerlink" title="3. Android中java反射使用"></a>3. Android中java反射使用</h1><p>Java的每个类必需被JVM加载到虚拟机中，然后就有一个运行时类对象，该Class对象中保存了创建对象所需的所有信息。</p>
-<h3 id="方法1-1：用于类提前已被加载，通过全限定名来获得类，法1——xxx-class"><a href="#方法1-1：用于类提前已被加载，通过全限定名来获得类，法1——xxx-class" class="headerlink" title="方法1.1：用于类提前已被加载，通过全限定名来获得类，法1——xxx.class"></a>方法1.1：用于类提前已被加载，通过全限定名来获得类，法1——xxx.class</h3><p>可以用.class返回此 Object 的运行时类Class对象，如：   //.class一般用于获得类型，JVM中加载已经加载过的类<br>Class&lt;?&gt; clazz = com.android.systemui.statusbar.SystemBars.class<br>clazz.newInstance();   //实例化</p>
-<h3 id="方法1-2：用于类提前已被加载，通过实例对象来获取类，法2——getClass"><a href="#方法1-2：用于类提前已被加载，通过实例对象来获取类，法2——getClass" class="headerlink" title="方法1.2：用于类提前已被加载，通过实例对象来获取类，法2——getClass"></a>方法1.2：用于类提前已被加载，通过实例对象来获取类，法2——getClass</h3><p>也可以用getClass()获得。  //<br>获得此对象后可以利用此Class对象的一些反射特性进行操作，<br>例如：//使用前类已加载<br>Class&lt;?&gt; clazz = this.getClass(); //用缺省构造函数创建一个该类的Class&lt;?&gt;对象<br>clazz.newInstance();  //用缺省构造函数创建一个该类的对象<br>clazz.getInterfaces(); //获得此类实现的接口信息<br>clazz.getMethods();  //获得此类实现的所有公有方法</p>
-<h3 id="方法2：-加载类到JVM中-使用全限定名-，并初始化-——Class-forName"><a href="#方法2：-加载类到JVM中-使用全限定名-，并初始化-——Class-forName" class="headerlink" title="方法2： 加载类到JVM中(使用全限定名)，并初始化 ——Class.forName"></a>方法2： 加载类到JVM中(使用全限定名)，并初始化 ——Class.forName</h3><p>Class&lt;?&gt; clazz = Class.forName(“类名，如’java.lang.Thread’ “); //动态加载类，并返回具有指定名的类的 Class 对象<br>在加载完成后，一般还要调用Class下的newInstance( )静态方法来实例化对象以便操作</p>
-<p>Class.forName有两个调用方法</p>
-<pre><code>1. 常用的 Class.forName(&quot;xx.xx&quot;)      //查找并加载类，最后执行了类static代码
-2. 多参数 Class.forName(&quot;xx.xx&quot;,true,CALLClass.class.getClassLoader())      //可指定是否初始化static语句，及指定类加载器
-</code></pre><h3 id="方法3：加载类到JVM-使用全限定名-，但不初始化——loadClass"><a href="#方法3：加载类到JVM-使用全限定名-，但不初始化——loadClass" class="headerlink" title="方法3：加载类到JVM(使用全限定名)，但不初始化——loadClass"></a>方法3：加载类到JVM(使用全限定名)，但不初始化——loadClass</h3><p>Class&lt;?&gt; clazz = loader.loadClass(“xx.xx”);  或者mContext.getClassLoader().loadClass(clsName); 都只是加载了类，但是没有执行类静态代码<br>使用loadClass只有执行clazz.NewInstance()才能够初始化类</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://blog.csdn.net/sunyujia/article/details/2501709" target="_blank" rel="noopener">http://blog.csdn.net/sunyujia/article/details/2501709</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/27/Lang_Java_newInstance/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/27/Lang_Java_newInstance/" class="post-title-link" itemprop="url">Java中newInstance()和new()</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-27 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-27T12:22:33+08:00">2016-05-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-05-18 15:52:22" itemprop="dateModified" datetime="2017-05-18T15:52:22+08:00">2017-05-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在Java开发特别是数据库开发中，经常会用到Class.forName( )这个方法。通过查询Java Documentation我们会发现使用Class.forName( )静态方法的目的是为了动态加载类。在加载完成后，一般还要调用Class下的newInstance( )静态方法来实例化对象以便操作。因此，单单使用Class.forName( )是动态加载类是没有用的，其最终目的是为了实例化对象。</p>
-<p>这里有必要提一下就是Class下的newInstance()和new有什么区别？，首先，newInstance( )是一个方法，而new是一个关键字，其次，Class下的newInstance()的使用有局限，因为它生成对象只能调用无参的构造函数，而使用new关键字生成对象没有这个限制。<br>好，到此为止，我们总结如下：<br>Class.forName(“”)返回的是类 class<br>Class.forName(“”).newInstance()返回的是object<br>有数据库开发经验朋友会发现，为什么在我们加载数据库驱动包的时候有的却没有调用newInstance( )方法呢？即:有的jdbc连接数据库的写法里是Class.forName(“xxx.xx.xx”);而有一些：Class.forName(xxx.xx.xx).newInstance()，为什么会有这两种写法呢？<br>刚才提到，Class.forName(“”);的作用是要求JVM查找并加载指定的类，如果在类中有静态初始化器的话，JVM必然会执行该类的静态代码段。而在JDBC规范中明确要求这个Driver类必须向DriverManager注册自己，即任何一个JDBC Driver的Driver类的代码都必须类似如下：</p>
-<pre><code>public class MyJDBCDriver implements Driver {  
-    static {  
-        DriverManager.registerDriver(new MyJDBCDriver());  
-    }  
-}  
-</code></pre><p>既然在静态初始化器的中已经进行了注册，所以我们在使用JDBC时只需要Class.forName(XXX.XXX);就可以了。<br>Java中工厂模式经常使用newInstance()方法来创建对象，因此从为什么要使用工厂模式上可以找到具体答案。 例如：<br>    class c = Class.forName(“Example”);<br>    factory = (ExampleInterface)c.newInstance();<br>其中ExampleInterface是Example的接口，可以写成如下形式：<br>    String className = “Example”;<br>    class c = Class.forName(className);<br>    factory = (ExampleInterface)c.newInstance();<br>进一步可以写成如下形式：<br>    String className = readfromXMlConfig;//从xml 配置文件中获得字符串<br>    class c = Class.forName(className);<br>    factory = (ExampleInterface)c.newInstance();<br>上面代码已经不存在Example的类名称，它的优点是，无论Example类怎么变化，上述代码不变，甚至可以更换Example的兄弟类Example2 , Example3 , Example4……，只要他们继承ExampleInterface就可以。</p>
-<p>从JVM的角度看，我们使用关键字new创建一个类的时候，这个类可以没有被加载。                                                                                                                           </p>
-<p>但是使用newInstance()方法的时候，就必须保证：1、这个 类已经加载；2、这个类已经连接了。而完成上面两个步骤的正是Class的静态方法forName()所完成的，这个静态方法调用了启动类加载器，即加载 java API的那个加载器。</p>
-<p>现在可以看出，newInstance()实际上是把new这个方式分解为两步，即首先调用Class加载方法加载某个类，然后实例化。 这样分步的好处是显而易见的。我们可以在调用class的静态加载方法forName时获得更好的灵活性，提供给了一种降耦的手段。</p>
-<p>最后用最简单的描述来区分new关键字和newInstance()方法的区别：<br>newInstance: 弱类型。低效率。只能调用无参构造。<br>new: 强类型。相对高效。能调用任何public构造。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/27/Lang_Java_reflect/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/27/Lang_Java_reflect/" class="post-title-link" itemprop="url">Java为什么支持反射机制?</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-27 12:22:33" itemprop="dateCreated datePublished" datetime="2016-05-27T12:22:33+08:00">2016-05-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-05-18 15:48:20" itemprop="dateModified" datetime="2017-05-18T15:48:20+08:00">2017-05-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Java为什么能够支持Reflection？ 答案是Java运行时仍然拥有类型信息，它包含了这个类一切：它有哪些字段、哪些方法，各是何种保护级别等等，还有这个类依赖于哪些类。在Java中，类信息以对象的形式存放，这些对象是一种元对象，它们的类型就是Class。拥有了这些信息，无论是动态创建对象还是调用某些方法都是轻而易举的。在C++中，通过RTTI（运行时类型识别），我们也可以知道类的一些信息，但为什么C++中却没有 Reflection，原因是类型信息不完整。RTTI这个名字本身就告诉我们，C++的类型信息是用来进行类型识别的，因此，它也不需要其它额外的信息。并不是C++无法做到这一点，而是C++不希望给用户增加额外的负担。有所得，必然有所失，因此，C++放弃了元对象。关于这一点，C++之父 Bjarne Stroustrup在他的《C++语言的设计与演化》的14.2.8节中进行了深入的讨论。</p>
-<p>元对象是Java Reflection的物质基础，那它的精神基础又是什么呢？Java为什么要支持Reflection？</p>
-<p>经过上面的讨论，我们把这个问题再进一步，为什么Java要提供元对象？讨论这个问题，我们还要拉回到十年前，那时Java刚刚来到正式登上历史的舞台。Java实际上诞生在这之前的数年，那时候还叫Oak，环境所限使得这一划时代的杰作甫一出炉便被束之高阁。当Netscape掀起了为网络大戏的序幕，Java得以凤凰涅?，这其中很重要的一个原因就是Java是以网络为中心的。</p>
-<p>仔细观察，我们会发现，Java的整个基础架构的设计都是为网络服务。首当其冲的便是Java中最著名的跨平台。其实，在Java之前的年代，人们也需要考虑平台之间的可移植性，但这种移植大多数集中在源码一级，这也就是C语言可以流行的原因之一，在单机环境下，平台的差异并不那么明显。网络的出现使平台之间差异凸现出来，因为网络可能会连接各种各样的计算机和设备。没错，还有设备，你也许知道Java最初的开发是和嵌入式设备相关的。一旦应用可以跨平台，程序开发和后期管理维护工作将得到极大的简化，可移植性也从源码级晋升到二进制级（Java字节码）。所以，跨平台实际上也是为了网络打基础。Java中另一个重要的买点??安全性与网络之间的关系更为密切，谁都可以想出几条理由，把二者关联起来。</p>
-<p>再来具体看看Java的基础架构如何对网络进行支持的。还记得Java最初是怎么吸引人的吗？没错，Applet。熟悉原理的朋友都知道，Applet的运行是把远程的类文件下载到本地来执行的。相对于本地硬盘，网络给我们的感觉就是一个字????慢。如果Java采用传统可执行文件组织方式，即一个完整的可执行文件，把整个 Applet下载下来的运行，只怕等到花儿也谢了。Java采用的手法是把文件拆开，以类为单位进行组织，这就是我们今天见到的class文件。这样，执行的过程就变成第一个类下载之后就可以运行，大大节省了最初的等待时间。好的设计会把程序分成若干的模块，所以，绝大多数程序不可能写在一个类中。因此，类文件中必须包含它所用到类。对于引导部分，我们可以让它以特定的方式开始执行，比如把我们耳熟能详的main方法放在特定的字节，但对于没有定法的任意方法，是没有办法规定的，而一个类调用另一个类的方法就是这样随意，因此类文件中必须包含这个类方法的信息，进一步字段信息也会加进来，这样几乎一个完整类的信息就出来了，而这些信息对应的恰好是元对象。所以，元对象出现在Java基础架构中。有了元对象，Reflection也成了一件顺其自然的事情。有了Reflection，Java也就拥有了动态扩展的能力，这样就可以极大的提高程序的灵活性。</p>
-<p>关于Java基础结构对网络的支持还可以再说几句。class文件经过了精心的设计，本身相当紧凑，其目的就是为了方便在网络上传输，而JAR文件的出现，其目的也是为了方便网络传输，因为如果每次只传输一个类，大量的时间都被浪费在建立网络连接的过程中，JAR文件使得一次传输多个类成为可能，而且我们还知道JAR文件中的数据是经过压缩的，这样可以进一步减少下载时间。Java基础架构对网络的支持，《深入Java虚拟机》（第二版）的4.3节进行了很好阐述，有兴趣不妨看一下。对Reflection思考让我有机会对Java本身的设计进行深入的思考。一个好的软件设计需要一个核心理念作为支撑，所有的一切都是围绕核心进行的，而对于Java，这个核心就是网络。一次有趣的思考体验！</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/05/26/Android_Log/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/05/26/Android_Log/" class="post-title-link" itemprop="url">Android Log</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-05-26 15:13:00" itemprop="dateCreated datePublished" datetime="2016-05-26T15:13:00+08:00">2016-05-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-05-18 17:58:24" itemprop="dateModified" datetime="2017-05-18T17:58:24+08:00">2017-05-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Android-各层中日志打印功能的应用"><a href="#Android-各层中日志打印功能的应用" class="headerlink" title="Android 各层中日志打印功能的应用"></a>Android 各层中日志打印功能的应用</h1><h3 id="1-HAL层"><a href="#1-HAL层" class="headerlink" title="1. HAL层"></a>1. HAL层</h3><p>头文件：</p>
-<p>#include &lt;utils/Log.h&gt;<br>Android.mk中：</p>
-<p>LOCAL_SHARED_LIBRARIES := liblog libcutils</p>
-<p>对应的级别 打印方法<br>VERBOSE LOGV()<br>DEBUG LOGD()<br>INFO LOGI()<br>WARN LOGW()<br>ERROR LOGE()</p>
-<p>方法：<br>LOGD(“%d, %s”, int, char* )</p>
-<h3 id="2-JNI层"><a href="#2-JNI层" class="headerlink" title="2. JNI层"></a>2. JNI层</h3><p>头文件：</p>
-<p>#include &lt;utils/Log.h&gt;</p>
-<p>对应的级别 打印方法<br>VERBOSE LOGV()<br>DEBUG LOGD()<br>INFO LOGI()<br>WARN LOGW()<br>ERROR LOGE()</p>
-<p>方法：<br>LOGD(“%d, %s”, int, char* )</p>
-<h3 id="3-FRAMEWORK层"><a href="#3-FRAMEWORK层" class="headerlink" title="3. FRAMEWORK层"></a>3. FRAMEWORK层</h3><p>import android.util.Slog;</p>
-<p>对应的级别 打印方法<br>VERBOSE Slog.v()<br>DEBUG Slog.d()<br>INFO Slog.i()<br>WARN Slog.w()<br>ERROR Slog.e()</p>
-<p>方法：<br>Slog.d(TAG, “something to say.”);</p>
-<h3 id="4-Java层"><a href="#4-Java层" class="headerlink" title="4. Java层"></a>4. Java层</h3><p>import android.util.Log;</p>
-<p>对应的级别 打印方法<br>VERBOSE Log.v()<br>DEBUG Log.d()<br>INFO Log.i()<br>WARN Log.w()<br>ERROR Log.e()</p>
-<p>方法：<br>Log.d(TAG, “something to say.”);</p>
-<hr>
-<h1 id="一、LOG等级：Verbose-Debug-Info-Warn-Error-Assert-Suppress】"><a href="#一、LOG等级：Verbose-Debug-Info-Warn-Error-Assert-Suppress】" class="headerlink" title="一、LOG等级：Verbose,Debug,Info,Warn,Error, Assert,Suppress】"></a>一、LOG等级：Verbose,Debug,Info,Warn,Error, Assert,Suppress】</h1><pre><code>Verbose最低级别，什么信息都输出；A是最高级别的日志，即assert；S表示Suppress，即停止该日志的输出。
-</code></pre><h1 id="二、选用标准："><a href="#二、选用标准：" class="headerlink" title="二、选用标准："></a>二、选用标准：</h1><p>Verbose：开发调试过程中一些详细信息，Verbose等级的Log，请不要在user版本中出现</p>
-<blockquote>
-<p>Java示例<br>  import android.os.Build;<br>    import android.util.Log<br>    final public Boolean isEng =Build.TYPE.equals(“eng”);<br>    if (isEng)<br>        Log.v(“LOG_TAG”,“LOG_MESSAGE”);</p>
-</blockquote>
-<blockquote>
-<p>C/C++示例</p>
-<p>  #include&lt;cutils/log.h&gt;     ———–C/C++示例———-<br>    char value[PROPERTY_VALUE_MAX];   int isEng=0;<br>    property_get(“ro.build.type”,value, “user”);<br>    isEng=strcmp(value, “eng”);<br>    if (isEng)<br>        ALOGV();</p>
-</blockquote>
-<p>Debug: 用于调试的信息，编译进产品，但可以在运行时关闭，Debug等级的log,默认不开启，通过终端命令开启;</p>
-<blockquote>
-<p>Java示例<br>  import android.util.Log      ———————————<br>    final String TAG=”MyActivity”;<br>    final public Boolean LOG_DEBUG = Log.isLoggable(TAG, Log.DEBUG);<br>    if (LOG_DEBUG)<br>        Log.d(“LOG_TAG”,“LOG_MESSAGE”);</p>
-<p>  运行时开启log: 在终端输入：setprop log.tag.MyActivity DEBUG<br>    运行时关闭log: 在终端输入：setprop log.tag.MyActivity INFO</p>
-</blockquote>
-<blockquote>
-<p>C/C++示例</p>
-<p>  #include&lt;cutils/log.h&gt;   —————–</p>
-</blockquote>
-<pre><code>#define LOG_CTL &quot;debug.MyActivity.enablelog&quot;
-charvalue[PROPERTY_VALUE_MAX]; 
-int isDebug=0;
-property_get(LOG_CTL, value, &quot;0&quot;);
-isDebug = strcmp(value,&quot;1&quot;);
-if (isDebug)
-    ALOGD();
-</code></pre><blockquote>
-<p>  运行时开启log: 在终端输入：setprop debug.MyActivity.enablelog 1<br>    运行时关闭log: 在终端输入：setprop debug.MyActivity.enablelog 0</p>
-</blockquote>
-<p>附：Log.isLoggable(TAG, log.DEBUG)   //这个函数表示通过setprop设置的level需要小于DEBUG，值才为True。（默认setprop配置的值是INFO，INFO&gt;DEBUG所以你不配置时，值为false的），通过setprop log.tag.<tag>  <level>  通过设置属性的方式来改变默认level，也可以将这些属性按照log.tag.<tag>=<level>的形式，写入/data/local.prop中；</level></tag></level></tag></p>
-<p>Info:例如一些运行时的状态信息，这些状态信息在出现问题的时候能提供帮助。<br>Warn：警告系统出现了异常，即将出现错误。<br>Error：系统已经出现了错误。</p>
-<p>注：Info、Warn、Error等级的Log禁止作为普通的调试信息使用，这些等级的Log是系统出现问题时候的重要分析线索，如果随意使用，将给Log分析人员带来极大困扰。请参考前面的等级介绍合理使用。</p>
-<p>注2：禁止使用new Exception(“print trace”).printStackTrace()或者Log. getStackTraceString(Exception)方式打印普通调试信息，因为这种方式打印Log非常消耗系统资源。此种方式打印Log一般只出现try..catch某个异常使用。</p>
-<p>注3：Log的tag命名，使用Activity名称或者类、模块的名称，不要出现自己的姓名拼音或其他简称。在c++/c代码中调用ALOGD等宏函数，参数没有传入tag,需要在文件头部#define LOG_TAG”YOUR_TAG_NAME”。</p>
-<p>注4：Log的内容，不要出现公司名称、个人名称或相关简称，Log内容不要出现无意义的内容，如连续的等号或星号或连续的数字等，Log内容要方便其他分析Log的人员查看。</p>
-<p>注5：Log输出的频率需要控制,例如1s打印一次的Log，尽量只在eng版本使用，user版本如需开启，请默认关闭，通过设置setprop命令来开启。</p>
-<h1 id="三、使用方法"><a href="#三、使用方法" class="headerlink" title="三、使用方法"></a>三、使用方法</h1><p>c++、c 层输出log：</p>
-<p>#include &lt;cutils/log.h&gt;<br>ALOGV(),     ALOGD(),    ALOGI(),    ALOGW(),    ALOGE()</p>
-<p>Java层输出log：<br>import android.util.Log<br>Log.v(String tag, String msg),    Log.d(String tag, String msg),<br>Log.i(String tag, String msg),    Log.w(String tag, String msg), Log.e(String tag, String msg)</p>
-<h1 id="四、log显示格式"><a href="#四、log显示格式" class="headerlink" title="四、log显示格式"></a>四、log显示格式</h1><p>log示例：I/SysInfoService(  488): SysInfoWorkThread running<br>            等级/TAG(PID)       :消息</p>
-<h1 id="五、过滤"><a href="#五、过滤" class="headerlink" title="五、过滤"></a>五、过滤</h1><p>logcat消息过滤<br>    logcat -c 清除log<br>    logcat -s TAG:D -v [process只显示pid] [tag 只显示 priority/Tag] [thread 显示process:thread and priority/tag]<br>                                        [raw只显示message][time显示date-time-priority/Tag PID ][long 将元数据和消息分行]</p>
-<h1 id="六、Java核心库打印"><a href="#六、Java核心库打印" class="headerlink" title="六、Java核心库打印"></a>六、Java核心库打印</h1><p>Java核心库在Android工程的\libcore\luni\src\main\java目录下。<br>在Android的java核心库中是无法使用Logcat打印的，因为Android的java层要使用Java库，即Java库是Android的Java运行的前提，所以。。。</p>
-<p>经过调试，发现其实运用Java的Logger可以很简单的实现(或许Android已经做了处理)，在adb logcat中输出。好了，演示一下。</p>
-<p>引入包<br>import java.util.logging.Logger;<br>static Logger logger = Logger.getLogger(“mytag”);<br>logger.info(“blala”);<br>然后在adb logcat直接输出就行了。标签是mytag</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2266,7 +2312,7 @@ if (isDebug)
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2295,7 +2341,9 @@ if (isDebug)
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2520,7 +2568,25 @@ if (isDebug)
                     
                       
                     
-                    <span class="site-state-item-count">106</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

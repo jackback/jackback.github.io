@@ -319,6 +319,1343 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/12/InputSystem004_type_code/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/12/InputSystem004_type_code/" class="post-title-link" itemprop="url">Input系统——TYPE CODE</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-12 12:22:33" itemprop="dateCreated datePublished" datetime="2017-04-12T12:22:33+08:00">2017-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Event-Type-amp-Code"><a href="#Event-Type-amp-Code" class="headerlink" title="Event Type&amp;Code"></a>Event Type&amp;Code</h1><pre><code>EV_SYN:  - 用于事件间的分割标志。事件可能按时间或空间进行分割，就像在多点触摸协议中的例子。
+    SYN_REPORT:    - 当多个输入数据在同一时间发生变化时，SYN_REPORT用于把这些数据进行打包和包同步。
+                例如，一次鼠标的移动可以上报   REL_X和REL_Y两个数值，然后发出一个SYN_REPORT。
+                下一次鼠标移动可以再次发出REL_X和REL_Y两个数值，然后经跟这另一个SYN_REPORT。
+
+    SYN_MT_REPORT: - 用于同步和分离触摸事件
+    SYN_DROPPED:   - 用来指出evdev客户的事件队列的的缓冲区溢出。
+
+EV_KEY:  - 用来描述键盘，按键或者类似键盘设备的状态变化。
+    KEY_&lt;name&gt;:    - EV_KEY事件采取KEY_&lt;name&gt; 或BTN_&lt;name&gt;的形式，
+                        比如，KEY_A代表键盘上的A键，当一个按键被按下时，一个带有按键编码和value为1的事件被发出。
+                        当一个按键被释放时，一个value为0的事件被发出。有些硬件当按键重复时会发出事件，这些事件的value值为2。
+                        通常，KEY_&lt;name&gt;用作键盘上的按键，而BTN_&lt;name&gt;则用于开关按钮事件。 
+                   - 普通键盘按键     0x0~0x100     0x160~0x2ff
+                   - 游戏柄的按键     0x100~0x110   0x120~0x140
+                   - 鼠标按键         BTN_MOUSE-BTN_LEFT-0x110-左键；  BTN_RIGHT-0x111-右键；  BTN_MIDDLE-0x112-中键；
+    BTN_&lt;name&gt;:    - see above
+</code></pre>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/12/InputSystem004_type_code/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/12/Android_encryption_signature/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/12/Android_encryption_signature/" class="post-title-link" itemprop="url">Android APP加密和签名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-12 12:22:33" itemprop="dateCreated datePublished" datetime="2017-04-12T12:22:33+08:00">2017-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>基本概念<br>公钥加密、私钥解密是密送，保证消息即使公开也只有私钥持有者能读懂。<br>私钥加密、公钥解密是签名，保证消息来源是私钥持有者。</p>
+</li>
+<li><p>签名的作用<br>Android系统不会安装没有进行签名的应用程序<br> 给apk签名可以带来以下好处：</p>
+<pre><code>1. 应用程序升级
+2. 应用程序模块化：Android系统可以允许同一个证书签名的多个应用程序在一个进程里运行
+3. 代码或者数据共享：Android提供了基于签名的权限机制，那么一个应用程序就可以为另一个以
+   相同证书签名的应用程序公开自己的功能。
+</code></pre></li>
+<li><p>Android标准签名<br>build/target/product/security目录中有四组默认签名供Android.mk在编译APK使用：<br>1、testkey/releasekey：普通APK，默认情况下使用。<br>2、platform：该APK完成一些系统的核心功能。经过对系统中存在的文件夹的访问测试，这种方式编译出来的APK所在进程的                        UID为system。<br>3、shared：该APK需要和home/contacts进程共享数据。<br>4、media：该APK是media/download系统中的一环。</p>
+</li>
+</ol>
+<p>生成platform media 等签名文件<br>/work/aurora/development/tools/make_key：<br>sh make_key releasekey ‘/C=CN/ST=HuBei/L=WuHan/O=Company/OU=Department/CN=YourName/emailAddress=YourE-mailAddress’</p>
+<ol start="4">
+<li>第三方生成签名<br>使用/work/sign下的工具生成系统签名jks文件：（供AS 或者 eclipse 使用）<br>./keytool-importkeypair -k lt_system_me.jks -p liantong -pk8 platform.pk8 -cert platform.x509.pem -alias lt_system</li>
+</ol>
+<p>单独给APK签名：<br>out/host/linux-x86/framework/signapk.jar<br>build/target/product/security/*<br>也可以从网上下载。使用方法，以platform为例：<br>java -jar ./signapk.jar platform.x509.pem platform.pk8 input.apk output.apk<br> (platform.x509.pem私钥 platform.pk8公钥 在build/target/product/security获取)</p>
+<ol start="5">
+<li>APP中签名后生成文件<br>APP中META-INF/CERT.RSA 文件数字签名以及一个数字证书<br>机构密钥标识符AuthorityKeyIdentifier<br>基本限制BasicConstraints<br>主体密钥标识符SubjectKeyIdentifier</li>
+</ol>
+<p>Owner: CN=ZhaoXin, OU=ZhaoXin, O=ZhaoXin, L=Shanghai, ST=Shanghai, C=CN<br>Issuer: CN=ZhaoXin, OU=ZhaoXin, O=ZhaoXin, L=Shanghai, ST=Shanghai, C=CN<br>Serial number: 8e8825ec8c2efe44<br>Valid from: Tue Apr 22 16:58:39 CST 2014 until: Sat Sep 07 16:58:39 CST 2041<br>Certificate fingerprints:<br>         MD5:  55:16:F4:38:BD:49:BE:38:47:03:9B:B6:CA:AE:33:AD<br>         SHA1: 43:E0:FE:6E:76:BF:53:62:84:15:1B:BD:17:03:67:F1:56:E0:BB:18<br>         SHA256: 0B:6D:62:97:01:A8:5A:63:27:50:D1:EC:AD:47:59:B9:83:3E:0D:92:A5:E8:FE:95:9D:F0:7E:F2:DC:30:75:05<br>         Signature algorithm name: SHA1withRSA<br>         Version: 3</p>
+<p>Extensions: </p>
+<p>#1: ObjectId: 2.5.29.35 Criticality=false<br>AuthorityKeyIdentifier [<br>KeyIdentifier [<br>0000: CF FF A6 88 A3 A8 ED 04   C1 60 2F FD 96 EC BC E9  ………`/…..<br>0010: D3 B4 5F AD                                        .._.<br>]<br>]</p>
+<p>#2: ObjectId: 2.5.29.19 Criticality=false<br>BasicConstraints:[<br>  CA:true<br>  PathLen:2147483647<br>]</p>
+<p>#3: ObjectId: 2.5.29.14 Criticality=false<br>SubjectKeyIdentifier [<br>KeyIdentifier [<br>0000: CF FF A6 88 A3 A8 ED 04   C1 60 2F FD 96 EC BC E9  ………`/…..<br>0010: D3 B4 5F AD                                        .._.<br>]<br>]</p>
+<ol start="6">
+<li>查看签名<br>查看签名<br>keytool -printcert -file META-INF/CERT.RSA</li>
+</ol>
+<p>查看keystone信息：<br>keytool -list -keystore debug.keystore </p>
+<ol start="7">
+<li><p>其他<br>反编译<br>./apktool d[ecode] xxx.apk -o <dir></dir></p>
+</li>
+<li><p>AndroidStudio中签名配置<br>???<br>app 未知源检测原理（不同系统不一样吗，不同应用市场是不是也不一样？）<br>Y:\aurora\development\samples\Home    sample-Launcher<br>系统Launcher启动流程分析</p>
+</li>
+</ol>
+<pre><code>signingConfigs {
+    release {
+        keyAlias &apos;lt_system&apos;
+        keyPassword &apos;liantong&apos;
+        storeFile file(&apos;D:/25264/Android/Project/SGTest/signedAPK/lt_system.jks&apos;)
+        storePassword &apos;liantong&apos;
+    }
+    release2 {
+        keyAlias &apos;lt_system&apos;
+        keyPassword &apos;liantong&apos;
+        storeFile file(&apos;D:/25264/Android/Project/SGTest/signedAPK/lt_system_me.jks&apos;)
+        storePassword &apos;liantong&apos;
+    }
+}
+</code></pre><h3 id="SeeAlso"><a href="#SeeAlso" class="headerlink" title="SeeAlso"></a>SeeAlso</h3><p>《APK 反编译及签名工具》</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/12/Android_Sensor/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/12/Android_Sensor/" class="post-title-link" itemprop="url">Android Framework层 Sensor 框架</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-12 12:22:33" itemprop="dateCreated datePublished" datetime="2017-04-12T12:22:33+08:00">2017-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>待续…<br><a href="http://processors.wiki.ti.com/index.php/Android_Sensor_PortingGuide" target="_blank" rel="noopener">http://processors.wiki.ti.com/index.php/Android_Sensor_PortingGuide</a></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/12/Android_Sensor/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/12/InputSystem003_AndroidInputSystem/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/12/InputSystem003_AndroidInputSystem/" class="post-title-link" itemprop="url">Input系统——Android Input系统</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-12 12:22:33" itemprop="dateCreated datePublished" datetime="2017-04-12T12:22:33+08:00">2017-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Input系统结构解析"><a href="#Input系统结构解析" class="headerlink" title="Input系统结构解析"></a>Input系统结构解析</h1><p>AndroidInput系统——JNI NativeInputManager InputManger InputReader<br><img src="https://drive.google.com/open?id=1DoS3SayZNpAqAMpjQ8h0O1eSb1nb9r9V7c47TjvqO2o" alt="AndroidInput系统——NativeInputManager JNI"></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/12/InputSystem003_AndroidInputSystem/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/12/Android_update_img/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/12/Android_update_img/" class="post-title-link" itemprop="url">Android系统升级、烧录、Recovery、OTA</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-12 12:22:33" itemprop="dateCreated datePublished" datetime="2017-04-12T12:22:33+08:00">2017-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery:"></a>Recovery:</h3><p><a href="http://www.tuicool.com/articles/Q7ZBbu" target="_blank" rel="noopener">http://www.tuicool.com/articles/Q7ZBbu</a><br><a href="http://blog.csdn.net/fengying765/article/details/38301895" target="_blank" rel="noopener">http://blog.csdn.net/fengying765/article/details/38301895</a></p>
+<p>待续…<br></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/12/Android_update_img/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/12/Android_APK_tool/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/12/Android_APK_tool/" class="post-title-link" itemprop="url">APK 反编译及签名工具</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-12 12:22:33" itemprop="dateCreated datePublished" datetime="2017-04-12T12:22:33+08:00">2017-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="反编译-解包-再编译"><a href="#反编译-解包-再编译" class="headerlink" title="反编译/解包/再编译"></a>反编译/解包/再编译</h1><h3 id="1-Apktool——APK反编译及再打包工具"><a href="#1-Apktool——APK反编译及再打包工具" class="headerlink" title="1. Apktool——APK反编译及再打包工具"></a>1. Apktool——APK反编译及再打包工具</h3><p>通过反编译APK中XML文件，直接可以查看<br><a href="https://ibotpeaches.github.io/Apktool/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/</a></p>
+<p>下载安装Apktool （Windows/Linux/Mac）<br><a href="https://ibotpeaches.github.io/Apktool/install/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/install/</a></p>
+<p>Apktool 通常用法<br>反编译APK     <code>apktool d[ecode] test.apk</code><br>再打包成APK   <code>apktool b[uild] test</code></p>
+<h3 id="2-dex2jar"><a href="#2-dex2jar" class="headerlink" title="2. dex2jar"></a>2. dex2jar</h3><p>将apk中的classes.dex转化成Jar文件<br><a href="https://github.com/pxb1988/dex2jar" target="_blank" rel="noopener">https://github.com/pxb1988/dex2jar</a></p>
+<h3 id="3-JD-GUI"><a href="#3-JD-GUI" class="headerlink" title="3. JD-GUI"></a>3. JD-GUI</h3><p>反编译工具，可以直接查看Jar包的源代码<br><a href="https://code.google.com/archive/p/innlab/downloads" target="_blank" rel="noopener">https://code.google.com/archive/p/innlab/downloads</a><br><a href="https://pan.baidu.com/disk/home#list/vmode=list&amp;path=%2Fapps%2FAPK-Track%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">https://pan.baidu.com/disk/home#list/vmode=list&amp;path=%2Fapps%2FAPK-Track%E5%B7%A5%E5%85%B7</a></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/12/Android_APK_tool/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/12/InputSystem002_LinuxInputSubSystem/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/12/InputSystem002_LinuxInputSubSystem/" class="post-title-link" itemprop="url">Input系统——Linux 输入子系统</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-12 12:22:33" itemprop="dateCreated datePublished" datetime="2017-04-12T12:22:33+08:00">2017-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>待整理完善。。。</p>
+<h3 id="1-struct-input-dev"><a href="#1-struct-input-dev" class="headerlink" title="1. struct input_dev"></a>1. struct input_dev</h3><pre><code>struct input_dev {
+    const char *name; //名字 
+    const char *phys;
+    const char *uniq;
+    struct input_id id;
+
+    unsigned long propbit[BITS_TO_LONGS(INPUT_PROP_CNT)];
+
+    unsigned long evbit[BITS_TO_LONGS(EV_CNT)];    // 设备所支持的事件类型
+
+    unsigned long keybit[BITS_TO_LONGS(KEY_CNT)];  // 按键类型 
+    unsigned long relbit[BITS_TO_LONGS(REL_CNT)];  // 相对值类型
+    unsigned long absbit[BITS_TO_LONGS(ABS_CNT)];  // 绝对值类型
+    unsigned long mscbit[BITS_TO_LONGS(MSC_CNT)];  // 混合类型
+    unsigned long ledbit[BITS_TO_LONGS(LED_CNT)];  // LED类型
+    unsigned long sndbit[BITS_TO_LONGS(SND_CNT)];  // 声音类型
+    unsigned long ffbit[BITS_TO_LONGS(FF_CNT)];    // 力反馈
+    unsigned long swbit[BITS_TO_LONGS(SW_CNT)];    // 开关类型???
+</code></pre>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/12/InputSystem002_LinuxInputSubSystem/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/11/Android_Build_Img/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -381,7 +1718,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2017-04-27 11:21:18" itemprop="dateModified" datetime="2017-04-27T11:21:18+08:00">2017-04-27</time>
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
               
             
           </span>
@@ -505,6 +1842,185 @@ userdata.img  包括了一些用户数据
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/11/RK_AndroidPartitionInfo/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Noobzhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/11/RK_AndroidPartitionInfo/" class="post-title-link" itemprop="url">RK平台分区信息</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-11 17:35:57" itemprop="dateCreated datePublished" datetime="2017-04-11T17:35:57+08:00">2017-04-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/RK/" itemprop="url" rel="index"><span itemprop="name">RK</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>RK 分区信息和一般Android 系统分区有些许区别，下面我们来看看</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/04/11/RK_AndroidPartitionInfo/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/11/Android_4_Component/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -567,7 +2083,7 @@ userdata.img  包括了一些用户数据
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-18 22:01:07" itemprop="dateModified" datetime="2019-02-18T22:01:07+08:00">2019-02-18</time>
+                <time title="修改时间：2019-03-08 18:41:41" itemprop="dateModified" datetime="2019-03-08T18:41:41+08:00">2019-03-08</time>
               
             
           </span>
@@ -689,1725 +2205,11 @@ userdata.img  包括了一些用户数据
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/11/Lang_Java_Static_Inner_Class/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/04/11/Lang_Java_Static_Inner_Class/" class="post-title-link" itemprop="url">Java 静态内部内</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-11 10:15:33" itemprop="dateCreated datePublished" datetime="2017-04-11T10:15:33+08:00">2017-04-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-20 21:59:47" itemprop="dateModified" datetime="2018-12-20T21:59:47+08:00">2018-12-20</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/Alex--Yang/p/3386863.html" target="_blank" rel="noopener">https://www.cnblogs.com/Alex--Yang/p/3386863.html</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/11/RK_AndroidPartitionSizeModifyGuide/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/04/11/RK_AndroidPartitionSizeModifyGuide/" class="post-title-link" itemprop="url">RK平台Android分区大小修改说明</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-11 09:01:57" itemprop="dateCreated datePublished" datetime="2017-04-11T09:01:57+08:00">2017-04-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-04-27 11:19:19" itemprop="dateModified" datetime="2017-04-27T11:19:19+08:00">2017-04-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>不同于一般的Android系统（一般Android系统分区信息在BoardConfig.mk BoardConfigCommon.mk中），RK平台的分区信息文件在自带的烧录工具包中的parameter文件中</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/04/11/RK_AndroidPartitionSizeModifyGuide/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/07/Other_HexoSetUp/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/04/07/Other_HexoSetUp/" class="post-title-link" itemprop="url">Hexo入手</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-07 18:01:57" itemprop="dateCreated datePublished" datetime="2017-04-07T18:01:57+08:00">2017-04-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-18 23:08:15" itemprop="dateModified" datetime="2019-02-18T23:08:15+08:00">2019-02-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Others/" itemprop="url" rel="index"><span itemprop="name">Others</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="1-安装Git和node-js"><a href="#1-安装Git和node-js" class="headerlink" title="1. 安装Git和node.js"></a>1. 安装Git和node.js</h4><pre><code>从官网下载对应平台binary 包，安装（linux直接将bin lib目录的文件cp到usr/local对应目录下，Window直接点击安装）
-Ubuntu平台:
-    sudo apt-get install git-core
-    curl https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh
-    安装完成后，重启终端并执行下列命令即可安装 Node.js。
-    nvm install stable
-Windows平台:
-    下载并安装 https://git-scm.com/download/win
-    下载并安装https://nodejs.org/en/download/
-</code></pre><h4 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h4><pre><code>npm install hexo-cli -g   //终端或者cmd命令行
-</code></pre>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/04/07/Other_HexoSetUp/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/04/07/Android_fstab/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/04/07/Android_fstab/" class="post-title-link" itemprop="url">Android fstab介绍</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-07 16:01:57" itemprop="dateCreated datePublished" datetime="2017-04-07T16:01:57+08:00">2017-04-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-04-27 11:23:52" itemprop="dateModified" datetime="2017-04-27T11:23:52+08:00">2017-04-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="ubuntu-fstab文件格式"><a href="#ubuntu-fstab文件格式" class="headerlink" title="ubuntu fstab文件格式"></a>ubuntu fstab文件格式</h2><pre><code>下面是/etc/fatab文件的一个示例行：
-fs_spec     fs_file fs_type     fs_options  fs_dump    fs_pass
-/dev/hda1   /       ext2        defaults    1          1    
-
-fs_spec - 该字段定义希望加载的文件系统所在的设备或远程文件系统，对于一般的本地块设备情况来说：IDE设备一般描述为
-          /dev/hdaXN，X是IDE设备通道 (a, b, or c)，N代表分区号；SCSI设备一描述为/dev/sdaXN。对于NFS情况，格式一般为:
-         例 如：`knuth.aeb.nl:/&apos;。对于procfs，使用`proc&apos;来定义。
-fs_file - 该字段描述希望的文件系统加载的目录点，对于swap设备，该字段为none；对于加载目录名包含空格的情况，用40来
-          表示空格。
-fs_type - 定义了该设备上的文件系统，一般常见的文件类型为ext2 (linux设备的常用文件类型)、vfat(Windows系统的fat32格
-          式)、NTFS、iso9600等。
-fs_options - 指定加载该设备的文件系统是需要使用的特定参数选项，多个参数是由逗号分隔开来。对于大多数系统使用&quot;defaults&quot;
-             就可以满足需要。其他常见的选项包括：
-            选项含义:
-            ro      以只读模式加载该文件系统
-            sync    不对该设备的写操作进行缓冲处理，这可以防止在非正常关机时情况下破坏文件系统，但是却降低了计算机速度
-            user    允许普通用户加载该文件系统
-            quota   强制在该文件系统上进行磁盘定额限制
-            noauto  不再使用mount －a命令（例如系统启动时）加载该文件系统
-
-fs_dump 该选项被&quot;dump&quot;命令使用来检查一个文件系统应该以多快频率进行转储，若不需要转储就设置该字段为0
-fs_pass 该字段被fsck命令用来决定在启动时需要被扫描的文件系统的顺序，根文件系统&quot;/&quot;对应该字段的值应该为1，
-                    其他文件系统应该为2。若该文件系统无需在启动时扫描则设置该字段为0
-</code></pre>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/04/07/Android_fstab/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/01/01/InputSystem005_ExampleAPP/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/01/01/InputSystem005_ExampleAPP/" class="post-title-link" itemprop="url">Input系统——APP事件监听及处理</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-04-27 11:20:27" itemprop="dateModified" datetime="2017-04-27T11:20:27+08:00">2017-04-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>InputDevice<br><a href="https://developer.android.com/reference/android/view/InputDevice.html" target="_blank" rel="noopener">https://developer.android.com/reference/android/view/InputDevice.html</a></p>
-<p>android.support.wearable 包</p>
-<p><a href="http://stackoverflow.com/questions/24520240/import-android-support-wearable-cannot-be-resolved" target="_blank" rel="noopener">http://stackoverflow.com/questions/24520240/import-android-support-wearable-cannot-be-resolved</a></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/01/01/InputSystem005_ExampleAPP/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/01/01/Lang_Java_enum/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/01/01/Lang_Java_enum/" class="post-title-link" itemprop="url">Java enum</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-06 10:28:34" itemprop="dateModified" datetime="2019-03-06T10:28:34+08:00">2019-03-06</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-enum-基本概念和用法"><a href="#1-enum-基本概念和用法" class="headerlink" title="1. enum 基本概念和用法"></a>1. enum 基本概念和用法</h3><p>enum Color { RED,BLUE,BLACK YELLOW,GREEN}; //创建时自动继承java.lang.Enum这个类</p>
-<pre><code>   (1)  ordinal()方法: 返回枚举值在枚举类种的顺序。这个顺序根据枚举值声明的顺序而定。  
-             Color.RED.ordinal();  //返回结果：0
-             Color.BLUE.ordinal();  //返回结果：1
-   (2)  compareTo()方法: Enum实现了java.lang.Comparable接口，因此可以比较象与指定对象的顺序。Enum中的compareTo返回的是两个枚举值的顺序之差。
-                         当然，前提是两个枚举值必须属于同一个枚举类，否则会抛出ClassCastException()异常。(具体可见源代码)
-             Color.RED.compareTo(Color.BLUE);  //返回结果 -1
-   (2)  equals()方法： 比较两个枚举类对象的引用。
-   (3.1)  values()方法： 静态方法，返回一个包含全部枚举值的数组。
-             Color[] colors=Color.values();
-             for(Color c:colors){ System.out.print(c + &quot;,&quot;); }//返回结果：RED,BLUE,BLACK YELLOW,GREEN,
-   (3.2)  toString()方法： 返回枚举常量的名称。
-             Color c=Color.RED;
-             System.out.println(c);//返回结果: RED
-   (3.2)  name()方法: 返回枚举实例声明时的名字String //&quot;RED&quot;,&quot;BLUE&quot;,&quot;BLACK&quot; &quot;YELLOW&quot;,&quot;GREEN&quot;
-   (5)  valueOf()方法： 这个方法和toString方法是相对应的，返回带指定名称的指定枚举类型的枚举常量。
-             Color.valueOf(&quot;BLUE&quot;);   //返回结果: Color.BLUE
-   (8)  getDeclaringClass()方法: 返回该enum变量所属Class&lt;E&gt;
-
-总结：
-
-1. enum -&gt; int:    
-    int i =  enumValue.ordinal(); // enumValue = Color.RED;
-    int i = Color.ordinal();
-
-2. int -&gt; enum:    Color b = Color.values()[i]; // int i = 0 1 2 3 4;
-
-3. enum -&gt; String:   
-    String s = enumValue.name();    //enumValue = Color.RED;
-    String s = enumValue.toString(); //enumValue = Color.RED;
-    String s = Color.RED.name();
-    String s = Color.RED.toString();
-4. String -&gt; enum:   enumType.valueOf(name); //name = &quot;RED&quot;
-</code></pre><h3 id="2-enum类实现原理及扩展"><a href="#2-enum类实现原理及扩展" class="headerlink" title="2. enum类实现原理及扩展"></a>2. enum类实现原理及扩展</h3><p>final class enum Color extends java.lang.Enum {<br>    enum RED(“红色”),    //自带实例,在类前部定义<br>    enum BLUE(“蓝色”),   //自带实例,在类前部定义<br>    enum BLACK(“黑色”),  //自带实例,在类前部定义<br>    enum YELLOW(“黄色”), //自带实例,在类前部定义<br>    enum GREEN(“绿色”);  //自带实例,在类前部定义,最后一个需要加分号</p>
-<pre><code>//todo 可新增成员变量和成员方法 及 构造函数
-private Color (String description) { //此处需要声明为private,就算不声明,只用于自带实例进行构建,在外部不能构建???
-    this.description = description;
-}
-private String description;
-public String getDescr() { return description;}
-public static void main(String[ args]) {
-    for (Color c : Color.values()) {
-        System.out.println(c + &quot;: &quot; + c.getDescr());
-    }
-}
-</code></pre><p>}; </p>
-<pre><code>//Output:
-RED: 红色
-BLUE: 蓝色
-BLACK: 黑色
-YELLOW: 黄色
-GREEN: 绿色
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2017/01/01/Android_SmartPointer_SP_WP/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/01/01/Android_SmartPointer_SP_WP/" class="post-title-link" itemprop="url">Android 智能指针——SP WP</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-01T00:00:00+08:00">2017-01-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-04-27 11:21:02" itemprop="dateModified" datetime="2017-04-27T11:21:02+08:00">2017-04-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>待续…<br></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/01/01/Android_SmartPointer_SP_WP/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jackback.github.io/2016/12/12/Android_Version-sdk-ndk/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Noobzhang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/12/12/Android_Version-sdk-ndk/" class="post-title-link" itemprop="url">Android版本-sdk-ndk-对应关系表</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-12-12 12:22:33" itemprop="dateCreated datePublished" datetime="2016-12-12T12:22:33+08:00">2016-12-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-02 18:29:13" itemprop="dateModified" datetime="2019-01-02T18:29:13+08:00">2019-01-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <table>
-<thead>
-<tr>
-<th style="text-align:left">Code name</th>
-<th style="text-align:left">Version</th>
-<th style="text-align:left">API level</th>
-<th style="text-align:left">Rlease Date</th>
-<th>Kernel</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Pie</td>
-<td style="text-align:left">9</td>
-<td style="text-align:left">API level 28</td>
-<td style="text-align:left">2018/8/6</td>
-<td>4.4.107, 4.9.84, and 4.14.42</td>
-</tr>
-<tr>
-<td style="text-align:left">Oreo</td>
-<td style="text-align:left">8.1</td>
-<td style="text-align:left">API level 27</td>
-<td style="text-align:left">2017/12/21</td>
-<td>4.10</td>
-</tr>
-<tr>
-<td style="text-align:left">Oreo</td>
-<td style="text-align:left">8.0</td>
-<td style="text-align:left">API level 26</td>
-<td style="text-align:left">2017/8/21</td>
-<td>4.10</td>
-</tr>
-<tr>
-<td style="text-align:left">Nougat</td>
-<td style="text-align:left">7.1</td>
-<td style="text-align:left">API level 25</td>
-<td style="text-align:left">2016/11/16</td>
-<td>4.4.1</td>
-</tr>
-<tr>
-<td style="text-align:left">Nougat</td>
-<td style="text-align:left">7.0</td>
-<td style="text-align:left">API level 24</td>
-<td style="text-align:left">2016/8/22</td>
-<td>4.4.1</td>
-</tr>
-<tr>
-<td style="text-align:left">Marshmallow</td>
-<td style="text-align:left">6.0.1</td>
-<td style="text-align:left">API level 23</td>
-<td style="text-align:left">2015/12/15</td>
-</tr>
-<tr>
-<td style="text-align:left">Marshmallow</td>
-<td style="text-align:left">6.0</td>
-<td style="text-align:left">API level 23</td>
-<td style="text-align:left">2015/10/5</td>
-<td>3.18.10</td>
-</tr>
-<tr>
-<td style="text-align:left">Lollipop</td>
-<td style="text-align:left">5.1.1</td>
-<td style="text-align:left">API level 22</td>
-<td style="text-align:left">2015/4/21</td>
-</tr>
-<tr>
-<td style="text-align:left">Lollipop</td>
-<td style="text-align:left">5.1</td>
-<td style="text-align:left">API level 22</td>
-<td style="text-align:left">2015/3/9</td>
-<td>3.16.1</td>
-</tr>
-<tr>
-<td style="text-align:left">Lollipop</td>
-<td style="text-align:left">5.0</td>
-<td style="text-align:left">API level 21, NDK 10</td>
-<td style="text-align:left">2014/11/12</td>
-<td>3.16.1</td>
-</tr>
-<tr>
-<td style="text-align:left">KitKat</td>
-<td style="text-align:left">4.4 - 4.4.4</td>
-<td style="text-align:left">API level 19</td>
-<td style="text-align:left">2013/10/31</td>
-<td>3.10</td>
-</tr>
-<tr>
-<td style="text-align:left">Jelly Bean</td>
-<td style="text-align:left">4.3.x</td>
-<td style="text-align:left">API level 18</td>
-<td style="text-align:left">2013/10/3</td>
-<td>3.4.39</td>
-</tr>
-<tr>
-<td style="text-align:left">Jelly Bean</td>
-<td style="text-align:left">4.2.x</td>
-<td style="text-align:left">API level 17</td>
-<td style="text-align:left">2013/2/11</td>
-<td>3.4.0</td>
-</tr>
-<tr>
-<td style="text-align:left">Jelly Bean</td>
-<td style="text-align:left">4.1.x</td>
-<td style="text-align:left">API level 16</td>
-<td style="text-align:left">2012/7/9</td>
-<td>3.0.31</td>
-</tr>
-<tr>
-<td style="text-align:left">Ice Cream Sandwich</td>
-<td style="text-align:left">4.0.3 - 4.0.4</td>
-<td style="text-align:left">API level 15, NDK 8</td>
-<td style="text-align:left">2012/3/29</td>
-<td>3.0.1</td>
-</tr>
-<tr>
-<td style="text-align:left">Ice Cream Sandwich</td>
-<td style="text-align:left">4.0.1 - 4.0.2</td>
-<td style="text-align:left">API level 14, NDK 7</td>
-<td style="text-align:left">2011/10/18</td>
-<td>3.0.1</td>
-</tr>
-<tr>
-<td style="text-align:left">Honeycomb</td>
-<td style="text-align:left">3.2.x</td>
-<td style="text-align:left">API level 13</td>
-<td style="text-align:left"></td>
-<td>2.6.36</td>
-</tr>
-<tr>
-<td style="text-align:left">Honeycomb</td>
-<td style="text-align:left">3.1</td>
-<td style="text-align:left">API level 12, NDK 6</td>
-<td style="text-align:left"></td>
-<td>2.6.36</td>
-</tr>
-<tr>
-<td style="text-align:left">Honeycomb</td>
-<td style="text-align:left">3.0</td>
-<td style="text-align:left">API level 11</td>
-<td style="text-align:left">2011/2/22</td>
-<td>2.6.36</td>
-</tr>
-<tr>
-<td style="text-align:left">Gingerbread</td>
-<td style="text-align:left">2.3.3 - 2.3.7</td>
-<td style="text-align:left">API level 10</td>
-<td style="text-align:left"></td>
-<td>2.6.35</td>
-</tr>
-<tr>
-<td style="text-align:left">Gingerbread</td>
-<td style="text-align:left">2.3 - 2.3.2</td>
-<td style="text-align:left">API level 9,  NDK 5</td>
-<td style="text-align:left">2010/12/6</td>
-<td>2.6.35</td>
-</tr>
-<tr>
-<td style="text-align:left">Froyo</td>
-<td style="text-align:left">2.2.x</td>
-<td style="text-align:left">API level 8,  NDK 4</td>
-<td style="text-align:left">2010/5/20</td>
-<td>2.6.32</td>
-</tr>
-<tr>
-<td style="text-align:left">Eclair</td>
-<td style="text-align:left">2.1</td>
-<td style="text-align:left">API level 7,  NDK 3</td>
-<td style="text-align:left"></td>
-<td>2.6.29</td>
-</tr>
-<tr>
-<td style="text-align:left">Eclair</td>
-<td style="text-align:left">2.0.1</td>
-<td style="text-align:left">API level 6</td>
-<td style="text-align:left"></td>
-<td>2.6.29</td>
-</tr>
-<tr>
-<td style="text-align:left">Eclair</td>
-<td style="text-align:left">2.0</td>
-<td style="text-align:left">API level 5</td>
-<td style="text-align:left">2009/10/26</td>
-<td>2.6.29</td>
-</tr>
-<tr>
-<td style="text-align:left">Donut</td>
-<td style="text-align:left">1.6</td>
-<td style="text-align:left">API level 4,  NDK 2</td>
-<td style="text-align:left">2009/9/15</td>
-<td>2.6.29</td>
-</tr>
-<tr>
-<td style="text-align:left">Cupcake</td>
-<td style="text-align:left">1.5</td>
-<td style="text-align:left">API level 3,  NDK 1</td>
-<td style="text-align:left">2009/4/27</td>
-<td>2.6.27</td>
-</tr>
-<tr>
-<td style="text-align:left">(no code name)</td>
-<td style="text-align:left">1.1</td>
-<td style="text-align:left">API level 2</td>
-<td style="text-align:left">2009/2/9</td>
-<td>2.6</td>
-</tr>
-<tr>
-<td style="text-align:left">(no code name)</td>
-<td style="text-align:left">1.0</td>
-<td style="text-align:left">API level 1</td>
-<td style="text-align:left">2008/12/23</td>
-<td>?</td>
-</tr>
-</tbody>
-</table>
-<p>References:<br><a href="https://en.wikipedia.org/wiki/Android_version_history" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Android_version_history</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2450,7 +2252,7 @@ GREEN: 绿色
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2479,7 +2281,9 @@ GREEN: 绿色
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2704,7 +2508,25 @@ GREEN: 绿色
                     
                       
                     
-                    <span class="site-state-item-count">106</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
